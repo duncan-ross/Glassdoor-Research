@@ -1,0 +1,455 @@
+---
+title: "SMJ Glassdoor Code"
+output: html_notebook
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+# Include necessary libraries and packages
+library(dplyr)
+library(data.table)
+library(stargazer)
+library(apaTables)
+library(lfe)
+library(dynlm)
+library(xts)
+library(purrrlyr)
+library(DataCombine)
+library(ggplot2)
+library(tidyverse)
+library(broom)
+library(car)
+library(stringi)
+library(cem)
+library(readxl)
+library(sandwich)
+library(lmtest)
+library(lazyeval)
+library(tm)
+library(quantmod)
+require("RPostgreSQL")
+
+# Variables
+good_comp_thresh = .25
+rev_limit = 20  ## Can be 10, 20, 40,60, or 99
+
+# Create a connection to the postgres database
+drv = dbDriver("PostgreSQL")
+con = dbConnect(drv, dbname = "glassdoor",
+                 host = "localhost", port = 5432,
+                 user = "twhittle", password = pw)
+
+# Get useful tables
+companies = dbGetQuery(con, "select * from companies;")
+company_financials = dbGetQuery(con, "select * from company_financials;")
+company_financials_1yr = dbGetQuery(con, "select * from company_financials where quarter = 4;")
+
+# Define a simple summary stats function
+summaryfun <- function(x)list(Mean=mean(na.omit(x)),Median=median(na.omit(x)),SD=sd(na.omit(x)),Min=min(na.omit(x)),Max=max(na.omit(x)))
+
+# Multiple plot function
+#
+# ggplot objects can be passed in ..., or to plotlist (as a list of ggplot objects)
+# - cols:   Number of columns in layout
+# - layout: A matrix specifying the layout. If present, 'cols' is ignored.
+#
+# If the layout is something like matrix(c(1,2,3,3), nrow=2, byrow=TRUE),
+# then plot 1 will go in the upper left, 2 will go in the upper right, and
+# 3 will go all the way across the bottom.
+#
+multiplot <- function(..., plotlist=NULL, file, cols=1, layout=NULL) {
+  library(grid)
+
+  # Make a list from the ... arguments and plotlist
+  plots <- c(list(...), plotlist)
+
+  numPlots = length(plots)
+
+  # If layout is NULL, then use 'cols' to determine layout
+  if (is.null(layout)) {
+    # Make the panel
+    # ncol: Number of columns of plots
+    # nrow: Number of rows needed, calculated from # of cols
+    layout <- matrix(seq(1, cols * ceiling(numPlots/cols)),
+                    ncol = cols, nrow = ceiling(numPlots/cols))
+  }
+
+ if (numPlots==1) {
+    print(plots[[1]])
+
+  } else {
+    # Set up the page
+    grid.newpage()
+    pushViewport(viewport(layout = grid.layout(nrow(layout), ncol(layout))))
+
+    # Make each plot, in the correct location
+    for (i in 1:numPlots) {
+      # Get the i,j matrix positions of the regions that contain this subplot
+      matchidx <- as.data.frame(which(layout == i, arr.ind = TRUE))
+
+      print(plots[[i]], vp = viewport(layout.pos.row = matchidx$row,
+                                      layout.pos.col = matchidx$col))
+    }
+  }
+}
+
+
+```
+
+
+``` {r dataset_prep, echo = FALSE}
+
+# Add a (0,1) dummy variable to represent the before/after column
+# Standard before_after that goes from 1 year before to 2 years after
+before_after_company_2yr= dbGetQuery(con, "select * from (select companies.id as company_id, companies.company_name, companies.ticker, companies.ipo_date, 'before' as before_after, count(reviews.id) as num_revs, sum(reviews.overall) as total_stars, var_pop(reviews.overall) as total_var, count(reviews.career_opportunities) as num_career_ops, sum(reviews.career_opportunities) as career_ops_stars, count(reviews.comp_benefits) as num_comp_ben, sum(reviews.comp_benefits) as comp_ben_stars, count(reviews.culture_values) as num_culture_values, sum(reviews.culture_values) as culture_values_stars,count(reviews.senior_management) as num_sr_mgmt, sum(reviews.senior_management) as sr_mgmt_stars,count(reviews.work_life_balance) as num_wl_bal, sum(reviews.work_life_balance) as wl_bal_stars from companies, reviews, company_reviews where companies.id = company_reviews.company_id and reviews.id = company_reviews.review_id and reviews.post_date < companies.ipo_date and reviews.post_date >= (companies.ipo_date - interval '1 year') and companies.offer_status > 0 group by companies.id, companies.company_name, companies.ticker, companies.ipo_date union select companies.id as company_id, companies.company_name, companies.ticker, companies.ipo_date, 'after' as before_after, count(reviews.id) as num_revs, sum(reviews.overall) as total_stars, var_pop(reviews.overall) as total_var, count(reviews.career_opportunities) as num_career_ops, sum(reviews.career_opportunities) as career_ops_stars, count(reviews.comp_benefits) as num_comp_ben, sum(reviews.comp_benefits) as comp_ben_stars, count(reviews.culture_values) as num_culture_values, sum(reviews.culture_values) as culture_values_stars,count(reviews.senior_management) as num_sr_mgmt, sum(reviews.senior_management) as sr_mgmt_stars,count(reviews.work_life_balance) as num_wl_bal, sum(reviews.work_life_balance) as wl_bal_stars from companies, reviews, company_reviews where companies.id = company_reviews.company_id and reviews.id = company_reviews.review_id and reviews.post_date > companies.ipo_date and reviews.post_date <= (companies.ipo_date + interval '2 year') and companies.offer_status > 0 group by companies.id, companies.company_name, companies.ticker, companies.ipo_date) as foo order by company_name, before_after")
+
+# TEST: Check what happens if we look from before as -3 to -1 years before the IPO and after being -1 to +1 years after the IPO.
+# before_after_company_2yr= dbGetQuery(con, "select * from (select companies.id as company_id, companies.company_name, companies.ticker, companies.ipo_date, 'before' as before_after, count(reviews.id) as num_revs, sum(reviews.overall) as total_stars, var_pop(reviews.overall) as total_var, count(reviews.career_opportunities) as num_career_ops, sum(reviews.career_opportunities) as career_ops_stars, count(reviews.comp_benefits) as num_comp_ben, sum(reviews.comp_benefits) as comp_ben_stars, count(reviews.culture_values) as num_culture_values, sum(reviews.culture_values) as culture_values_stars,count(reviews.senior_management) as num_sr_mgmt, sum(reviews.senior_management) as sr_mgmt_stars,count(reviews.work_life_balance) as num_wl_bal, sum(reviews.work_life_balance) as wl_bal_stars from companies, reviews, company_reviews where companies.id = company_reviews.company_id and reviews.id = company_reviews.review_id and reviews.post_date < companies.ipo_date and reviews.post_date >= (companies.ipo_date - interval '1 year') and companies.offer_status > 0  group by companies.id, companies.company_name, companies.ticker, companies.ipo_date union select companies.id as company_id, companies.company_name, companies.ticker, companies.ipo_date, 'after' as before_after, count(reviews.id) as num_revs, sum(reviews.overall) as total_stars, var_pop(reviews.overall) as total_var, count(reviews.career_opportunities) as num_career_ops, sum(reviews.career_opportunities) as career_ops_stars, count(reviews.comp_benefits) as num_comp_ben, sum(reviews.comp_benefits) as comp_ben_stars, count(reviews.culture_values) as num_culture_values, sum(reviews.culture_values) as culture_values_stars,count(reviews.senior_management) as num_sr_mgmt, sum(reviews.senior_management) as sr_mgmt_stars,count(reviews.work_life_balance) as num_wl_bal, sum(reviews.work_life_balance) as wl_bal_stars from companies, reviews, company_reviews where companies.id = company_reviews.company_id and reviews.id = company_reviews.review_id and reviews.post_date >= companies.ipo_date and reviews.post_date <= (companies.ipo_date + interval '2 year') and companies.offer_status > 0 group by companies.id, companies.company_name, companies.ticker, companies.ipo_date) as foo order by company_name, before_after")
+
+dx = before_after_company_2yr
+both_before_after_company_2yr = dx[dx$company_name %in% dx$company_name[duplicated(dx$company_name)],]
+
+# Add a column with the total number of reviews per company
+temp = aggregate(both_before_after_company_2yr$num_revs, by=list(company_name=both_before_after_company_2yr$company_name), FUN = sum)
+both_before_after_company_2yr$total_revs = temp[match(both_before_after_company_2yr$company_name, temp$company_name),2]
+
+# Transform the data to get the ratings before and after
+both_before_after_company_2yr = transform(both_before_after_company_2yr, total_avg = total_stars/num_revs)
+both_before_after_company_2yr = transform(both_before_after_company_2yr, career_ops_avg = career_ops_stars/num_career_ops)
+both_before_after_company_2yr = transform(both_before_after_company_2yr, comp_ben_avg = comp_ben_stars/num_comp_ben)
+both_before_after_company_2yr = transform(both_before_after_company_2yr, culture_values_avg = culture_values_stars/num_culture_values)
+both_before_after_company_2yr = transform(both_before_after_company_2yr, sr_mgmt_avg = sr_mgmt_stars/num_sr_mgmt)
+both_before_after_company_2yr = transform(both_before_after_company_2yr, wl_bal_avg = wl_bal_stars/num_wl_bal)
+both_before_after_company_2yr = both_before_after_company_2yr[order(both_before_after_company_2yr$company_name, both_before_after_company_2yr$before_after),]
+
+# Find the difference between the two averages & the standard deviations 
+columns = c('total_avg', 'career_ops_avg', 'comp_ben_avg', 'culture_values_avg', 'sr_mgmt_avg', 'wl_bal_avg')
+both_before_after_company_2yr = transform(both_before_after_company_2yr, total_diff = -ave(total_avg, company_name, FUN=function(x) c(0,diff(x))))
+both_before_after_company_2yr = transform(both_before_after_company_2yr, career_ops_diff = ave(career_ops_avg, company_name, FUN=function(x) c(0,diff(x))))
+both_before_after_company_2yr = transform(both_before_after_company_2yr, comp_ben_diff = ave(comp_ben_avg, company_name, FUN=function(x) c(0,diff(x))))
+both_before_after_company_2yr = transform(both_before_after_company_2yr, culture_values_diff = ave(culture_values_avg, company_name, FUN=function(x) c(0,diff(x))))
+both_before_after_company_2yr = transform(both_before_after_company_2yr, sr_mgmt_diff = ave(sr_mgmt_avg, company_name, FUN=function(x) c(0,diff(x))))
+both_before_after_company_2yr = transform(both_before_after_company_2yr, wl_bal_diff = ave(wl_bal_avg, company_name, FUN=function(x) c(0,diff(x))))
+both_before_after_company_2yr = transform(both_before_after_company_2yr, total_var_diff = ave(total_var, company_name, FUN=function(x) c(0,diff(x))))
+
+both_before_after_company_2yr$ipo = 0
+both_before_after_company_2yr = within(both_before_after_company_2yr, ipo[before_after == 'after'] <- 1)
+
+# Add in company data
+both_before_after_company_2yr$industry = companies[match(both_before_after_company_2yr$company_name, companies$company_name), "ind_group"]
+both_before_after_company_2yr$ipo_year = substr(companies[match(both_before_after_company_2yr$company_name, companies$company_name), "ipo_date"],1,4)
+both_before_after_company_2yr$pct_change_fd = companies[match(both_before_after_company_2yr$company_name, companies$company_name), "pct_change_fd"]
+both_before_after_company_2yr$pct_change_3m = companies[match(both_before_after_company_2yr$company_name, companies$company_name), "pct_change_3m"]
+both_before_after_company_2yr$num_employees = log(companies[match(both_before_after_company_2yr$company_name, companies$company_name), "num_employees"] + 1)
+both_before_after_company_2yr$offer_size = companies[match(both_before_after_company_2yr$company_name, companies$company_name), "offer_size"]
+both_before_after_company_2yr$revenue = log(companies[match(both_before_after_company_2yr$company_name, companies$company_name), "cstat_rev"] + 1)
+both_before_after_company_2yr$adv_exp = log(companies[match(both_before_after_company_2yr$company_name, companies$company_name), "cstat_adv_exp"] + 1)
+both_before_after_company_2yr$rd_exp = log(companies[match(both_before_after_company_2yr$company_name, companies$company_name), "cstat_rd_exp"] + 1)
+both_before_after_company_2yr$state = companies[match(both_before_after_company_2yr$company_name, companies$company_name), "state"]
+both_before_after_company_2yr$pct_change_1yr = company_financials_1yr[match(both_before_after_company_2yr$ticker, company_financials_1yr$ticker), "pct_change_from_ipo"]
+
+# Replace NA's with 0's for R&D and Advertising Expenses
+both_before_after_company_2yr$rd_exp[is.na(both_before_after_company_2yr$rd_exp)] = 0
+both_before_after_company_2yr$adv_exp[is.na(both_before_after_company_2yr$adv_exp)] = 0
+
+# Consider limiting the data to companies with only 5,10 reviews before and after their IPOs. If I allow all companies with reviews before and after IPO, the ols results are insignificant!
+dx= subset(both_before_after_company_2yr, num_revs >= 5 & total_revs >= 10)
+sub_10_2yr = dx[dx$company_name %in% dx$company_name[duplicated(dx$company_name)],]
+good_comp_id_2yr = unique(sub_10_2yr[sub_10_2yr$total_diff >= good_comp_thresh,]$company_id)
+bad_comp_id_2yr = unique(sub_10_2yr[sub_10_2yr$total_diff <= -good_comp_thresh,]$company_id)
+sub_10_2yr$comp_good_bad = "neutral"
+sub_10_2yr[sub_10_2yr$company_id %in% bad_comp_id_2yr,]$comp_good_bad = "bad"
+sub_10_2yr[sub_10_2yr$company_id %in% good_comp_id_2yr,]$comp_good_bad = "good"
+
+
+# Find companies that went public after 2 years prior to the data scraping date (2019-02-14) so that we can remove them from the dataset
+ipo_after_feb_2017 = companies[companies$ipo_date > '2017-02-14', c('id', 'company_name')]
+ipo_after_feb_2017 = ipo_after_feb_2017[!is.na(ipo_after_feb_2017),]
+ipo_after_feb_2017 = ipo_after_feb_2017[ipo_after_feb_2017$id %in% sub_10_2yr$company_id,]
+ipo_after_feb_2017 = ipo_after_feb_2017$id
+
+# After removing these companies, sub_10_2yr has 194 companies, which lines up exactly with the 194 companies produced in python via the same method. 
+sub_10_2yr = sub_10_2yr[!(sub_10_2yr$company_id %in% ipo_after_feb_2017),]
+
+# # Write the sub_10_2yr to the db
+# # dbWriteTable(con, "sub_10_2yr", value = sub_10_2yr, append = T, row.names = F)
+reviews_before = dbGetQuery(con, "select distinct(reviews.id), pros, cons, advice_to_mgmt, review_summary, overall, years_employed, job_title, companies.id as company_id, companies.ind_group, reviews.post_date, companies.ipo_date from reviews, sub_10_2yr, companies, company_reviews where sub_10_2yr.company_name = companies.company_name and companies.id = company_reviews.company_id and reviews.id = company_reviews.review_id and companies.ipo_date >= reviews.post_date and reviews.post_date >= (companies.ipo_date - interval '1 year');")
+reviews_before$years_employed[is.na(reviews_before$years_employed)] = 0
+reviews_after_good = dbGetQuery(con, "select distinct(reviews.id), pros, cons, advice_to_mgmt, review_summary, overall, years_employed, job_title, companies.id as company_id, companies.ind_group, reviews.post_date, companies.ipo_date from reviews, sub_10_2yr, companies, company_reviews where sub_10_2yr.company_name = companies.company_name and companies.id = company_reviews.company_id and reviews.id = company_reviews.review_id and companies.ipo_date < reviews.post_date and reviews.post_date <= (companies.ipo_date + interval '2 year') and sub_10_2yr.total_diff >= 0 and sub_10_2yr.ipo = 0;")
+reviews_after_good$years_employed[is.na(reviews_after_good$years_employed)] = 0
+reviews_after_bad = dbGetQuery(con, "select distinct(reviews.id), pros, cons, advice_to_mgmt, review_summary, overall, years_employed, job_title, companies.id as company_id, companies.ind_group, reviews.post_date, companies.ipo_date from reviews, sub_10_2yr, companies, company_reviews where sub_10_2yr.company_name = companies.company_name and companies.id = company_reviews.company_id and reviews.id = company_reviews.review_id and companies.ipo_date < reviews.post_date and reviews.post_date <= (companies.ipo_date + interval '2 year') and sub_10_2yr.total_diff < 0 and sub_10_2yr.ipo = 0;")
+reviews_after_bad$years_employed[is.na(reviews_after_bad$years_employed)] = 0
+# # 
+# dbWriteTable(con, "reviews_1yr_before_lim_10", value = reviews_before, append = T, row.names = F)
+# dbWriteTable(con, "reviews_2yrs_after_good", value = reviews_after_good, append = T, row.names = F)
+# dbWriteTable(con, "reviews_2yrs_after_bad", value = reviews_after_bad, append = T, row.names = F)
+
+# Another test set where the # of reviews is > 10 both before and after. There are 152 of these companies just based on the reviews scraped from Python. According to this, after removing the 8 companies that ipo after Feb. 2017, there are 151. Find the missing company. Red Rock Resorts should be added to sub_20_2yr. Hardcode this in. 
+keep_comp = c("Red Rock Resorts Inc")
+dx = both_before_after_company_2yr[both_before_after_company_2yr$num_revs >= 10 | both_before_after_company_2yr$company_name %in% keep_comp,]
+sub_20_2yr = dx[dx$company_name %in% dx$company_name[duplicated(dx$company_name)],]
+sub_20_2yr$comp_good_bad = "neutral"
+sub_20_2yr[sub_20_2yr$company_id %in% bad_comp_id_2yr,]$comp_good_bad = "bad"
+sub_20_2yr[sub_20_2yr$company_id %in% good_comp_id_2yr,]$comp_good_bad = "good"
+sub_20_2yr = sub_20_2yr[!(sub_20_2yr$company_id %in% ipo_after_feb_2017),]
+
+# Another test set where the # of reviews is > 20 both before and after. According to this there are 95 companies that meet this criteria. Based on the python code there are 97. Red Rock Resorts and Twilio should be added to sub_40_2yr. Hardcode this in. 
+keep_comp = c("Red Rock Resorts Inc", "Twilio Inc")
+dx = both_before_after_company_2yr[both_before_after_company_2yr$num_revs >= 20 | both_before_after_company_2yr$company_name %in% keep_comp,]
+sub_40_2yr = dx[dx$company_name %in% dx$company_name[duplicated(dx$company_name)],]
+sub_40_2yr$comp_good_bad = "neutral"
+sub_40_2yr[sub_40_2yr$company_id %in% bad_comp_id_2yr,]$comp_good_bad = "bad"
+sub_40_2yr[sub_40_2yr$company_id %in% good_comp_id_2yr,]$comp_good_bad = "good"
+sub_40_2yr = sub_40_2yr[!(sub_40_2yr$company_id %in% ipo_after_feb_2017),]
+
+# Another test set where the # of reviews is > 30 both before and after. According to this there are 95 companies that meet this criteria. Based on the python code there are 97. Red Rock Resorts and Twilio should be added to sub_40_2yr. Hardcode this in. 
+keep_comp = c("Red Rock Resorts Inc", "Twilio Inc")
+dx = both_before_after_company_2yr[both_before_after_company_2yr$num_revs >= 30 | both_before_after_company_2yr$company_name %in% keep_comp,]
+sub_60_2yr = dx[dx$company_name %in% dx$company_name[duplicated(dx$company_name)],]
+sub_60_2yr$comp_good_bad = "neutral"
+sub_60_2yr[sub_60_2yr$company_id %in% bad_comp_id_2yr,]$comp_good_bad = "bad"
+sub_60_2yr[sub_60_2yr$company_id %in% good_comp_id_2yr,]$comp_good_bad = "good"
+sub_60_2yr = sub_60_2yr[!(sub_60_2yr$company_id %in% ipo_after_feb_2017),]
+
+# Another test set where the # of reviews is > 50 both before and after. Here R includes Cotiviti and Laureate Education while python does not. Remove these two companies. 
+remove_comp = c("Cotiviti Holdings Inc", "Laureate Education Inc")
+dx = subset(both_before_after_company_2yr, num_revs >= 50 & total_revs >= 100)
+sub_99_2yr = dx[dx$company_name %in% dx$company_name[duplicated(dx$company_name)],]
+sub_99_2yr$comp_good_bad = "neutral"
+sub_99_2yr[sub_99_2yr$company_id %in% bad_comp_id_2yr,]$comp_good_bad = "bad"
+sub_99_2yr[sub_99_2yr$company_id %in% good_comp_id_2yr,]$comp_good_bad = "good"
+sub_99_2yr = sub_99_2yr[!(sub_99_2yr$company_id %in% ipo_after_feb_2017 | sub_99_2yr$company_name %in% remove_comp),]
+
+
+
+# Quick Numbers
+# Num companies that went public in timeframe: 974 
+#   exp: num_companies
+# Num companies that went public with reviews: 652 
+#   exp: num_companies_wrev
+# Num companies that went public with reviews within -1/+1(+2) yrs of ipo: 
+#   exp: length(unique(before_after_company_1yr$company_name)), length(unique(before_after_company_2yr$company_name)) length(unique(before_after_company_2yr$company_name)),
+# Num companies with reviews both before and after ipo within -1/+1(+2) yrs: 387
+#   exp: length(unique(both_before_after_company_1yr$company_name)), length(unique(both_before_after_company_2yr$company_name))
+# Num companies with at least 5, 10 reviews both -1/+1 yrs after ipo: 219, 169
+#   exp: length(unique(sub_10_2yr$company_name)), length(unique(sub_20_2yr$company_name))
+
+
+```
+
+```{r cem, echo = FALSE}
+# Create the groupings to be used in CEM
+factor_year_grp = list(c("-1"), c("1990","1992","1993","1994","1995","1996"), c("1997","1998","1999","2000","2001"), c("2002","2003","2004","2005","2006","2007"), c("2008","2009","2010","2011","2012","2013"), c("2014","2015","2016","2017"))
+founding_year_cut  = c(-1, 1990,1997, 2001, 2007 ,2013, 2017)
+num_employees_cut = c(100, 1000, 10000)
+exchange_grp = list(c("New York", "NYSE"), c("NASDAQ GM", "NASDAQ GS", "NASDAQ CM", "NasdaqGM", "NasdaGS", "NasdaqCM", "NASDAQ"), c("AMEX"))
+
+# Function: get matched strata and add them to a new dataframe
+get_matched_treatment = function(orig_sample, cem_output, private = TRUE) {
+  
+  if (private) {
+  # Create the matched_treatment dataframe that will be appended to the end
+    matched_treatment = data.frame(id = integer(),
+                                 company_name = character(),
+                                 founding_year = integer(),
+                                 num_employees = integer(),
+                                 sic_code = integer(), 
+                                 treatment = integer(),
+                                 two_sic = integer(),
+                                 factor_year = integer(),
+                                 strata = integer(),
+                                 matched_id = integer())
+  } else {
+    print("Private is FALSE")
+      matched_treatment = data.frame(id = integer(),
+                                 company_name = character(),
+                                 ticker = character(),
+                                 founding_year = integer(),
+                                 exchange = character(),
+                                 num_employees = integer(),
+                                 sic_code = integer(),
+                                 cstat_rev = double(),
+                                 treatment = integer(),
+                                 two_sic = integer(),
+                                 factor_year = integer(),
+                                 strata = integer(),
+                                 matched_id = integer(),
+                                 stringsAsFactors = FALSE)
+  }
+  
+  # Iterate through each strata and check if it has at least 1 treated element in it. If it does, match the companies and append. 
+  for( i in 1:(cem_output$n.strata - 1)) {
+    strata = orig_sample[which(cem_output$strata == i), ]
+    strata$strata = i
+    strata$matched_id = 0
+    
+    
+    # If the strata has some treatment companies, then match those treatment companies to the control companies
+    if (sum(strata$treatment) >= 1 && min(strata$treatment) == 0) {
+      treatment = strata[strata$treatment == 1, ]
+      
+      # For each company in the strata, check if it is a treatment or control company
+      for( i in 1:dim(strata)[1]) {
+        
+        # If treatment, append 0 as the matched company
+        if(strata[i,]$treatment == 1) {
+          strata[i,]$matched_id = 0
+        } else {
+          # Otherwise we need to find a suitable match. 
+          # First get the companies with the closest founding year. 
+          # Then select the company with the closest founding year for private companies and number of employees for public companies
+          if(private) {
+            idx = which.min(abs(treatment$founding_year - strata[i,]$founding_year) + .00001*abs(treatment$num_employees - strata[i,]$num_employees))
+          } else {
+            idx = which.min(abs(treatment$num_employees - strata[i,]$num_employees))
+          }
+          comp_id = treatment[idx, ]$id
+          strata[i,]$matched_id = comp_id
+        }
+      }
+      # Append the matched companies
+      matched_treatment = rbind(matched_treatment, strata)
+    }
+  }
+  return(matched_treatment)
+}
+
+
+perform_public_match = function(control_public, treatment_companies, results_filename){
+  
+  # browser()
+  
+  # Ignore companies that are not in the treatment companies
+  control_public = control_public[control_public$id == -1 | control_public$id %in% treatment_companies$company_id, ]
+  
+  # Update control public and perform CEM
+  control_public$two_sic = factor(floor(as.numeric(control_public$sic_code)/100))
+  control_public$factor_year = factor(sapply(control_public$founding_year, function(x) ifelse(x < 1990, -1, x)))
+  cem_match_public = cem(treatment = "treatment", data = control_public, drop=c("id", "company_name", "ticker", "sic_code", "factor_year", "cstat_rev"), cutpoints = list(num_employees = num_employees_cut, founding_year = founding_year_cut), grouping=list(exchange = exchange_grp))
+
+  # Get the matched samples and append the appropriate IPO dates
+  control_public_match = get_matched_treatment(control_public, cem_match_public, private = FALSE)
+  control_public_match$company_name = removePunctuation(tolower(trimws(control_public_match$company_name)))
+  cpub_match_treatment = control_public_match[control_public_match$id != -1,]
+  cpub_match_control = control_public_match[control_public_match$id == -1,]
+  cpub_match_control = merge(cpub_match_control, companies[,c('id','ipo_date')], by.x = c('matched_id'), by.y = c('id'))[,c("matched_id", "company_name", "ticker", "founding_year", "num_employees", "sic_code", "cstat_rev", "treatment", "two_sic", "strata", "ipo_date")]
+  cpub_match_control$company_name = removePunctuation(tolower(trimws(cpub_match_control$company_name)))
+
+  # Write the public control group and its matched companies to file 
+  path = paste("data", "cem_data", results_filename, sep = "/")
+  write.table(cpub_match_control, path, sep = '\t')
+  
+  return(control_public_match)
+} 
+
+
+perform_private_match = function(control_private, treatment_companies, results_filename){
+ 
+  # Ignore companies that are not in the treatment companies
+  control_private = control_private[control_private$id == -1 | control_private$id %in% treatment_companies$company_id, ]
+  
+  # Update control private and perform CEM
+  control_private$two_sic = factor(floor(as.numeric(control_private$sic_code)/100))
+  control_private$factor_year = factor(sapply(control_private$founding_year, function(x) ifelse(x < 1990, -1, x)))
+  cem_match_private = cem(treatment = "treatment", data = control_private, drop=c("id", "company_name", "sic_code", "founding_year"), cutpoints = list(num_employees = num_employees_cut), grouping=list(factor_year = factor_year_grp))
+
+  # Get the matched samples and append the appropriate IPO dates
+  control_private_match = get_matched_treatment(control_private, cem_match_private)
+  control_private_match$company_name = removePunctuation(tolower(trimws(control_private_match$company_name)))
+  cpriv_match_treatment = control_private_match[control_private_match$id != -1,]
+  cpriv_match_control = control_private_match[control_private_match$id == -1,]
+  cpriv_match_control = merge(cpriv_match_control, companies[,c('id','ipo_date')], by.x = c('matched_id'), by.y = c('id'))[,c("matched_id", "company_name", "founding_year", "num_employees", "sic_code", "treatment", "two_sic", "strata", "ipo_date")]
+  
+  # Get the company names for the matched private sample
+  control_private_match$company_name = gsub(",","", control_private_match$company_name)
+  control_private_match$company_name = gsub("\\.","", control_private_match$company_name)
+  used_control_private_companies = unique(tolower(trimws(control_private_match$company_name)))
+  
+  # Write the private control group and its matched companies to file 
+  path = paste("data", "cem_data", results_filename, sep = "/")
+  write.table(cpriv_match_control, path, sep = '\t')
+  
+  return(control_private_match)
+}
+
+save_treatment_comps = function(treatment_companies, filename){
+  treatment_companies = treatment_companies[treatment_companies$before_after == 'after',]
+  treatment_companies = treatment_companies[,c('company_name','ipo_date')]
+  treatment_companies$company_name = removePunctuation(unique(tolower(trimws(treatment_companies$company_name))))
+ 
+  # Write the public control group and its matched companies to file 
+  path = paste("data", "cem_data", filename, sep = "/")
+  write.table(treatment_companies, path, sep = '\t')
+  
+  
+}
+
+# Get the public control sample and perform CEM
+control_public = as.data.frame(read_excel("data/cem_data/controls_for_cem_public_v3.xlsx"))
+control_public_match_10_rev = perform_public_match(control_public, sub_10_2yr, 'public_comps_control_10_rev.txt')
+control_public_match_20_rev = perform_public_match(control_public, sub_20_2yr, 'public_comps_control_20_rev.txt')
+control_public_match_40_rev = perform_public_match(control_public, sub_40_2yr, 'public_comps_control_40_rev.txt')
+control_public_match_60_rev = perform_public_match(control_public, sub_60_2yr, 'public_comps_control_60_rev.txt')
+control_public_match_99_rev = perform_public_match(control_public, sub_99_2yr, 'public_comps_control_99_rev.txt')
+
+
+
+
+# Get the private control sample and perform CEM
+control_private = as.data.frame(read_excel("data/cem_data/controls_for_cem_private_v2.xlsx"))
+control_private_match_10_rev = perform_private_match(control_private, sub_10_2yr, 'private_comps_control_10_rev.txt')
+control_private_match_20_rev = perform_private_match(control_private, sub_20_2yr, 'private_comps_control_20_rev.txt')
+control_private_match_40_rev = perform_private_match(control_private, sub_40_2yr, 'private_comps_control_40_rev.txt')
+control_private_match_60_rev = perform_private_match(control_private, sub_60_2yr, 'private_comps_control_60_rev.txt')
+control_private_match_99_rev = perform_private_match(control_private, sub_99_2yr, 'private_comps_control_99_rev.txt')
+
+
+# Write the treatment companies to file for each subset
+save_treatment_comps(sub_10_2yr, 'treatment_comps_10_rev.txt')
+save_treatment_comps(sub_20_2yr, 'treatment_comps_20_rev.txt')
+save_treatment_comps(sub_40_2yr, 'treatment_comps_40_rev.txt')
+save_treatment_comps(sub_60_2yr, 'treatment_comps_60_rev.txt')
+save_treatment_comps(sub_99_2yr, 'treatment_comps_99_rev.txt')
+
+
+# Write the control_public_match data to the database
+dbRemoveTable(con, "control_public_match_10_rev")
+dbRemoveTable(con, "control_public_match_20_rev")
+dbRemoveTable(con, "control_public_match_40_rev")
+dbRemoveTable(con, "control_public_match_60_rev")
+dbRemoveTable(con, "control_public_match_99_rev")
+
+dbWriteTable(con, "control_public_match_10_rev", value = control_public_match_10_rev, append = F, row.names = F)
+dbWriteTable(con, "control_public_match_20_rev", value = control_public_match_20_rev, append = F, row.names = F)
+dbWriteTable(con, "control_public_match_40_rev", value = control_public_match_40_rev, append = F, row.names = F)
+dbWriteTable(con, "control_public_match_60_rev", value = control_public_match_60_rev, append = F, row.names = F)
+dbWriteTable(con, "control_public_match_99_rev", value = control_public_match_99_rev, append = F, row.names = F)
+
+
+# Write the control_private_match data to the database
+dbRemoveTable(con, "control_private_match_10_rev")
+dbRemoveTable(con, "control_private_match_20_rev")
+dbRemoveTable(con, "control_private_match_40_rev")
+dbRemoveTable(con, "control_private_match_60_rev")
+dbRemoveTable(con, "control_private_match_99_rev")
+
+dbWriteTable(con, "control_private_match_10_rev", value = control_private_match_10_rev, append = F, row.names = F)
+dbWriteTable(con, "control_private_match_20_rev", value = control_private_match_20_rev, append = F, row.names = F)
+dbWriteTable(con, "control_private_match_40_rev", value = control_private_match_40_rev, append = F, row.names = F)
+dbWriteTable(con, "control_private_match_60_rev", value = control_private_match_60_rev, append = F, row.names = F)
+dbWriteTable(con, "control_private_match_99_rev", value = control_private_match_99_rev, append = F, row.names = F)
+
+# Write the sub_x_2yr data to the database
+dbRemoveTable(con, "sub_10_2yr")
+dbRemoveTable(con, "sub_20_2yr")
+dbRemoveTable(con, "sub_40_2yr")
+dbRemoveTable(con, "sub_60_2yr")
+dbRemoveTable(con, "sub_99_2yr")
+
+dbWriteTable(con, "sub_10_2yr", value = sub_10_2yr, append = F, row.names = F)
+dbWriteTable(con, "sub_20_2yr", value = sub_20_2yr, append = F, row.names = F)
+dbWriteTable(con, "sub_40_2yr", value = sub_40_2yr, append = F, row.names = F)
+dbWriteTable(con, "sub_60_2yr", value = sub_60_2yr, append = F, row.names = F)
+dbWriteTable(con, "sub_99_2yr", value = sub_99_2yr, append = F, row.names = F)
+
+```

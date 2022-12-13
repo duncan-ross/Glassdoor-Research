@@ -1,0 +1,812 @@
+---
+title: "SMJ Glassdoor Code"
+output: html_notebook
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+# Include necessary libraries and packages
+library(dplyr)
+library(data.table)
+library(stargazer)
+library(apaTables)
+library(lfe)
+library(dynlm)
+library(xts)
+library(purrrlyr)
+library(DataCombine)
+library(ggplot2)
+library(tidyverse)
+library(broom)
+library(car)
+library(stringi)
+library(cem)
+library(readxl)
+library(sandwich)
+library(lmtest)
+library(lazyeval)
+library(tm)
+library(quantmod)
+# library(xtsanalytics)
+library(rlang)
+require("RPostgreSQL")
+
+# Variables
+good_comp_thresh = .25
+rev_limit = 10  ## Can be 10, 20, 40, 60, or 99
+
+# Create a connection to the postgres database
+drv = dbDriver("PostgreSQL")
+pw = "1234567"
+con = dbConnect(drv, dbname = "glassdoor",
+                 host = "localhost", port = 5432,
+                 user = "twhittle", password = pw)
+
+# Get useful tables
+companies = dbGetQuery(con, "select * from companies;")
+company_financials = dbGetQuery(con, "select * from company_financials;")
+company_financials_1yr = dbGetQuery(con, "select * from company_financials where quarter = 4;")
+
+# Get the sub_x_2yr tables
+sub_10_2yr = dbGetQuery(con, "select * from sub_10_2yr;")
+sub_20_2yr = dbGetQuery(con, "select * from sub_20_2yr;")
+sub_40_2yr = dbGetQuery(con, "select * from sub_40_2yr;")
+sub_60_2yr = dbGetQuery(con, "select * from sub_60_2yr;")
+sub_99_2yr = dbGetQuery(con, "select * from sub_99_2yr;")
+
+# Get the control_public_match tables
+control_public_match_10_rev = dbGetQuery(con, "select * from control_public_match_10_rev;")
+control_public_match_20_rev = dbGetQuery(con, "select * from control_public_match_20_rev;")
+control_public_match_40_rev = dbGetQuery(con, "select * from control_public_match_40_rev;")
+control_public_match_60_rev = dbGetQuery(con, "select * from control_public_match_60_rev;")
+control_public_match_99_rev = dbGetQuery(con, "select * from control_public_match_99_rev;")
+
+# Get the control_private_match tables
+control_private_match_10_rev = dbGetQuery(con, "select * from control_private_match_10_rev;")
+control_private_match_20_rev = dbGetQuery(con, "select * from control_private_match_20_rev;")
+control_private_match_40_rev = dbGetQuery(con, "select * from control_private_match_40_rev;")
+control_private_match_60_rev = dbGetQuery(con, "select * from control_private_match_60_rev;")
+control_private_match_99_rev = dbGetQuery(con, "select * from control_private_match_99_rev;")
+
+# Get the sentiment_treatment tables
+sentiment_treatment_10_rev = dbGetQuery(con, "select * from sentiment_treatment_10_rev;")
+sentiment_treatment_20_rev = dbGetQuery(con, "select * from sentiment_treatment_20_rev;")
+sentiment_treatment_40_rev = dbGetQuery(con, "select * from sentiment_treatment_40_rev;")
+sentiment_treatment_60_rev = dbGetQuery(con, "select * from sentiment_treatment_60_rev;")
+sentiment_treatment_99_rev = dbGetQuery(con, "select * from sentiment_treatment_99_rev;")
+
+# Get the sentiment_public_control tables
+sentiment_public_control_10_rev = dbGetQuery(con, "select * from sentiment_public_control_10_rev;")
+sentiment_public_control_20_rev = dbGetQuery(con, "select * from sentiment_public_control_20_rev;")
+sentiment_public_control_40_rev = dbGetQuery(con, "select * from sentiment_public_control_40_rev;")
+sentiment_public_control_60_rev = dbGetQuery(con, "select * from sentiment_public_control_60_rev;")
+sentiment_public_control_99_rev = dbGetQuery(con, "select * from sentiment_public_control_99_rev;")
+
+# Get the sentiment private_control tables
+sentiment_private_control_10_rev = dbGetQuery(con, "select * from sentiment_private_control_10_rev;")
+sentiment_private_control_20_rev = dbGetQuery(con, "select * from sentiment_private_control_20_rev;")
+sentiment_private_control_40_rev = dbGetQuery(con, "select * from sentiment_private_control_40_rev;")
+sentiment_private_control_60_rev = dbGetQuery(con, "select * from sentiment_private_control_60_rev;")
+sentiment_private_control_99_rev = dbGetQuery(con, "select * from sentiment_private_control_99_rev;")
+
+# Include the grouping used in CEM
+factor_year_grp = list(c("-1"), c("1990","1992","1993","1994","1995","1996"), c("1997","1998","1999","2000","2001"), c("2002","2003","2004","2005","2006","2007"), c("2008","2009","2010","2011","2012","2013"), c("2014","2015","2016","2017"))
+founding_year_cut  = c(-1, 1990,1997, 2001, 2007 ,2013, 2017)
+num_employees_cut = c(100, 1000, 10000)
+exchange_grp = list(c("New York", "NYSE"), c("NASDAQ GM", "NASDAQ GS", "NASDAQ CM", "NasdaqGM", "NasdaGS", "NasdaqCM", "NASDAQ"), c("AMEX"))
+
+# # Define a simple summary stats function
+# summaryfun <- function(x)list(Mean=mean(na.omit(x)),Median=median(na.omit(x)),SD=sd(na.omit(x)),Min=min(na.omit(x)),Max=max(na.omit(x)))
+
+
+
+
+```
+
+
+``` {r rev_limit_data_selection, echo = FALSE}
+## Set this. Variables needed, sub_X_2yr, control_public_match, control_private_match, sentiment_treatment_filename, sentiment_public_control_filename, sentiment_private_control_filename. 
+if(rev_limit == 10){
+  sub_x_2yr = sub_10_2yr
+  control_public_match = control_public_match_10_rev
+  control_private_match = control_private_match_10_rev
+  sentiment_treatment = sentiment_treatment_10_rev
+  sentiment_public_control = sentiment_public_control_10_rev
+  sentiment_private_control = sentiment_private_control_10_rev
+} else if(rev_limit == 20) {
+  sub_x_2yr = sub_20_2yr
+  control_public_match = control_public_match_20_rev
+  control_private_match = control_private_match_20_rev
+  sentiment_treatment = sentiment_treatment_20_rev
+  sentiment_public_control = sentiment_public_control_20_rev
+  sentiment_private_control = sentiment_private_control_20_rev
+} else if (rev_limit == 40){
+  sub_x_2yr = sub_40_2yr
+  control_public_match = control_public_match_40_rev
+  control_private_match = control_private_match_40_rev
+  sentiment_treatment = sentiment_treatment_40_rev
+  sentiment_public_control = sentiment_public_control_40_rev
+  sentiment_private_control = sentiment_private_control_40_rev
+} else if (rev_limit == 60){
+  sub_x_2yr = sub_60_2yr
+  control_public_match = control_public_match_60_rev
+  control_private_match = control_private_match_60_rev
+  sentiment_treatment = sentiment_treatment_60_rev
+  sentiment_public_control = sentiment_public_control_60_rev
+  sentiment_private_control = sentiment_private_control_60_rev
+} else if (rev_limit == 99){
+  sub_x_2yr = sub_99_2yr
+  control_public_match = control_public_match_99_rev
+  control_private_match = control_private_match_99_rev
+  sentiment_treatment = sentiment_treatment_99_rev
+  sentiment_public_control = sentiment_public_control_99_rev
+  sentiment_private_control = sentiment_private_control_99_rev
+} else {
+  sub_x_2yr = NULL
+  control_public_match = NULL
+  control_private_match = NULL
+  sentiment_treatment = NULL
+  sentiment_public_control = NULL
+  sentiment_private_control = NULL
+  print("REV_LIMIT IS INVALID!")
+}
+
+
+```
+
+
+
+``` {r public_control_data_wrangling, echo = FALSE}
+
+# Import sentiment analysis for treatment companies
+treatment_sent = sentiment_treatment
+treatment_sent$treatment = 1
+# treatment_sent$post_ipo = 0
+# treatment_sent$post_ipo[treatment_sent$pre_post == "after"] = 1 
+
+# Import the sentiment analysis for the public control companies
+public_control_sent = sentiment_public_control
+public_control_sent$treatment = 0
+
+# Merge the treatment and control samples
+public_control_sent = rbind(public_control_sent, treatment_sent)
+
+# PUBLIC: Get the actual matched companies and reviews based on control_public/private_match
+# Check if any treatment companies got lost
+# unique(control_public_match[control_public_match$treatment == 1, ]$company_name)[!unique(control_public_match[control_public_match$treatment == 1, ]$company_name) %in% unique(public_control_sent$company)]
+# Check if any control companies got lost - losing 167 of 334 control companies due to insufficient reviews pre/post-ipo. Leaves 167 companies. 
+# unique(control_public_match[control_public_match$treatment == 0, ]$company_name)[!unique(control_public_match[control_public_match$treatment == 0, ]$company_name) %in% unique(public_control_sent$company)]
+
+
+
+public_control_sent = merge(public_control_sent, control_public_match, by.x = 'company', by.y = 'company_name')
+colnames(public_control_sent)[colnames(public_control_sent) == "treatment.x"] = "treatment"
+public_control_sent$treatment.y = NULL
+public_control_sent$post_ipo = 1
+public_control_sent[public_control_sent$pre_post == "before",]$post_ipo = 0
+
+public_control_sent$ipo_id = apply(public_control_sent[ ,c('id', 'matched_id')], 1, max)
+public_control_sent = merge(public_control_sent, sub_x_2yr[sub_x_2yr$before_after == "before", c("company_id","ipo_date", "comp_good_bad")], by.x = 'ipo_id', by.y = 'company_id')
+public_control_sent$ipo_year = format(as.Date(public_control_sent$ipo_date, format="%Y-%m-%d"),"%Y")
+public_control_sent$post_year = format(as.Date((public_control_sent$ipo_date  + public_control_sent$days_after_ipo), format="%Y-%m-%d"), '%Y')
+
+colnames(public_control_sent)[which(names(public_control_sent) == "comp_good_bad")] <- "good_bad"
+colnames(public_control_sent)[which(names(public_control_sent) == "communication+transparency")] <- "communication_transparency"
+colnames(public_control_sent)[which(names(public_control_sent) == "compensation+benefits")] <- "compensation_benefits"
+public_control_sent$two_sic = as.factor(floor(as.numeric(public_control_sent$sic_code)/100))
+public_control_sent$year_group = cut(public_control_sent$founding_year, founding_year_cut)
+
+nyse_grp = c("New York", "NYSE") 
+nasdaq_grp = c("NASDAQ GM", "NASDAQ GS", "NASDAQ CM", "NasdaqGM", "NasdaGS", "NasdaqCM", "NASDAQ")
+amex_grp = c("AMEX")
+public_control_sent$exchange_group = ifelse(public_control_sent$exchange %in% nyse_grp, "NYSE", ifelse(public_control_sent$exchange %in% nasdaq_grp, "NASDAQ", ifelse(public_control_sent$exchange %in% amex_grp, "AMEX", "N/A")))
+drops = c("ticker", "exchange", "cstat_rev")
+x = treatment_sent[ , !(names(treatment_sent) %in% drops)]
+
+### NEW: IF COMPANIES ARE MISSING A MATCH AFTER SENTIMENT SCORES CALCULATED, REMOVE THE COMPANY. 
+temp = public_control_sent %>% group_by(ipo_id, treatment) %>% summarise(count = n()) %>% group_by(ipo_id) %>% summarise(count = n())
+matched_ipo_ids = temp[temp$count == 2,]$ipo_id
+
+new_public_control_sent = public_control_sent[public_control_sent$ipo_id %in% matched_ipo_ids, ]
+public_control_sent = new_public_control_sent
+
+```
+
+``` {r private_control_data_wrangling, echo = FALSE}
+
+# Import the sentiment analysis for the private control companies
+private_control_sent = sentiment_private_control 
+private_control_sent$treatment = 0
+
+# Merge the treatment and control samples
+private_control_sent = rbind(private_control_sent, treatment_sent)
+
+# PRIVATE: Get the actual matched companies and reviews based on control_public/private_match
+# Check if any treatment companies got lost - None found 
+# unique(control_private_match[control_private_match$treatment == 1, ]$company_name)[!unique(control_private_match[control_private_match$treatment == 1, ]$company_name) %in% unique(private_control_sent$company)]
+# Check if any control companies got lost - losing 432 of 554 control companies due to insufficient reviews pre/post-ipo. Leaves 122 companies. 
+# unique(control_private_match[control_private_match$treatment == 0, ]$company_name)[!unique(control_private_match[control_private_match$treatment == 0, ]$company_name) %in% unique(private_control_sent$company)]
+
+private_control_sent = merge(private_control_sent, control_private_match, by.x = 'company', by.y = 'company_name')
+colnames(private_control_sent)[colnames(private_control_sent) == "treatment.x"] = "treatment"
+private_control_sent$treatment.y = NULL
+private_control_sent$post_ipo = 1
+private_control_sent[private_control_sent$pre_post == "before",]$post_ipo = 0
+
+private_control_sent$ipo_id = apply(private_control_sent[ ,c('id', 'matched_id')], 1, max)
+private_control_sent = merge(private_control_sent, sub_x_2yr[sub_x_2yr$before_after == "before", c('company_id','ipo_date', 'comp_good_bad')], by.x = 'ipo_id', by.y = 'company_id')
+private_control_sent$ipo_year = format(as.Date(private_control_sent$ipo_date, format="%Y-%m-%d"),"%Y")
+private_control_sent$post_year = format(as.Date((private_control_sent$ipo_date  + private_control_sent$days_after_ipo), format="%Y-%m-%d"), '%Y')
+
+colnames(private_control_sent)[which(names(private_control_sent) == "comp_good_bad")] <- "good_bad"
+colnames(private_control_sent)[which(names(private_control_sent) == "communication+transparency")] <- "communication_transparency"
+colnames(private_control_sent)[which(names(private_control_sent) == "compensation+benefits")] <- "compensation_benefits"
+private_control_sent$two_sic = as.factor(floor(as.numeric(private_control_sent$sic_code)/100))
+private_control_sent$year_group = cut(private_control_sent$founding_year, founding_year_cut)
+
+
+### NEW: IF COMPANIES ARE MISSING A MATCH AFTER SENTIMENT SCORES CALCULATED, REMOVE THE COMPANY. 
+temp = private_control_sent %>% group_by(ipo_id, treatment) %>% summarise(count = n()) %>% group_by(ipo_id) %>% summarise(count = n())
+matched_ipo_ids = temp[temp$count == 2,]$ipo_id
+
+new_private_control_sent = private_control_sent[private_control_sent$ipo_id %in% matched_ipo_ids, ]
+private_control_sent = new_private_control_sent
+
+```
+
+``` {r private_control_companies_plots, echo = F}
+
+# Get the private control and treatment companies in the final sample
+priv_comp = unique(private_control_sent[c("company","treatment", "two_sic", "founding_year", "num_employees")])
+priv_comp$two_sic = as.numeric(as.character(priv_comp$two_sic))
+priv_comp$treat = ifelse(priv_comp$treatment == 1, "treatment", "private control")
+
+# Get the private control companies where there is common support in the SIC codes. There are 11 SIC codes where this is true. This drops the number of companies from 653 to 616. The number of treatment companies goes from 208 to 171 (-37) and the number of control companies remains at 445.  
+keep_ind_priv = priv_comp %>% count(two_sic,treatment) %>% count(two_sic)
+keep_ind_priv = keep_ind_priv[keep_ind_priv$n == 2, ]
+priv_comp = subset(priv_comp, (two_sic %in% keep_ind_priv$two_sic))
+
+# Get the private control companies where there is common support in the year.
+keep_year_priv = priv_comp %>% count(founding_year,treatment) %>% count(founding_year)
+keep_year_priv = keep_year_priv[keep_year_priv$n == 2, ]
+priv_comp = subset(priv_comp, (founding_year %in% keep_year_priv$founding_year))
+
+# Remove the reviews where there are not multiple companies in that indusry or in the founding year group. 
+private_control_sent = subset(private_control_sent, (as.numeric(as.character(two_sic)) %in% keep_ind_priv$two_sic))
+private_control_sent = subset(private_control_sent, (founding_year %in% keep_year_priv$founding_year))
+
+
+# Plot the two digit sic codes
+priv_sic_plot = ggplot(priv_comp, aes(as.factor(two_sic), fill = treat)) + geom_histogram(alpha = 0.5, stat = "count", position = 'dodge') + geom_bar(width = 0.8, position = position_dodge(width = 0.9)) + labs(title = "Private Control and Treatment Companies: 2-digit SIC Code", x = "2-digit SIC Code", y = "# Companies") + scale_fill_discrete(name = "Legend", labels = c("Private Control", "Treatment - IPO")) + theme(plot.title = element_text(hjust = 0.5))
+
+# Save the plot
+ggsave('figures/figure_private_control_sic_count.png', plot = priv_sic_plot, scale = 1, width = 7.5, height = 6, dpi = 500)
+
+# Plot the number of employees
+priv_emp_plot = ggplot(priv_comp, aes(num_employees, fill = treat)) + geom_histogram(alpha = 0.5, binwidth = 100, position = 'identity') +  xlim(0, 10000) + ylim(-1,60) + labs(title = "Private Control and Treatment Companies: Number of Employees", x = "# Employees", y = "# Companies") + scale_fill_discrete(name = "Legend", labels = c("Private Control", "Treatment - IPO")) + theme(plot.title = element_text(hjust = 0.5))
+
+# Save the plot
+ggsave('figures/figure_private_control_emp_count.png', plot = priv_emp_plot, scale = 1, width = 7.5, height = 6, dpi = 500)
+
+# Plot the founding years
+priv_founding_year_plot = ggplot(priv_comp, aes(founding_year, fill = treat)) + geom_histogram(alpha = 0.5, stat = "count", position = 'identity') + xlim(2000,2015) + labs(title = "Private Control and Treatment Companies: Founding Years", x = "Founding Year", y = "# Companies") + scale_fill_discrete(name = "Legend", labels = c("Private Control", "Treatment - IPO")) + theme(plot.title = element_text(hjust = 0.5))
+
+# Save the plot
+ggsave('figures/figure_private_control_founding_year_count.png', plot = priv_founding_year_plot, scale = 1, width = 7.5, height = 6, dpi = 500)
+
+
+
+```
+
+``` {r public_control_companies_plots, echo = F}
+# Get the public control and treatment companies in the final sample
+pub_comp = unique(public_control_sent[c("company", "ticker","treatment", "two_sic", "founding_year", "num_employees", "cstat_rev")])
+pub_comp$two_sic = as.numeric(as.character(pub_comp$two_sic))
+pub_comp$treat = ifelse(pub_comp$treatment == 1, "treatment", "public control")
+
+# Get the public control companies where there is common support in the SIC codes. This drops the number of companies from 364 to 319. The number of treatment companies goes from 208 to 163 (-45) and the number of control companies remains at 156.  
+keep_ind_pub = pub_comp %>% count(two_sic,treatment) %>% count(two_sic)
+keep_ind_pub = keep_ind_pub[keep_ind_pub$n == 2, ]
+pub_comp = subset(pub_comp, (two_sic %in% keep_ind_pub$two_sic))
+
+# Remove the reviews where there are not multiple companies in that indusry. This moves the number of reviews from 729k to 691k.
+public_control_sent = subset(public_control_sent, (as.numeric(as.character(two_sic)) %in% keep_ind_pub$two_sic))
+
+# Plot the two digit sic codes
+pub_sic_plot = ggplot(pub_comp, aes(as.factor(two_sic), fill = treat)) + geom_histogram(alpha = 0.5, stat = "count", position = 'dodge') + geom_bar(width = 0.8, position = position_dodge(width = 0.9)) + labs(title = "Public Control and Treatment Companies: 2-digit SIC Code", x = "2-digit SIC Code", y = "# Companies") + scale_fill_discrete(name = "Legend", labels = c("Public Control", "Treatment - IPO")) + theme(plot.title = element_text(hjust = 0.5))
+
+# Save the plot
+ggsave('figures/figure_public_control_sic_count.png', plot = pub_sic_plot, scale = 1, width = 7.5, height = 6, dpi = 500)
+
+# Plot the number of employees
+pub_emp_plot = ggplot(pub_comp, aes(num_employees, fill = treat)) + geom_histogram(alpha = 0.5, binwidth = 5000, position = 'identity') +  xlim(0, 150000) + ylim(0,60) + labs(title = "Public Control and Treatment Companies: Number of Employees", x = "# Employees", y = "# Companies") + scale_fill_discrete(name = "Legend", labels = c("Public Control", "Treatment - IPO")) + theme(plot.title = element_text(hjust = 0.5))
+
+# Save the plot
+ggsave('figures/figure_public_control_emp_count.png', plot = pub_emp_plot, scale = 1, width = 7.5, height = 6, dpi = 500)
+
+# Plot the founding years
+pub_founding_year_plot = ggplot(pub_comp, aes(founding_year, fill = treat)) + geom_histogram(alpha = 0.5, stat = "count", position = 'identity') + xlim(1900,2015) + labs(title = "Public Control and Treatment Companies: Founding Years", x = "Founding Year", y = "# Companies") + scale_fill_discrete(name = "Legend", labels = c("Public Control", "Treatment - IPO")) + theme(plot.title = element_text(hjust = 0.5))
+
+# Save the plot
+ggsave('figures/figure_public_control_founding_year_count.png', plot = pub_founding_year_plot, scale = 1, width = 7.5, height = 6, dpi = 500)
+
+```
+
+``` {r update_for_missing_data}
+
+# # # Companies that went public between Jan. 1, 2010 and Feb. 14, 2017 that appaear in the control sample and not in the treatment sample. Consdier whether they should be in the treatment sample after all, or whether they belong in the control sample. For now, best thing is probably to remove them. 
+# unique(matched_pub_revs[matched_pub_revs$treatment == 0,]$ticker)[unique(matched_pub_revs[matched_pub_revs$treatment == 0,]$ticker) %in% companies$ticker]
+# # 
+# # 
+
+
+# Remove the tickers for aquired, delisted, or unable to find companies
+remove_tickers = c("APIC", "ELOQ", "LQ", "MVNR", "PGND", "Q", "QTM", "TAM", "VNTV", "YDLE", "BNED", "FIVN", "GTES", "EXTN", "AVYA", "CIVI", "JILL")
+
+# Get the company_id's of the tickers that were public companies
+remove_companies = unique(public_control_sent[public_control_sent$ticker %in% remove_tickers,c("company", "id")])
+remove_treatment_companies = remove_companies[remove_companies$id > 0,]
+remove_control_companies = remove_companies[remove_companies$id < 0,]
+
+# Remove these companies from the sentiment data analysis
+updated_public_control_sent = public_control_sent[!(public_control_sent$ipo_id %in% remove_treatment_companies$id) & !(public_control_sent$company %in% remove_control_companies$company),]
+updated_private_control_sent = private_control_sent[!(private_control_sent$ipo_id %in% remove_treatment_companies$id),]
+
+public_control_sent = updated_public_control_sent
+private_control_sent = updated_private_control_sent
+
+# # Check if there are any companies with no sentiment before but sentiment after that should be excluded
+# temp %>% group_by(two_sic, treatment, pre_post, company) %>% summarise(count = sum(!is.na(compensation))) %>% arrange(count)
+
+# Get the breakdown of companies, reviews, sentences and good/bad and treatment/control
+data = private_control_sent
+data$years_after_ipo = as.numeric(data$days_after_ipo)/365.
+data = data[data$years_after_ipo < 0 | data$years_after_ipo < as.numeric(data$years_employed),]
+public_company_breakdown = data %>% group_by(treatment, good_bad, company, rev_id) %>% summarise(sentences = n()) %>% group_by(treatment, good_bad, company) %>% summarise(revs = n(), sentences = sum(sentences)) %>% group_by(treatment, good_bad) %>% summarise(comps = n(), revs = sum(revs), sentences = sum(sentences))
+private_company_breakdown = private_control_sent %>% group_by(treatment, good_bad, company, rev_id) %>% summarise(sentences = n()) %>% group_by(treatment, good_bad, company) %>% summarise(revs = n(), sentences = sum(sentences)) %>% group_by(treatment, good_bad) %>% summarise(comps = n(), revs = sum(revs), sentences = sum(sentences))
+```
+
+```{r sentiment_analysis}
+
+# FUNCTION sent_analyze takes three inputs:
+#   1. dv_list - a list of the dvs to be analyzed
+#   2. pca - a list that is of the form c("pro"), c("con"), c("pro", "con"), or c("pro", "con", "adv")
+#   3. good_bad_comp - a list that is of the form c("good"), c("bad"), c("neutral"), c("good", "bad"), or c("good", "bad", "neutral")
+#   4. company_control - a boolean that indicates whether to include company controls (TRUE) or not (FALSE)
+#   5. pre_ipo_emp_only - a boolean that indicates whether to limit the sample to only include employees that were there before the IPO (TRUE) or to include all employees (FALSE)
+sent_analyze <- function(dv_list, public, pca, good_bad_comp, company_control, pre_ipo_emp_only = FALSE){
+  if(pre_ipo_emp_only){
+    if(public){
+      data = public_control_sent
+      data$years_after_ipo = as.numeric(data$days_after_ipo)/365.
+      data = data[data$years_after_ipo < 0 | data$years_after_ipo < as.numeric(data$years_employed),]
+    } else {
+      data = private_control_sent
+      data$years_after_ipo = as.numeric(data$days_after_ipo)/365.
+      data = data[data$years_after_ipo < 0 | data$years_after_ipo < as.numeric(data$years_employed),]
+    }
+  } else {
+    if(public){
+      data = public_control_sent
+    } else {
+      data = private_control_sent
+    }
+  }
+    if (company_control == FALSE){
+        if (public){
+            model = lapply(dv_list, function(x) {lm(as.formula(substitute(dv ~ post_ipo*treatment + log(num_employees + 1) + exchange_group + two_sic + year_group, list(dv = as.name(x)))), eval(substitute(data[data$pro_con_adv %in% pca & data$good_bad %in% good_bad_comp & !is.na(data$dv),], list(dv = as.name(x)))), exactDOF = TRUE)})
+            data_list = lapply(dv_list, function(x){eval(substitute(data[!is.na(data$dv),], list(dv = as.name(x))))})
+        } else {
+            model = lapply(dv_list, function(x) {lm(as.formula(substitute(dv ~ post_ipo*treatment + log(num_employees + 1) + two_sic + year_group, list(dv = as.name(x)))), eval(substitute(data[data$pro_con_adv %in% pca & data$good_bad %in% good_bad_comp & !is.na(data$dv),], list(dv = as.name(x)))))})
+            data_list = lapply(dv_list, function(x){eval(substitute(data[data$pro_con_adv %in% pca & data$good_bad %in% good_bad_comp & !is.na(data$dv),], list(dv = as.name(x))))})
+        }
+    } else {
+          if (public){
+            model = lapply(dv_list, function(x) {lm(as.formula(substitute(dv ~ post_ipo*treatment + company + post_year + as.factor(years_employed), list(dv = as.name(x)))), eval(substitute(data[data$pro_con_adv %in% pca & data$good_bad %in% good_bad_comp & !is.na(data$dv),], list(dv = as.name(x)))))})
+            data_list = lapply(dv_list, function(x){eval(substitute(data[data$pro_con_adv %in% pca & data$good_bad %in% good_bad_comp & !is.na(data$dv),], list(dv = as.name(x))))})
+
+          } else {
+              model = lapply(dv_list, function(x) {lm(as.formula(substitute(dv ~ post_ipo*treatment + company + post_year + as.factor(years_employed), list(dv = as.name(x)))), eval(substitute(data[data$pro_con_adv %in% pca & data$good_bad %in% good_bad_comp & !is.na(data$dv),], list(dv = as.name(x)))))})
+              data_list = lapply(dv_list, function(x){eval(substitute(data[data$pro_con_adv %in% pca & data$good_bad %in% good_bad_comp & !is.na(data$dv),], list(dv = as.name(x))))})
+          }
+    }
+
+  # OLD CODE: USES R STANDARD ERRORS, getcoef
+  # Get the summaries of the regressions
+  # lm_summaries = lapply(model, summary)
+
+  # Get the post_ipo:treatment interaction from the results
+  # get_coef = function(x) {
+  #   return(tryCatch(x$coefficients['post_ipo:treatment',], error=function(e) NA))
+  # }
+
+  # results = sapply(lm_summaries, get_coef)
+  # results = t(as.data.frame(results))
+
+
+  # get_coef2 = function(x) {
+  #   return(tryCatch(coeftest(x[[]], vcov = vcovCL(x, cluster = ))['post_ipo:treatment',], error=function(e) NA))
+  # }
+
+  # # NEW CODE: USES THE CLUSTERED STANDARD ERRORS
+  # get_coef3 finds calculates the clustered standard errors, clustering on company. This accounts for any correlation of sentiment scores within the groups.
+  if(public){
+    get_coef3 = function(m,d){return(coeftest(m, vcov = vcovCL(m, cluster = d[,c('company')], type = "HC1", fix = TRUE, multi0 = TRUE, cadjust = TRUE))['post_ipo:treatment',])}
+  } else {
+    get_coef3 = function(m,d){return(coeftest(m, vcov = vcovCL(m, cluster = d[,c('company')], type = "HC1", fix = TRUE, multi0 = TRUE, cadjust = TRUE))['post_ipo:treatment',])}
+  }
+
+  # browser()
+  results = mapply(get_coef3, m= model, d = data_list)
+  results = t(as.data.frame(results))
+  rownames(results) = dv_list
+
+
+  # Return the results
+  return(results)
+}
+
+
+# dv_list = c("compensation", "benefits", "career_dev", "transparency", "communication_transparency", "benevolence", "product", "manager", "leader", "integrity", "boys_club", "sales", "communication", "wl_bal", "strategy", "culture", "politics", "finance","startup", "benevolence_new", "benevolence_and_integrity")
+# dv_list = c("compensation", "benefits", "career_dev", "transparency", "communication_transparency", "benevolence", "product", "manager", "leader", "integrity", "culture")
+dv_list = c("compensation", "benefits", "career_dev", "communication", "product", "manager", "leader", "integrity", "benevolence_new", "culture", "wl_bal")
+# NEW DV LIST - removed 'startup' because there were not enough entries to run the bad public companies.
+dv_list = c("compensation", "benefits", "career_dev", "transparency", "communication_transparency", "benevolence", "product", "manager", "leader", "integrity", "boys_club", "sales", "communication","wl_bal", "strategy", "culture", "politics","finance","benevolence_new", "benevolence_and_integrity")
+# NEW DV LIST - used for quick organizing
+dv_list = c("compensation", "benefits", "career_dev", "transparency", "communication", "leader", "manager", "benevolence_new", "integrity", "culture")
+# NEW DV LIST - used for quick organizing
+dv_list = c("compensation", "benefits", "career_dev", "policies", "transparency", "communication", "leader", "manager", "culture", "interactional_justice", "fairness")
+# NEW DV LIST - used for quick organizing
+dv_list = c("compensation", "benefits", "career_dev", "policies", "transparency", "communication", "leader", "manager", "culture", "respect", "DJ", "IJ", "PJ")
+
+
+#### !!!!! IMPORTANT !!!!! BEFORE RUNNING THE sent_analyze FUNCTION, YOU NEED TO ALTER THE coeftest.default FUNCTION
+# trace(coeftest.default, edit = TRUE)
+# After line 9, add the following code: est = est[!is.na(est)]. This ensures that the estimates line up with the errors that are produced from vcovCL. vcovCL will not produce errors for coefficients with NA estimates. Thus, the error vector it produces has a shorter length than est. The updated code fixes this issue.
+
+# # Temoporary code to only look at +/-1 year around IPO
+# public_control_sent = public_control_sent[public_control_sent$days_after_ipo <= 365,]
+# private_control_sent = private_control_sent[private_control_sent$days_after_ipo <= 365,]
+
+# # PUBLIC COMPANIES - ALL COMPS
+# # # All employees
+# results_pub_gbn_pca_control = sent_analyze(dv_list = dv_list, public = TRUE, pca = c("pro", "con", "adv"), good_bad_comp = c("good", "bad", "neutral"), company_control = TRUE)
+# results_pub_gbn_pc_control = sent_analyze(dv_list = dv_list, public = TRUE, pca = c("pro", "con"), good_bad_comp = c("good", "bad", "neutral"), company_control = TRUE, pre_ipo_emp_only = FALSE)
+# # # Pre-IPO employees only
+# results_pub_gbn_pc_control_pre_ipo = sent_analyze(dv_list = dv_list, public = TRUE, pca = c("pro", "con"), good_bad_comp = c("good", "bad", "neutral"), company_control = TRUE, pre_ipo_emp_only = TRUE)
+# results_pub_gbn_pca_control_pre_ipo = sent_analyze(dv_list = dv_list, public = TRUE, pca = c("pro", "con", "adv"), good_bad_comp = c("good", "bad", "neutral"), company_control = TRUE, pre_ipo_emp_only = TRUE)
+
+# # PUBLIC COMPANIES - GOOD COMPS
+# # All employees
+# results_pub_g_pca_control = sent_analyze(dv_list = dv_list, public = TRUE, pca = c("pro", "con", "adv"), good_bad_comp = c("good"), company_control = TRUE)
+# results_pub_g_pc_control = sent_analyze(dv_list = dv_list, public = TRUE, pca = c("pro", "con"), good_bad_comp = c("good"), company_control = TRUE, pre_ipo_emp_only = FALSE)
+# Pre-IPO employees only
+# results_pub_g_pc_control_pre_ipo = sent_analyze(dv_list = dv_list, public = TRUE, pca = c("pro", "con"), good_bad_comp = c("good"), company_control = TRUE, pre_ipo_emp_only = TRUE)
+# results_pub_g_pca_control_pre_ipo = sent_analyze(dv_list = dv_list, public = TRUE, pca = c("pro", "con", "adv"), good_bad_comp = c("good"), company_control = TRUE, pre_ipo_emp_only = TRUE)
+# 
+# # PUBLIC COMPANIES - BAD COMPS
+# # # All employees
+# results_pub_b_pca_control = sent_analyze(dv_list = dv_list, public = TRUE, pca = c("pro", "con", "adv"), good_bad_comp = c("bad"), company_control = TRUE)
+# results_pub_b_pc_control = sent_analyze(dv_list = dv_list, public = TRUE, pca = c("pro", "con"), good_bad_comp = c("bad"), company_control = TRUE, pre_ipo_emp_only = FALSE)
+# # # Pre-IPO employees only
+# results_pub_b_pc_control_pre_ipo = sent_analyze(dv_list = dv_list, public = TRUE, pca = c("pro", "con"), good_bad_comp = c("bad"), company_control = TRUE, pre_ipo_emp_only = TRUE)
+# results_pub_b_pca_control_pre_ipo = sent_analyze(dv_list = dv_list, public = TRUE, pca = c("pro", "con", "adv"), good_bad_comp = c("bad"), company_control = TRUE, pre_ipo_emp_only = TRUE)
+# 
+# # PUBLIC COMPANIES - NEUTRAL COMPANIES
+# results_pub_n_pca_control = sent_analyze(dv_list = dv_list, public = TRUE, pca = c("pro", "con", "adv"), good_bad_comp = c("neutral"), company_control = TRUE, pre_ipo_emp_only = FALSE)
+# results_pub_n_pc_control = sent_analyze(dv_list = dv_list, public = TRUE, pca = c("pro", "con"), good_bad_comp = c("neutral"), company_control = TRUE, pre_ipo_emp_only = FALSE)
+
+# PRIVATE COMPANIES - ALL COMPS
+# # All employees
+results_priv_gbn_pca_control = sent_analyze(dv_list = dv_list, public = FALSE, pca = c("pro", "con", "adv"), good_bad_comp = c("good", "bad", "neutral"), company_control = TRUE)
+results_priv_gbn_pc_control = sent_analyze(dv_list = dv_list, public = FALSE, pca = c("pro", "con"), good_bad_comp = c("good", "bad", "neutral"), company_control = TRUE, pre_ipo_emp_only = FALSE)
+# # Pre-IPO employees only
+results_priv_gbn_pc_control_pre_ipo = sent_analyze(dv_list = dv_list, public = FALSE, pca = c("pro", "con"), good_bad_comp = c("good", "bad", "neutral"), company_control = TRUE, pre_ipo_emp_only = TRUE)
+results_priv_gbn_pca_control_pre_ipo = sent_analyze(dv_list = dv_list, public = FALSE, pca = c("pro", "con", "adv"), good_bad_comp = c("good", "bad", "neutral"), company_control = TRUE, pre_ipo_emp_only = TRUE)
+
+# # PRIVATE COMPANIES - GOOD COMPS
+# # # All companies
+# results_priv_g_pca_control = sent_analyze(dv_list = dv_list, public = FALSE, pca = c("pro", "con", "adv"), good_bad_comp = c("good"), company_control = TRUE)
+# results_priv_g_pc_control = sent_analyze(dv_list = dv_list, public = FALSE, pca = c("pro", "con"), good_bad_comp = c("good"), company_control = TRUE, pre_ipo_emp_only = FALSE)
+# # # Pre-IPO employees only
+# results_priv_g_pc_control_pre_ipo = sent_analyze(dv_list = dv_list, public = FALSE, pca = c("pro", "con"), good_bad_comp = c("good"), company_control = TRUE, pre_ipo_emp_only = TRUE)
+# results_priv_g_pca_control_pre_ipo = sent_analyze(dv_list = dv_list, public = FALSE, pca = c("pro", "con", "adv"), good_bad_comp = c("good"), company_control = TRUE, pre_ipo_emp_only = TRUE)
+
+# # PRIVATE COMPANIES - BAD COMPS
+# # # All employees
+# results_priv_b_pca_control = sent_analyze(dv_list = dv_list, public = FALSE, pca = c("pro", "con", "adv"), good_bad_comp = c("bad"), company_control = TRUE, pre_ipo_emp_only = FALSE)
+# results_priv_b_pc_control = sent_analyze(dv_list = dv_list, public = FALSE, pca = c("pro", "con"), good_bad_comp = c("bad"), company_control = TRUE, pre_ipo_emp_only = FALSE)
+# # # Pre-IPO employees only
+# results_priv_b_pc_control_pre_ipo = sent_analyze(dv_list = dv_list, public = FALSE, pca = c("pro", "con"), good_bad_comp = c("bad"), company_control = TRUE, pre_ipo_emp_only = TRUE)
+# results_priv_b_pca_control_pre_ipo = sent_analyze(dv_list = dv_list, public = FALSE, pca = c("pro", "con", "adv"), good_bad_comp = c("bad"), company_control = TRUE, pre_ipo_emp_only = TRUE)
+# 
+# 
+# # PRIVATE COMPANIES - NEUTRAL COMPANIES
+# results_priv_n_pca_control = sent_analyze(dv_list = dv_list, public = FALSE, pca = c("pro", "con", "adv"), good_bad_comp = c("neutral"), company_control = TRUE, pre_ipo_emp_only = FALSE)
+# results_priv_n_pc_control = sent_analyze(dv_list = dv_list, public = FALSE, pca = c("pro", "con"), good_bad_comp = c("neutral"), company_control = TRUE, pre_ipo_emp_only = FALSE)
+
+
+ # temp = public_control_sent
+# temp = temp %>% drop_na(career_dev)
+# x = temp %>% group_by(company, pre_post) %>% summarise(total = n()) %>% arrange(desc(total),company)
+# temp2 = temp[temp$company %in% x$company[duplicated(x$company)],]
+# temp2[temp2$treatment == 1 &temp2$post_ipo == 0,] %>% group_by(company) %>% summarise(total = n()) %>% arrange(total)
+# y = temp2[temp2$treatment == 1 &temp2$post_ipo == 0,] %>% group_by(company) %>% summarise(total = n()) %>% arrange(total)
+# temp2[temp2$company %in% y[y$total >= 2,]$company, ] %>% select(company, treatment, id) %>% distinct()
+#
+# ols_public_control_career_dev = felm(career_dev ~ post_ipo*treatment | company, temp2, exactDOF = TRUE)
+#
+# leader_test = lm(leader ~ post_ipo*treatment + log(num_employees + 1) + two_sic + year_group + company, private_control_sent)
+# summary(leader_test)$coef['post_ipo:treatment',]
+#
+# # Plot the two digit sic codes
+# pub_sic_plot = ggplot(pub_comp, aes(two_sic, fill = treat)) + geom_histogram(alpha = 0.5, stat = "count", position = 'dodge') + geom_bar(width = 0.8, position = position_dodge(width = 0.9)) + labs(title = "Public Control and Treatment Companies: 2-digit SIC Code", x = "2-digit SIC Code", y = "# Companies") + scale_fill_discrete(name = "Legend", labels = c("Public Control", "Treatment - IPO")) + theme(plot.title = element_text(hjust = 0.5))
+#
+# # ggsave('/Users/twhittle/Google_Drive/Documents/Glassdoor Paper/v3/tables_and_figures/figure1a_pub_control_sic_count.png', plot = pub_sic_plot, scale = 1, width = 7.5, height = 6, dpi = 500)
+#
+# # y = lapply(dv_list, function(x){eval(substitute(public_control_sent[!is.na(public_control_sent$dv),], list(dv = as.name(x))))})
+#
+# # temp = coeftest(model[[1]], vcov = vcovCL(model[[1]], cluster = data_list[[1]][,c('company','exchange','year_group')], type = "HC1", cadjust = TRUE))['post_ipo:treatment',]
+
+
+
+
+```
+
+```{r new_h1, echo = FALSE}
+
+# Get the public and treatment review scores
+matched_pub_revs = unique(public_control_sent[,c("rev_id", "ipo_id", "ticker", "ipo_date", "days_after_ipo", "years_employed", "job_title", "score", "pre_post", "treatment", "num_employees", "two_sic", "exchange_group", "good_bad", "year_group", "ipo_year", "post_year")])
+matched_pub_revs$ipo = 0
+matched_pub_revs[matched_pub_revs$days_after_ipo > 0, ]$ipo = 1
+
+matched_priv_revs = unique(private_control_sent[,c("rev_id", "ipo_id", "company", "ipo_date", "days_after_ipo", "years_employed", "job_title", "score", "pre_post", "treatment", "num_employees", "two_sic", "good_bad", "year_group", "ipo_year", "post_year")])
+matched_priv_revs$ipo = 0
+matched_priv_revs[matched_priv_revs$days_after_ipo > 0, ]$ipo = 1
+
+# Fix any wrong IPO dates
+# matched_pub_revs[matched_pub_revs$ticker == "TWTR",]$ipo_date = "2013-11-07"
+# matched_pub_revs[matched_pub_revs$ticker == "WAGE",]$ipo_date = "2012-05-11"
+# matched_pub_revs[matched_pub_revs$ticker == "SYNC",]$ipo_date = "2012-02-13"
+
+
+# Get the data for all possible companies
+# Set the start and end dates to pull
+ipo_start_date = min(matched_pub_revs$ipo_date)
+ipo_end_date = max(matched_pub_revs$ipo_date) + 735
+
+
+
+
+
+# ticker_data = lapply(unique(public_control_sent$ticker), function(x){
+#   try(
+#     getSymbols(
+#       x, src = "yahoo", from = ipo_start_date, to = ipo_end_date, env = .GlobalEnv),
+#       silent=TRUE)
+#   })
+# # Get the symbols
+# ticker_data = unlist(lapply(ticker_data, function(x){x[1]}))
+# # Get the symbols of companies we coudn't get data for
+# ticker_found = unique(matched_pub_revs$ticker)[unique(matched_pub_revs$ticker) %in% ticker_data]
+# ticker_not_found = unique(matched_pub_revs$ticker)[!unique(matched_pub_revs$ticker) %in% ticker_data]
+# 
+# 
+# # Get the financial data for the matched public reviews for the data that was pulled
+# get_stock_data = function(tickers){
+# 
+#   # Create the final dataframe that will be used to hold the results
+#   stock_price_data = data.frame(date = as.Date(character()),
+#                               open = double(),
+#                               high = double(),
+#                               low = double(),
+#                               close = double(),
+#                               volume = double(),
+#                               time = character(),
+#                               ticker = character()
+#                               )
+#   column_names = c("date", "open", "high", "low", "close", "volume", "time")
+#   ipo_stock_data_not_found = list()
+# 
+# 
+#   for(i in 1:length(tickers)){
+#     # Get the stock price on the day of ipo, one year after, and two years after
+#     print(c(i,tickers[i]))
+#     price_data = eval(as.name(tickers[i]))
+#     stock_price_ipo = price_data[unique(matched_pub_revs[matched_pub_revs$ticker == tickers[i],]$ipo_date)]
+#     if(nrow(stock_price_ipo) < 1){
+#       ipo_stock_data_not_found = c(ipo_stock_data_not_found, tickers[i])
+#       stock_price_ipo = emptyxts(cnames = colnames(stock_price_ipo), rowfill =  NA, order.by = index(xts_data["2008-01-02",]))
+#     }
+# 
+#     stock_price_1yr = price_data[unique(matched_pub_revs[matched_pub_revs$ticker == tickers[i],]$ipo_date)+365]
+#     n = 365
+#     while(nrow(stock_price_1yr) == 0 & n <= 370){
+#       stock_price_1yr = price_data[unique(matched_pub_revs[matched_pub_revs$ticker == tickers[i],]$ipo_date)+n]
+#       n = n + 1
+#     }
+#     if(n == 371){
+#       stock_price_1yr = emptyxts(cnames = colnames(stock_price_1yr), rowfill =  NA, order.by = index(xts_data["2008-01-02",]))
+#     }
+# 
+#     stock_price_2yr = price_data[unique(matched_pub_revs[matched_pub_revs$ticker == tickers[i],]$ipo_date)+730]
+#     n = 730
+#     while(nrow(stock_price_2yr) == 0 & n < 736){
+#       stock_price_2yr = price_data[unique(matched_pub_revs[matched_pub_revs$ticker == tickers[i],]$ipo_date)+n]
+#       n = n + 1
+#     }
+#     if(n == 736){
+#       stock_price_2yr = emptyxts(cnames = colnames(stock_price_2yr), rowfill =  NA, order.by = index(xts_data["2008-01-02",]))
+#     }
+# 
+#     # Convert to data frames and bind
+#     stock_price_ipo = data.frame(date = index(stock_price_ipo), coredata(stock_price_ipo))[,1:6]
+#     stock_price_ipo$time = "ipo"
+#     stock_price_1yr = data.frame(date = index(stock_price_1yr), coredata(stock_price_1yr))[,1:6]
+#     stock_price_1yr$time = "1yr"
+#     stock_price_2yr = data.frame(date = index(stock_price_2yr), coredata(stock_price_2yr))[,1:6]
+#     stock_price_2yr$time = "2yr"
+#     temp = rbind(stock_price_ipo, stock_price_1yr, stock_price_2yr)
+#     colnames(temp) = column_names
+#     temp$ticker = tickers[i]
+# 
+# 
+#     stock_price_data = rbind(stock_price_data, temp)
+#   }
+# 
+#   return(list(not_found = ipo_stock_data_not_found, data = stock_price_data))
+# }
+# 
+# stock_price_data = get_stock_data(ticker_found)
+# missing_ipo_tickers = unlist(stock_price_data$not_found)
+# stock_price_data = stock_price_data$data
+# # Remove the msising ipo data( just BazaarVoice - BV)
+# stock_price_data = stock_price_data[!(stock_price_data$ticker %in% missing_ipo_tickers),]
+# 
+# 
+# # Next, I looked through the comapnies that didn't find data from yahoo finance (ticker_not_found) and where there wasn't stock data on the day of the IPO (missing_ipo_tickers). If the data was available, I compiled their data into the external stock data that is imported below
+# 
+# # Import the missing data
+# external_stock_data = as.data.frame(read_excel('stock_data/missing_yahoo_finance_stock_data.xlsx'))
+# external_stock_data$date = as.Date(as.character(external_stock_data$date), format = '%Y%m%d')
+# 
+# 
+# full_stock_price_data = rbind(stock_price_data, external_stock_data)
+# full_stock_price_data = full_stock_price_data %>% group_by(ticker) %>% arrange(date, .by_group = TRUE) %>%  mutate(pct_chg = (close - first(open))/first(open)*100)
+# 
+# # Merge the stock data with the review data
+# ipo_day_change = full_stock_price_data[full_stock_price_data$time == "ipo",]
+# colnames(ipo_day_change)[9] = "pct_chg_fd"
+# one_year_change = full_stock_price_data[full_stock_price_data$time == "1yr",]
+# colnames(one_year_change)[9] = "pct_chg_1yr"
+# two_year_change = full_stock_price_data[full_stock_price_data$time == "2yr",]
+# colnames(two_year_change)[9] = "pct_chg_2yr"
+# 
+# matched_pub_revs = merge(matched_pub_revs, ipo_day_change[,c('ticker','pct_chg_fd')])
+# matched_pub_revs = merge(matched_pub_revs, one_year_change[,c('ticker','pct_chg_1yr')])
+# matched_pub_revs = merge(matched_pub_revs, two_year_change[,c('ticker','pct_chg_2yr')])
+# 
+# # Create the summary stats and correlation matrix
+# myvars = c("score", "years_employed", "pct_chg_2yr")
+# stargazer(matched_pub_revs[,myvars], type = "text", title = "Summary Statistics")
+# stargazer(cor(na.omit(matched_pub_revs[,myvars])), type = "text", summary = F, title = "Correlation Matrix")
+# myvars2 = c("score", "years_employed")
+# stargazer(matched_priv_revs[,myvars2], type = "text", title = "Summary Statistics")
+# stargazer(cor(na.omit(matched_priv_revs[,myvars2])), type = "text", summary = F, title = "Correlation Matrix")
+
+
+
+# Perform the regressions
+
+# # PUBLIC
+# # Simple model with no controls
+# lm_public_matched_simple = lm(score ~ ipo*treatment, matched_pub_revs)
+# summary(lm_public_matched_simple)
+# 
+# # Full model with controls
+# lm_public_matched = lm(score ~ ipo*treatment + ipo:pct_chg_2yr + ipo:pct_chg_fd + post_year + ticker + as.factor(years_employed) , matched_pub_revs)
+# lm_public_matched_coef = coeftest(lm_public_matched, vcov = vcovCL(lm_public_matched, cluster = matched_pub_revs[,c('ticker')], type = "HC1", fix = TRUE, multi0 = TRUE, cadjust = TRUE))
+# lm_public_matched_coef[c('ipo', 'treatment','ipo:treatment','ipo:pct_chg_fd', 'ipo:pct_chg_2yr', '(Intercept)'),]
+
+# # Calculate the R^2 for the full model
+# lm_public_matched_ssr = sum(lm_public_matched$residuals^2)
+# fe_means = tapply(matched_pub_revs$score, matched_pub_revs[,c('post_year', 'ticker', 'years_employed')], mean)
+# fe_means_by_row = list()
+# for(i in 1:length(matched_pub_revs$score)){
+#   temp = matched_pub_revs[i,]
+#   if(i%%1000 == 0){print(i)}
+#   avg = fe_means[as.character(temp['post_year']), as.character(temp['ticker']), as.character(temp['years_employed'])]
+#   # print(avg)
+#   fe_means_by_row = c(fe_means_by_row, avg)
+# }
+# 
+# alt_fe_means_by_row = apply(matched_pub_revs, 1, function(x){fe_means[as.character(x['post_year']), as.character(x['ticker']), as.character(x['years_employed'])]})
+# new_fe_means_by_row = unlist(fe_means_by_row)
+# demeaned_y = matched_pub_revs$score - new_fe_means_by_row
+# lm_public_matched_tss_demeaned = sum((demeaned_y - mean(demeaned_y))^2)
+# lm_public_matched_within_r2 = 1 - (lm_public_matched_ssr/lm_public_matched_tss_demeaned)
+
+
+# lm_public_matched_demeaned_y = [matched_pub_revs$post_year, matched_pub_revs$ticker, matched_pub_revs$years_employed]
+# lm_public_matched_r2 = 
+
+# # Felm model without company control
+# felm_public_matched = felm(score ~ ipo*treatment + ipo:pct_chg_2yr |  two_sic + post_year + years_employed + year_group, matched_pub_revs, exactDOF = TRUE)
+# summary(felm_public_matched)
+
+
+# PRIVATE
+# Simple model with no controls
+lm_private_matched_simple = lm(score ~ ipo*treatment, matched_priv_revs)
+summary(lm_private_matched_simple)
+
+lm_private_matched_full = lm(score ~ ipo*treatment + post_year + company + as.factor(years_employed), matched_priv_revs)
+coeftest(lm_private_matched_full, vcov = vcovCL(lm_private_matched_full, cluster = matched_priv_revs[,c('company')], type = "HC1", fix = TRUE, multi0 = TRUE, cadjust = TRUE))[c('ipo', 'treatment', 'ipo:treatment', '(Intercept)'),]
+
+
+
+felm_private_matched = felm(score ~ ipo*treatment + log(num_employees) | two_sic + post_year + years_employed , matched_priv_revs, exactDOF =  TRUE)
+```
+
+
+```{r matched_company_review_score_plots_public}
+
+avg_before_after_score = matched_pub_revs %>% group_by(ticker, ipo_id, pre_post, treatment) %>% summarise(avg_rev_score = mean(score)) 
+
+avg_before_after_score = avg_before_after_score %>% group_by(ticker) %>% mutate(diff = lag(avg_rev_score, default = first(avg_rev_score))-avg_rev_score)
+
+avg_before_after_score = avg_before_after_score %>% group_by(ipo_id, pre_post, treatment) %>% summarise(avg_diff = mean(diff))
+
+avg_before_after_score = avg_before_after_score[avg_before_after_score$pre_post == "before",] 
+
+# For now, drop the companies that don't have a match. In the future get the stock data for these. They are getting lost due to changes in tickers. E.g. black knight financial services changed from BKFS to BKI. 
+keep_ipo_id = avg_before_after_score %>% group_by(ipo_id) %>% summarise(count = n()) %>% arrange(count) %>% filter(count > 1)
+
+avg_before_after_score = avg_before_after_score[avg_before_after_score$ipo_id %in% keep_ipo_id$ipo_id,]
+# avg_before_after_score$pre_post = NULL
+avg_before_after_score = avg_before_after_score %>% arrange(desc(treatment), avg_diff)
+
+avg_before_after_score_treatment = avg_before_after_score[avg_before_after_score$treatment == 1, ]  %>% arrange(ipo_id)
+
+avg_before_after_score_control = avg_before_after_score[avg_before_after_score$treatment == 0, ]  %>% arrange(ipo_id)
+
+df = data.frame(avg_before_after_score_treatment[ ,c("ipo_id", "avg_diff")], avg_before_after_score_control$avg_diff)
+df = df %>% arrange(avg_before_after_score_control.avg_diff)
+df$id = seq.int(nrow(df))
+
+plot(df$avg_diff, ylim = c(-2,2))
+points(df$avg_before_after_score_control.avg_diff, col = "blue")
+
+
+```
+
+```{r matched_company_review_score_plots_private}
+
+avg_before_after_score = matched_priv_revs %>% group_by(company, ipo_id, pre_post, treatment) %>% summarise(avg_rev_score = mean(score)) 
+
+avg_before_after_score = avg_before_after_score %>% group_by(company) %>% mutate(diff = lag(avg_rev_score, default = first(avg_rev_score))-avg_rev_score)
+
+avg_before_after_score = avg_before_after_score %>% group_by(ipo_id, pre_post, treatment) %>% summarise(avg_diff = mean(diff))
+
+avg_before_after_score = avg_before_after_score[avg_before_after_score$pre_post == "before",] 
+
+# For now, drop the companies that don't have a match. In the future get the stock data for these. They are getting lost due to changes in tickers. E.g. black knight financial services changed from BKFS to BKI. 
+keep_ipo_id = avg_before_after_score %>% group_by(ipo_id) %>% summarise(count = n()) %>% arrange(count) %>% filter(count > 1)
+
+avg_before_after_score = avg_before_after_score[avg_before_after_score$ipo_id %in% keep_ipo_id$ipo_id,]
+# avg_before_after_score$pre_post = NULL
+avg_before_after_score = avg_before_after_score %>% arrange(desc(treatment), avg_diff)
+
+avg_before_after_score_treatment = avg_before_after_score[avg_before_after_score$treatment == 1, ]  %>% arrange(ipo_id)
+
+avg_before_after_score_control = avg_before_after_score[avg_before_after_score$treatment == 0, ]  %>% arrange(ipo_id)
+
+df = data.frame(avg_before_after_score_treatment[ ,c("ipo_id", "avg_diff")], avg_before_after_score_control$avg_diff)
+df = df %>% arrange(avg_before_after_score_control.avg_diff)
+df$id = seq.int(nrow(df))
+
+plot(df$avg_diff, ylim = c(-2,2))
+points(df$avg_before_after_score_control.avg_diff, col = "blue")
+
+
+```

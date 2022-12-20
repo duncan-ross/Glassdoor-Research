@@ -2,7 +2,8 @@ import requests
 from helpers import local_ip, config
 from definitions import GLASSDOOR_API_HOST_URL
 
-LOCAL_IP = local_ip()
+#LOCAL_IP = local_ip()
+LOCAL_IP = "192.168.0.50"
 
 # Finds and returns the associated Glassdoor URL for the name provided
 def get_company(name):
@@ -26,7 +27,7 @@ def employers(query):
 def json_request(payload, headers):
   try:
     r = requests.get(GLASSDOOR_API_HOST_URL, params=payload, headers=headers)
-  except requests.exceptions.RequestException, e:
+  except (requests.exceptions.RequestException, e):
     return {'error': e.message}
   
   try:

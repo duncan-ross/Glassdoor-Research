@@ -223,7 +223,7 @@ def find_sentiment(sents, topics):
   topic_sentiment = {}
   analyzer = SentimentIntensityAnalyzer()
   # For each topic contained in the word lemmas dict...
-  for key,value in topics.iteritems():
+  for key,value in topics.items():
     
     # Extract sentences where the regex expression matches the stemmed text. Deep copy so that sentences with multiple topics do not receive multiple sentiment scores. 
     reg = re.compile(value)
@@ -244,7 +244,7 @@ def find_sentiment(sents, topics):
 def pre_post_sentiment(topic_sentiment):
   results = {}
 
-  for key, value in topic_sentiment.iteritems():
+  for key, value in topic_sentiment.items():
     
     # Get the pre and post-IPO sentences
     pre = [sent for sent in value if sent[4] == 'before']
@@ -344,7 +344,7 @@ def create_r_df(sents, topics):
   topic_sentiment = {}
   analyzer = SentimentIntensityAnalyzer()
   # For each topic contained in the word lemmas dict...
-  for key,value in topics.iteritems():
+  for key,value in topics.items():
     print("Finding sentiment for topic: " + key + "...")
     t0 = time.time()
     # Get the matching regex
@@ -364,7 +364,7 @@ def create_r_df(sents, topics):
 
 def write_results_to_csv(filename, results):
   w = csv.writer(open(filename, "wb"))
-  for key, val in results.iteritems():
+  for key, val in results.items():
     w.writerow([key])
     for row in val:
       w.writerow(row)

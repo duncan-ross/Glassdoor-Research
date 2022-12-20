@@ -59,7 +59,7 @@ def write_to_pandas(filename):
 
     # Iterate over each company
     count = 1
-    for comp, revs in data.iteritems():
+    for comp, revs in data.items():
       comp_revs = []
 
       # Iterate over the list of reviews for each company
@@ -172,7 +172,7 @@ def get_control_reviews(sample, rev_limit):
   rev_count = rev_count[rev_count >= 5]
   comp_count = [r[0] for r in rev_count.index]
   cnt = Counter(comp_count)
-  comp_keep = [comp for comp, count in cnt.iteritems() if count > 1]
+  comp_keep = [comp for comp, count in cnt.items() if count > 1]
   final_revs = revs.loc[revs['company'].isin(comp_keep)]
   
 

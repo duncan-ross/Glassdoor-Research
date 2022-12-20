@@ -28,14 +28,14 @@ def main(force_update_companies=False):
   else:
     print 'fetching review data...'
     reviews_data = json_data('company_reviews')
-    new_companies_map = {k: v for k, v in companies_map.iteritems() if reviews_data.get(k) is None}
+    new_companies_map = {k: v for k, v in companies_map.items() if reviews_data.get(k) is None}
     print 'new_companies_map = %s' % new_companies_map
 
   print 'Fetching reviews for {} companies'.format(len(new_companies_map))
   
   # Fetch all reveiws (company_names currently contains 01/02/10-05/31/17)
   j = 1
-  for name, info in new_companies_map.iteritems():
+  for name, info in new_companies_map.items():
     start = time.time()
     print '{}/{}: Finding reviews for {}'.format(j, len(new_companies_map), name)
 
@@ -146,7 +146,7 @@ def scrape_review_info(el):
   review = {}
   
   # Get the text information
-  for k, info in class_details_map().iteritems():
+  for k, info in class_details_map().items():
     tag_name = info['tag_name']
     classes = info['classes']
     
@@ -339,7 +339,7 @@ def category_for_text(text):
     'ceo': 'approves_of_ceo'
   }
 
-  for p, k in category_match_map.iteritems():
+  for p, k in category_match_map.items():
     if re.search(p, text, re.I):
       return k
   
@@ -355,7 +355,7 @@ def rating_for_color(el):
   
   classes = el.attrs.get('class')
   
-  for color, rating in color_rating_map.iteritems():
+  for color, rating in color_rating_map.items():
     if color in classes:
       return rating
   

@@ -11,7 +11,7 @@ TEXT_DIR = DATA_DIR + "/nyse_companies/sentiment_text/"
 
 # Create the dictionary of words to be replaced. Compile a regex object to do this. 
 rep = {"work-life": "work life", "work/life": "work life", "work\life": "work life", "start up": "startup", "start-up": "startup", "wall st": "wall street"}
-rep = dict((re.escape(k), v) for k, v in rep.iteritems())
+rep = dict((re.escape(k), v) for k, v in rep.items())
 pattern = re.compile("|".join(rep.keys()))
 
 # Iterate through the files

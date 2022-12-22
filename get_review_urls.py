@@ -2,12 +2,10 @@ from definitions import GLASSDOOR_REVIEWS_BASE_URL, DATA_DIR, EMPLOYEE_STATUS_FI
 from helpers import slugify, json_data
 from api import get_company
 import json
-import code
-import string
 from time import sleep
 
 # This function updates companies_map.json using data from company_names.json and companies_not_found.json. It uses the Glassdoor API to retrieve the url of any companies that are in company_names.json, but have not yet been added to companies_map.json or companies_not_found.json.
-def update_companies_map():
+def updateCompaniesMap():
   company_names = json_data('company_names') or []
   companies_map = json_data('companies_map')
   not_found = json_data('companies_not_found') or {}
@@ -43,7 +41,6 @@ def update_companies_map():
     companies_map[name] = {
       'reviews_url': reviews_url_for_company(company) + EMPLOYEE_STATUS_FILTER
     }
-    print(companies_map)
     
   print('Found data for {} companies.'.format(len(companies_map) - starting_company_num))
   
@@ -60,11 +57,11 @@ def reviews_url_for_company(company):
   clean_company_name = slugify(company['name'])
   return '{}/{}-Reviews-E{}.htm'.format(GLASSDOOR_REVIEWS_BASE_URL, clean_company_name, company['id'])
 
-# Helper function to write results of update_companies_map() to their respective files
+# Helper function to write results of updateCompaniesMap() to their respective files
 def write_results_to_disk(results):
   for filename, data in results.items():
     with open('{}/{}.json'.format(DATA_DIR, filename), 'w+') as f:
       f.write(json.dumps(data, sort_keys=True, indent=2))
 
 if __name__ == '__main__':
-  update_companies_map()
+  updateCompaniesMap()

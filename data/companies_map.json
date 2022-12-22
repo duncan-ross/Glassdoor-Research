@@ -1,11 +1,5 @@
 {
   "Alteryx": {
     "reviews_url": "https://www.glassdoor.com/Reviews/Alteryx-Reviews-E351220.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR"
-  },
-  "Altice USA": {
-    "reviews_url": "https://www.glassdoor.com/Reviews/Altice-USA-Reviews-E3190196.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR"
-  },
-  "Carvana": {
-    "reviews_url": "https://www.glassdoor.com/Reviews/CARVANA-Reviews-E750603.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR"
   }
 }

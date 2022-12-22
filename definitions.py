@@ -1,5 +1,6 @@
 import os
 
+DEFAULT_HEADERS = {'User-Agent': 'Mozilla/5.0'}
 
 GLASSDOOR_API_HOST_URL = 'http://api.glassdoor.com/api/api.htm'
 

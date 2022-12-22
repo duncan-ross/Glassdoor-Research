@@ -1,6 +1,6 @@
 import requests
 from helpers import local_ip, config
-from definitions import GLASSDOOR_API_HOST_URL
+from definitions import GLASSDOOR_API_HOST_URL, DEFAULT_HEADERS
 
 #LOCAL_IP = local_ip()
 LOCAL_IP = "192.168.0.50"
@@ -21,12 +21,12 @@ def employers(query):
   payload['action'] = 'employers'
   payload['q'] = query
   
-  return json_request(payload, base_headers())
+  return json_request(payload)
   
 # Sends the json request to Glassdoor with the specified payload and headers
-def json_request(payload, headers):
+def json_request(payload):
   try:
-    r = requests.get(GLASSDOOR_API_HOST_URL, params=payload, headers=headers)
+    r = requests.get(GLASSDOOR_API_HOST_URL, params=payload, headers=DEFAULT_HEADERS)
   except (requests.exceptions.RequestException, e):
     return {'error': e.message}
   
@@ -51,7 +51,3 @@ def base_payload():
   'userip': LOCAL_IP,
   'country': 'us',
 }
-
-
-def base_headers():
-  return {'User-Agent': 'Mozilla/5.0'}

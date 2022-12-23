@@ -1,5 +1,6 @@
 from definitions import DATA_DIR, DEFAULT_HEADERS
 from bs4 import BeautifulSoup
+import grequests
 import requests
 import json
 import re
@@ -50,8 +51,17 @@ def main(fetchAllCompanies=False):
 
         companyReviews = []
 
-        for j in range(num_pages):
-            page_data = fetch_review_page_data(reviewsUrl, j + 1)
+        rs = (
+            grequests.get(
+                reviewsUrl.replace(".htm", "_P" + str(j + 1) + ".htm"),
+                headers=DEFAULT_HEADERS,
+            )
+            for j in range(num_pages)
+        )
+        responses = grequests.map(rs)
+
+        for index, response in enumerate(responses):
+            page_data = fetch_review_page_data(reviewsUrl, index, response)
             if page_data:
                 companyReviews += page_data
 
@@ -83,12 +93,12 @@ def get_num_pages(url):
 
 
 # Get the html from a page of reviews (e.g. page 3 of the reviews for Secure Works)
-def fetch_review_page_data(url, page_num):
+def fetch_review_page_data(url, page_num, response):
     if page_num > 1:
         url = url.replace(".htm", "_P" + str(page_num) + ".htm")
         print("Page " + str(page_num))
 
-    body = get_html_body(url)
+    body = BeautifulSoup(response.content, "html.parser")
 
     if not body:
         return False
@@ -130,7 +140,7 @@ def scrape_review_info(body):
 
 
 def parse_text_information(soup, review):
-      for k, info in class_details_map().items():
+    for k, info in class_details_map().items():
         tag_name = info["tag_name"]
         classes = info["classes"]
 
@@ -149,7 +159,7 @@ def parse_text_information(soup, review):
                 text = text.strip('"')
 
             review[k] = text
-      return
+    return
 
 
 # Finds and retunrs the overall star rating of the company as well as the breakdown in star rating between culture & values, work/life balance, senior management, comp & benefits, and career opportunities
@@ -160,7 +170,7 @@ def parse_star_rating(soup, review):
     if not overallRating:
         return None
 
-    #ratings["overall"] = overallRating
+    # ratings["overall"] = overallRating
     review["overall_rating"] = overallRating
     return
     sub_ratings_parent = el.select(".subRatings.module")
@@ -210,7 +220,7 @@ def parse_date_role_location(soup, review):
         )
     except (IndexError):
         pass
-    
+
     review["date"] = date
     review["job_title"] = role
     review["location"] = location
@@ -255,9 +265,9 @@ def parse_current_employment_status_tenure(soup, review):
             tenure = ">" + years
         else:
             tenure = years
-    except(IndexError):
-      tenure = None
-    
+    except (IndexError):
+        tenure = None
+
     review["current_employee"] = current_employee
     review["years_employed"] = tenure
     review["employment_status"] = employment_status

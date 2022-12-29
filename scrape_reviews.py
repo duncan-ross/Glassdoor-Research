@@ -1,5 +1,6 @@
-from definitions import DATA_DIR, DEFAULT_HEADERS
+from definitions import DATA_DIR, DEFAULT_HEADERS, RATING_LABELS_DICT
 from bs4 import BeautifulSoup
+import grequests
 import requests
 import json
 import re
@@ -50,8 +51,17 @@ def main(fetchAllCompanies=False):
 
         companyReviews = []
 
-        for j in range(num_pages):
-            page_data = fetch_review_page_data(reviewsUrl, j + 1)
+        rs = (
+            grequests.get(
+                reviewsUrl.replace(".htm", "_P" + str(j + 1) + ".htm"),
+                headers=DEFAULT_HEADERS,
+            )
+            for j in range(num_pages)
+        )
+        responses = grequests.map(rs)
+
+        for index, response in enumerate(responses):
+            page_data = fetch_review_page_data(reviewsUrl, index, response)
             if page_data:
                 companyReviews += page_data
 
@@ -83,12 +93,12 @@ def get_num_pages(url):
 
 
 # Get the html from a page of reviews (e.g. page 3 of the reviews for Secure Works)
-def fetch_review_page_data(url, page_num):
+def fetch_review_page_data(url, page_num, response):
     if page_num > 1:
         url = url.replace(".htm", "_P" + str(page_num) + ".htm")
         print("Page " + str(page_num))
 
-    body = get_html_body(url)
+    body = BeautifulSoup(response.content, "html.parser")
 
     if not body:
         return False
@@ -126,67 +136,98 @@ def scrape_review_info(body):
     # Get the employment status and tenure of the reviewer
     parse_current_employment_status_tenure(body, review)
 
+    get_approval_info(body, review)
+
     return review
 
 
+# Find the main text information such as pros, cons, advice to management
 def parse_text_information(soup, review):
-      for k, info in class_details_map().items():
-        tag_name = info["tag_name"]
-        classes = info["classes"]
+    for field, info in class_details_map().items():
+        tag = info["tag"]
+        class_type = info["class_type"]
+        class_names = info["class_name"]
 
-        if len(classes) > 1:
-            text_el = soup.select("{}.{}".format(tag_name, ".".join(classes)))
+        if len(class_names) > 1:
+            text_el, i = None, 0
+            while text_el is None and i < len(class_names):
+                text_el = soup.find(tag, attrs={class_type: class_names[i]})
+                i = i + 1
 
-            if text_el:
-                text_el = text_el[0]
         else:
-            text_el = soup.find(tag_name, attrs={"class": classes})
+            text_el = soup.find(tag, attrs={class_type: class_names[0]})
 
         if text_el:
-            text = text_el.text
-
-            if k == "review_summary":
-                text = text.strip('"')
-
-            review[k] = text
-      return
+            review[field] = text_el.text
+        else:
+            review[field] = None
+    return
 
 
 # Finds and retunrs the overall star rating of the company as well as the breakdown in star rating between culture & values, work/life balance, senior management, comp & benefits, and career opportunities
 def parse_star_rating(soup, review):
-    ratings = {}
     overallRating = soup.find("span", attrs={"class": "ratingNumber"}).text
 
     if not overallRating:
         return None
 
-    #ratings["overall"] = overallRating
-    review["overall_rating"] = overallRating
+    review["overall_rating"] = float(overallRating)
+
+    subRatingMenu = soup.find("aside", attrs={"class": "gd-ui-tooltip-info"})
+    missing_sub_star_ratings(review)
+
+    if subRatingMenu:
+        parse_sub_star_ratings(subRatingMenu, review)
+
     return
-    sub_ratings_parent = el.select(".subRatings.module")
 
-    if not sub_ratings_parent:
-        return ratings
 
-    sub_ratings_parent = sub_ratings_parent[0]
+# Given subratings menu, adds secondary ratings to review
+def parse_sub_star_ratings(soup, review):
+    ratings = soup.findAll("li")
 
-    breakdown = {}
-    for li in sub_ratings_parent.select("li"):
-        sub_rating_title_el = li.find("div", attrs={"class": "minor"})
-        sub_rating_value_el = li.find("span", attrs={"class": "gdRatings"})
+    for r in ratings:
+        text = " ".join([el.text for el in r.findAll("div", text=True)])
+        for k, v in RATING_LABELS_DICT.items():
+            if k in text.lower():
+                review[v] = parse_star_val(review, r)
+                break
+    return
 
-        if sub_rating_title_el and sub_rating_value_el:
-            sub_rating_title = (
-                sub_rating_title_el.text.lower()
-                .replace(" & ", "_")
-                .replace(" ", "_")
-                .replace("/", "_")
-            )
-            breakdown[sub_rating_title] = parse_star_val(sub_rating_value_el)
 
-    ratings["breakdown"] = breakdown
+# Marks all sub ratings as null
+def missing_sub_star_ratings(review):
+    for r in RATING_LABELS_DICT.values():
+        review[r] = None
 
-    return ratings
+    return
+
+
+# Returns the value of the 'title' class within an element
+def parse_star_val(review, rating):
+    star_count_dict = {
+        "css-1mfncox": 1.0,
+        "css-xd4dom": 1.0,
+        "css-18v8tui": 2.0,
+        "css-1lp3h8x": 2.0,
+        "css-e0wqkp": 2.5,
+        "css-vl2edp": 3.0,
+        "css-k58126": 3.0,
+        "css-10u0eun": 3.5,
+        "css-1nuumx7": 4.0,
+        "css-94nhxw": 4.0,
+        "css-s4o194": 4.5,
+        "css-s88v13": 5.0,
+        "css-11w4osi": 5.0,
+    }
+
+    for k, v in star_count_dict.items():
+        if rating.find("div", attrs={"class": k}):
+            return v
+
+    print(rating)
+    print(review)
+    raise Exception("SubMenu Ratings not found properly: ")
 
 
 # Finds and returns the date that a review was posted
@@ -210,29 +251,11 @@ def parse_date_role_location(soup, review):
         )
     except (IndexError):
         pass
-    
+
     review["date"] = date
     review["job_title"] = role
     review["location"] = location
     return
-
-
-"""
-    if val and len(val.split("-")) == 2:
-        status, job_title = [s.strip() for s in val.split("-")]
-        info["current_employee"] = "current" in status.lower()
-        info["job_title"] = job_title
-
-    if not date_el or not date_el.attrs or not date_el.attrs.get("datetime"):
-        return None
-
-    return date_el.attrs["datetime"]
-    """
-
-
-# Returns the value of the 'title' class within an element
-def parse_star_val(el):
-    return str(int(float(el.attrs["title"])))
 
 
 # Finds and returns the job title and status of the employee posting a review
@@ -243,8 +266,13 @@ def parse_current_employment_status_tenure(soup, review):
     current_employee = "current" in jobStatusTenure.lower()
 
     employment_types = ["full-time", "part-time", "contract", "intern", "freelance"]
-    type_arr = [val in jobStatusTenure for val in employment_types]
-    employment_status = type_arr[0] if type_arr[0] else None
+    employment_status = None
+
+    for employment_type in employment_types:
+        if re.search(
+            r"\b" + re.escape(employment_type) + r"\b", jobStatusTenure.lower()
+        ) or re.search(r"\b" + re.escape(employment_type) + r"\b", review["job_title"]):
+            employment_status = employment_type
 
     try:
         tenure_text = jobStatusTenure.lower().split(",")[1]
@@ -255,9 +283,9 @@ def parse_current_employment_status_tenure(soup, review):
             tenure = ">" + years
         else:
             tenure = years
-    except(IndexError):
-      tenure = None
-    
+    except (IndexError):
+        tenure = None
+
     review["current_employee"] = current_employee
     review["years_employed"] = tenure
     review["employment_status"] = employment_status
@@ -265,78 +293,26 @@ def parse_current_employment_status_tenure(soup, review):
 
 
 # Finds and returns the approval info in three categories: recommend to a friend, approves of CEO, and company outlook
-def get_approval_info(el):
-    info = {}
-    approval_el = el.find("div", attrs={"class": "recommends"})
+def get_approval_info(soup, review):
+    categories = ["recommends", "approves_of_ceo", "business_outlook"]
 
-    if not approval_el:
-        return info
+    reccomendations = soup.find("div", attrs={"class": "reviewBodyCell"}).findAll(
+        "div", attrs={"class": "d-flex align-items-center mr-std"}
+    )
 
-    for category in approval_el.select("div.tightLt"):
-        rating_parent, category_parent = category.select("div.cell")
-
-        if not rating_parent or not category_parent:
-            continue
-
-        rating_el = rating_parent.find("i")
-        category_text_el = category_parent.find("span", attrs={"class": "middle"})
-
-        if not rating_el or not category_text_el:
-            continue
-
-        category_text = category_for_text(category_text_el.text)
-
-        if not category_text:
-            continue
-
-        rating = rating_for_color(rating_el)
-
-        if not rating:
-            continue
-
-        info[category_text] = rating
-
-    return info
-
-
-# Finds and returns the employee status (current/former) and the length of time an employee has been with the company
-def get_emp_status_and_duration(el):
-    info = {}
-    emp_status_duration_el = el.select("p.tightBot.mainText")
-
-    if not emp_status_duration_el:
-        return info
-
-    text = emp_status_duration_el[0].text
-    lower_text = text.lower()
-
-    employment_values = ["full-time", "part-time", "contract", "intern", "freelance"]
-
-    for val in employment_values:
-        if val in lower_text:
-            info["employment_status"] = val
-
-    duration_text = re.search("\(([a-z;0-9 ]+)\)", lower_text, re.I)
-
-    if duration_text:
-        duration_text = duration_text.group(0)
-        years_match = re.search("([0-9]+)", duration_text, re.I)
-
-        if years_match:
-            years = years_match.group(0)
+    for i, r in enumerate(reccomendations):
+        if len(r.findAll("span", attrs={"class": "css-hcqxoa"})) > 0:
+            review[categories[i]] = "positive"
+        elif len(r.findAll("span", attrs={"class": "css-1kiw93k"})) > 0:
+            review[categories[i]] = "negative"
+        elif len(r.findAll("span", attrs={"class": "css-1h93d4v"})) > 0:
+            review[categories[i]] = "neutral"
+        elif len(r.findAll("span", attrs={"class": "css-10xv9lv"})) > 0:
+            review[categories[i]] = "unspecified"
         else:
-            years = "1"
+            review[categories[i]] = "ERROR"
 
-        if "less" in duration_text:
-            duration = "<" + years
-        elif "more" in duration_text:
-            duration = ">" + years
-        else:
-            duration = years
-
-        info["years_employed"] = duration
-
-    return info
+    return
 
 
 # Helper function to get_approval_info()
@@ -354,26 +330,21 @@ def category_for_text(text):
     return None
 
 
-# Helper function to get_approval_info()
-def rating_for_color(el):
-    color_rating_map = {"red": "-1", "yellow": "0", "green": "1"}
-
-    classes = el.attrs.get("class")
-
-    for color, rating in color_rating_map.items():
-        if color in classes:
-            return rating
-
-    return None
-
-
 # Creates a map containing information on classes where the information wanted is text within the given element
 def class_details_map():
     return {
-        "review_summary": {"tag_name": "span", "classes": ["summary"]},
-        "pros": {"tag_name": "p", "classes": ["pros"]},
-        "cons": {"tag_name": "p", "classes": ["cons"]},
-        "advice_to_mgmt": {"tag_name": "p", "classes": ["adviceMgmt"]},
+        "review_summary": {
+            "tag": "h2",
+            "class_type": "class",
+            "class_name": ["reviewLink", "mb-xxsm mt-0 css-93svrw el6ke055"],
+        },
+        "pros": {"tag": "span", "class_type": "data-test", "class_name": ["pros"]},
+        "cons": {"tag": "span", "class_type": "data-test", "class_name": ["cons"]},
+        "advice_to_mgmt": {
+            "tag": "span",
+            "class_type": "data-test",
+            "class_name": ["advice-management"],
+        },
     }
 
 

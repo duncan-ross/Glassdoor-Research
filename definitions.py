@@ -29,6 +29,8 @@ EMPLOYEE_STATUS_FILTER = '?filter.defaultEmploymentStatuses=false&filter.default
 
 DB_PATH = 'postgresql://twhittle:1234567@localhost:5432/glassdoor'
 
+RATING_LABELS_DICT = {"work":"work_life_balance","culture":"culture_values","diversity":"diversity_inclusion","career":"career_opportunities","compensation":"comp_benefits","management":"senior_mgmt"}
+
 REVIEW_KEYS = [
   "post_date",
   "job_title",

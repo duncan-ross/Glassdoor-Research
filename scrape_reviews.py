@@ -1,4 +1,4 @@
-from definitions import DATA_DIR, DEFAULT_HEADERS, RATING_LABELS_DICT
+from definitions import DATA_DIR, DEFAULT_HEADERS, RATING_LABELS_DICT, STAR_COUNT_DICT
 from bs4 import BeautifulSoup
 import grequests
 import requests
@@ -205,23 +205,7 @@ def missing_sub_star_ratings(review):
 
 # Returns the value of the 'title' class within an element
 def parse_star_val(review, rating):
-    star_count_dict = {
-        "css-1mfncox": 1.0,
-        "css-xd4dom": 1.0,
-        "css-18v8tui": 2.0,
-        "css-1lp3h8x": 2.0,
-        "css-e0wqkp": 2.5,
-        "css-vl2edp": 3.0,
-        "css-k58126": 3.0,
-        "css-10u0eun": 3.5,
-        "css-1nuumx7": 4.0,
-        "css-94nhxw": 4.0,
-        "css-s4o194": 4.5,
-        "css-s88v13": 5.0,
-        "css-11w4osi": 5.0,
-    }
-
-    for k, v in star_count_dict.items():
+    for k, v in STAR_COUNT_DICT.items():
         if rating.find("div", attrs={"class": k}):
             return v
 

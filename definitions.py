@@ -51,3 +51,19 @@ REVIEW_KEYS = [
   "senior_management",
   "work_life_balance"
 ]
+
+STAR_COUNT_DICT = {
+        "css-1mfncox": 1.0,
+        "css-xd4dom": 1.0,
+        "css-18v8tui": 2.0,
+        "css-1lp3h8x": 2.0,
+        "css-e0wqkp": 2.5,
+        "css-vl2edp": 3.0,
+        "css-k58126": 3.0,
+        "css-10u0eun": 3.5,
+        "css-1nuumx7": 4.0,
+        "css-94nhxw": 4.0,
+        "css-s4o194": 4.5,
+        "css-s88v13": 5.0,
+        "css-11w4osi": 5.0,
+    }

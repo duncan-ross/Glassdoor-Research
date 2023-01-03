@@ -16,56 +16,56 @@ import tablib
 # Converts the json produced in company_reviews to a list of dictionaries
 def write_revs_to_text():
 
-  # Get the json of company reviews
-  with open (COMPANY_REVIEWS) as f:
-    data = json.load(f)
+    # Get the json of company reviews
+    with open(COMPANY_REVIEWS) as f:
+        data = json.load(f)
 
-  # Get each company that is in the json file
-  companies = data.keys()
+    # Get each company that is in the json file
+    companies = data.keys()
 
-  # Iterate over each company
-  for name in companies:
+    # Iterate over each company
+    for name in companies:
 
-    code.interact(local = locals())
-      
-    # Iterate over each review
-    if data.get(name):
+        code.interact(local=locals())
 
-      tab_data = tablib.Dataset()
-      for rev in data.get(name):
+        # Iterate over each review
+        if data.get(name):
 
-        # Flatten the review
-        flat_review = flatten_json(rev)
+            tab_data = tablib.Dataset()
+            for rev in data.get(name):
 
-        # Get the data from the review
-        temp = {}
-        for key in REVIEW_KEYS:
-          if key == 'years_employed':
-              temp[key] = employment_years_to_num(flat_review.get(key))
-          else:
-            temp[key] = flat_review.get(key)
+                # Flatten the review
+                flat_review = flatten_json(rev)
 
-        tab_data.headers = temp.keys()
-        tab_data.append(temp.values())
-        
-    with open(DATA_DIR + '/' + name + '.txt', 'wb') as f:
-      f.write(tab_data.tsv)
+                # Get the data from the review
+                temp = {}
+                for key in REVIEW_KEYS:
+                    if key == "years_employed":
+                        temp[key] = employment_years_to_num(flat_review.get(key))
+                    else:
+                        temp[key] = flat_review.get(key)
 
+                tab_data.headers = temp.keys()
+                tab_data.append(temp.values())
 
-  return
+        with open(DATA_DIR + "/" + name + ".txt", "wb") as f:
+            f.write(tab_data.tsv)
+
+    return
+
 
 # Flatten JSON to get only the final key in nested dictionaries
 def flatten_json(y):
     out = {}
 
-    def flatten(x, name=''):
+    def flatten(x, name=""):
         if type(x) is dict:
             for a in x:
-                flatten(x[a], a + '_')
+                flatten(x[a], a + "_")
         elif type(x) is list:
             i = 0
             for a in x:
-                flatten(a, name + str(i) + '_')
+                flatten(a, name + str(i) + "_")
                 i += 1
         else:
             out[name[:-1]] = x
@@ -73,22 +73,24 @@ def flatten_json(y):
     flatten(y)
     return out
 
-with open (COMPANY_REVIEWS) as f:
+
+with open(COMPANY_REVIEWS) as f:
     data = json.load(f)
 
 # Converts the text provided of the number of years employed to a number
 def employment_years_to_num(em_years):
 
-  # Find if the number of years is greater than or less than
-  if em_years is None:
-    return None
-  elif re.search('>', em_years):
-    return float(re.findall('\d+',em_years)[0]) + .5
-  elif re.search('<', em_years):
-    return float(re.findall('\d+',em_years)[0]) - .5
-  else:
-    return None
+    # Find if the number of years is greater than or less than
+    if em_years is None:
+        return None
+    elif re.search(">", em_years):
+        return float(re.findall("\d+", em_years)[0]) + 0.5
+    elif re.search("<", em_years):
+        return float(re.findall("\d+", em_years)[0]) - 0.5
+    else:
+        return None
+
 
 # For each company, write the company name as a row
-  # For each review within the company, write the review
+# For each review within the company, write the review
 write_revs_to_text()

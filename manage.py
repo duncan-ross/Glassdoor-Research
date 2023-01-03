@@ -6,12 +6,12 @@ import os
 import code
 
 # app.config['SQLALCHEMY_DATABASE_URI'] = config('DATABASE_URL')
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('SQLALCHEMY_DATABASE_URI') 
+app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("SQLALCHEMY_DATABASE_URI")
 
 migrate = Migrate(app, db)
 manager = Manager(app)
 
-manager.add_command('db', MigrateCommand)
+manager.add_command("db", MigrateCommand)
 
-if __name__ == '__main__':
-  manager.run()
+if __name__ == "__main__":
+    manager.run()

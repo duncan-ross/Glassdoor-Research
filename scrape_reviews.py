@@ -1,4 +1,4 @@
-from definitions import DATA_DIR, DEFAULT_HEADERS, RATING_LABELS_DICT
+from definitions import DATA_DIR, DEFAULT_HEADERS, RATING_LABELS_DICT, STAR_COUNT_DICT
 from bs4 import BeautifulSoup
 import grequests
 import requests
@@ -61,7 +61,7 @@ def main(fetchAllCompanies=False):
         responses = grequests.map(rs)
 
         for index, response in enumerate(responses):
-            page_data = fetch_review_page_data(reviewsUrl, index, response)
+            page_data = fetch_review_page_data(index, response)
             if page_data:
                 companyReviews += page_data
 
@@ -93,12 +93,14 @@ def get_num_pages(url):
 
 
 # Get the html from a page of reviews (e.g. page 3 of the reviews for Secure Works)
-def fetch_review_page_data(url, page_num, response):
-    if page_num > 1:
-        url = url.replace(".htm", "_P" + str(page_num) + ".htm")
-        print("Page " + str(page_num))
+def fetch_review_page_data(page_num, response):
+    print("Page " + str(page_num))
 
     body = BeautifulSoup(response.content, "html.parser")
+
+    appData = re.search(r'"reviews":(\[.*?}\])}', response.text, flags=re.S).group(1)
+    if appData:
+        appData = json.loads(appData)
 
     if not body:
         return False
@@ -111,8 +113,10 @@ def fetch_review_page_data(url, page_num, response):
     reviews = reviews_feed[0].find_all("li", attrs={"class": "empReview"})
 
     data = []
-    for el in reviews:
-        review_info = scrape_review_info(el)
+    for index, review in enumerate(reviews):
+        review_info = scrape_review_info(review)
+        if appData[index]["advice"]:
+            review_info["advice_to_mgmt"] = appData[index]["advice"]
 
         if review_info:
             data.append(review_info)
@@ -161,6 +165,7 @@ def parse_text_information(soup, review):
             review[field] = text_el.text
         else:
             review[field] = None
+    review["advice_to_mgmt"] = None
     return
 
 
@@ -205,23 +210,7 @@ def missing_sub_star_ratings(review):
 
 # Returns the value of the 'title' class within an element
 def parse_star_val(review, rating):
-    star_count_dict = {
-        "css-1mfncox": 1.0,
-        "css-xd4dom": 1.0,
-        "css-18v8tui": 2.0,
-        "css-1lp3h8x": 2.0,
-        "css-e0wqkp": 2.5,
-        "css-vl2edp": 3.0,
-        "css-k58126": 3.0,
-        "css-10u0eun": 3.5,
-        "css-1nuumx7": 4.0,
-        "css-94nhxw": 4.0,
-        "css-s4o194": 4.5,
-        "css-s88v13": 5.0,
-        "css-11w4osi": 5.0,
-    }
-
-    for k, v in star_count_dict.items():
+    for k, v in STAR_COUNT_DICT.items():
         if rating.find("div", attrs={"class": k}):
             return v
 
@@ -243,18 +232,18 @@ def parse_date_role_location(soup, review):
     ]
     date, role = jobLine_arr[0], jobLine_arr[1]
     date = parse(date).strftime("%m/%d/%Y")
-    location = None
 
     try:
         location = (
             (jobLine_el.findAll("span", attrs={"class": "middle"})[1]).find("span").text
         )
     except (IndexError):
+        location = None
         pass
 
-    review["date"] = date
-    review["job_title"] = role
-    review["location"] = location
+    review["date"] = date if date else None
+    review["job_title"] = role if role else None
+    review["location"] = location if location else None
     return
 
 
@@ -340,11 +329,6 @@ def class_details_map():
         },
         "pros": {"tag": "span", "class_type": "data-test", "class_name": ["pros"]},
         "cons": {"tag": "span", "class_type": "data-test", "class_name": ["cons"]},
-        "advice_to_mgmt": {
-            "tag": "span",
-            "class_type": "data-test",
-            "class_name": ["advice-management"],
-        },
     }
 
 

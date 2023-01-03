@@ -61,7 +61,7 @@ def main(fetchAllCompanies=False):
         responses = grequests.map(rs)
 
         for index, response in enumerate(responses):
-            page_data = fetch_review_page_data(reviewsUrl, index, response)
+            page_data = fetch_review_page_data(index, response)
             if page_data:
                 companyReviews += page_data
 
@@ -93,12 +93,14 @@ def get_num_pages(url):
 
 
 # Get the html from a page of reviews (e.g. page 3 of the reviews for Secure Works)
-def fetch_review_page_data(url, page_num, response):
-    if page_num > 1:
-        url = url.replace(".htm", "_P" + str(page_num) + ".htm")
-        print("Page " + str(page_num))
+def fetch_review_page_data(page_num, response):
+    print("Page " + str(page_num))
 
     body = BeautifulSoup(response.content, "html.parser")
+
+    appData = re.search(r'"reviews":(\[.*?}\])}', response.text, flags=re.S).group(1)
+    if appData:
+        appData = json.loads(appData)
 
     if not body:
         return False
@@ -111,8 +113,10 @@ def fetch_review_page_data(url, page_num, response):
     reviews = reviews_feed[0].find_all("li", attrs={"class": "empReview"})
 
     data = []
-    for el in reviews:
-        review_info = scrape_review_info(el)
+    for index, review in enumerate(reviews):
+        review_info = scrape_review_info(review)
+        if appData[index]["advice"]:
+            review_info["advice_to_mgmt"] = appData[index]["advice"]
 
         if review_info:
             data.append(review_info)
@@ -161,6 +165,7 @@ def parse_text_information(soup, review):
             review[field] = text_el.text
         else:
             review[field] = None
+    review["advice_to_mgmt"] = None
     return
 
 
@@ -227,18 +232,18 @@ def parse_date_role_location(soup, review):
     ]
     date, role = jobLine_arr[0], jobLine_arr[1]
     date = parse(date).strftime("%m/%d/%Y")
-    location = None
 
     try:
         location = (
             (jobLine_el.findAll("span", attrs={"class": "middle"})[1]).find("span").text
         )
     except (IndexError):
+        location = None
         pass
 
-    review["date"] = date
-    review["job_title"] = role
-    review["location"] = location
+    review["date"] = date if date else None
+    review["job_title"] = role if role else None
+    review["location"] = location if location else None
     return
 
 
@@ -324,11 +329,6 @@ def class_details_map():
         },
         "pros": {"tag": "span", "class_type": "data-test", "class_name": ["pros"]},
         "cons": {"tag": "span", "class_type": "data-test", "class_name": ["cons"]},
-        "advice_to_mgmt": {
-            "tag": "span",
-            "class_type": "data-test",
-            "class_name": ["advice-management"],
-        },
     }
 
 

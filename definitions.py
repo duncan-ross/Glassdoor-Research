@@ -74,3 +74,16 @@ STAR_COUNT_DICT = {
     "css-s88v13": 5.0,
     "css-11w4osi": 5.0,
 }
+
+EXTRANEOUS_WORDS = [
+    "co",
+    "corp",
+    "holdings",
+    "holding",
+    "cl",
+    "llc",
+    "inc",
+    "associates",
+    "ltd",
+    "hldng",
+]

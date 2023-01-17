@@ -1,5 +1,5 @@
 from random import *
-from definitions import DATA_DIR, DEFAULT_HEADERS
+from definitions import DATA_DIR, DEFAULT_HEADERS, USER_AGENT_LIST, PROXY_LIST
 from bs4 import BeautifulSoup
 import grequests
 import requests
@@ -12,6 +12,7 @@ from helpers import json_data
 from get_review_urls import updateCompaniesMap
 from dateutil.parser import parse
 from legacy_scrape import scrape_review_info_legacy
+from concurrent import futures
 
 # Check if there are any new companies in the companies map to be scraped
 def main(fetchAllCompanies=False):
@@ -20,6 +21,7 @@ def main(fetchAllCompanies=False):
     #updateCompaniesMap()
     companies_map = json_data("companies_map")
     existing_company_reviews = json_data("company_reviews")
+    problems = json_data("problems")
     numReviewsFetched = 0
 
     # Either force all reviews to be refetched, or find which companies' reviews haven't been retrieved yet
@@ -39,12 +41,12 @@ def main(fetchAllCompanies=False):
     reviewsData = existing_company_reviews
     # Fetch all reviews
     for i, (name, info) in enumerate(new_companies_map.items()):
-        if(name in existing_company_reviews):
-            if (len(existing_company_reviews[name])>0 or existing_company_reviews[name]):
-                if(len(existing_company_reviews[name])==10):
-                    print("redoing a 10er")
-                else:
-                    continue
+        if(name in existing_company_reviews or name in problems):
+            #if (len(existing_company_reviews[name])>0 or existing_company_reviews[name]):
+                #if(len(existing_company_reviews[name])==10):
+                #    print("redoing a 10er")
+                #else:
+            continue
             #if ("DECODER ERROR" in existing_company_reviews[name][0]):
             #    print("Trying to fix: {}".format(name))
             #else:
@@ -87,15 +89,17 @@ def get_batched_requests(reviewsUrl, num_pages):
     responses = []
     for j in range(math.ceil(num_pages/batch)):
         print("Batching requests: {}/{}".format(min(num_pages, (j+1)*batch),num_pages))
+        proxy = choice(PROXY_LIST)
         rs = (
             grequests.get(
                 reviewsUrl.replace(".htm", "_P" + str(k + 1) + ".htm"),
-                headers=DEFAULT_HEADERS,
+                headers={"User-Agent": choice(USER_AGENT_LIST)},
+                proxies={"http": proxy, "https": proxy}
             )
             for k in range(min(num_pages, (j)*batch), min(num_pages, (j+1)*batch))
         )
         responses += grequests.map(rs)
-        time.sleep(uniform(10,15))
+        #time.sleep(uniform(1,2))
     
     for i, response in enumerate(responses):
         if not response or not response.content:
@@ -147,12 +151,8 @@ def fetch_review_page_data(page_num, response):
     if not response or not response.content:
         return {"PAGE_FAILURE":page_num}
     soup = BeautifulSoup(response.content, "html.parser")
-    #if not soup:
-    #    return None
 
     reviews_feed = soup.find_all(attrs={"class": "emp-reviews-feed"})
-    #if not reviews_feed:
-    #    return None
 
     reviews_soup = reviews_feed[0].find_all("li", attrs={"class": "empReview"})
 
@@ -287,4 +287,4 @@ def write_reviews_to_file(reviewsData):
 if __name__ == "__main__":
     force = "--force" in sys.argv
     # main(fetchAllCompanies=force)
-    main(fetchAllCompanies=True)
+    main()

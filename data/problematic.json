@@ -1,0 +1,1650 @@
+{
+  "advent software inc": {
+    "url": "https://www.glassdoor.com/Reviews/SS-C-Advent-Reviews-E5447.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.4
+  },
+  "aeroflex holding corp": {
+    "url": "https://www.glassdoor.com/Reviews/Aeroflex-Ind-stria-de-Aerosol-Reviews-E2492432.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.44
+  },
+  "ag mortgage investment trust": {
+    "url": "https://www.glassdoor.com/Reviews/Baillie-Gifford-Reviews-E36741.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.18604651162790697
+  },
+  "aga medical holdings inc": {
+    "url": "https://www.glassdoor.com/Reviews/St-Jude-Medical-Reviews-E1903.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.41025641025641024
+  },
+  "agnc investment": {
+    "url": "https://www.glassdoor.com/Reviews/American-Capital-Agency-Reviews-E43355.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.21052631578947367
+  },
+  "aib group plc": {
+    "url": "https://www.glassdoor.com/Reviews/Allied-Irish-Bank-GB--Reviews-E13486.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.23529411764705882
+  },
+  "albany molecular resh": {
+    "url": "https://www.glassdoor.com/Reviews/Curia-Reviews-E8490.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.23076923076923078
+  },
+  "alderon iron ore corp": {
+    "url": "https://www.glassdoor.com/Reviews/Aries-Resource-Reviews-E28461.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.34285714285714286
+  },
+  "all american group inc": {
+    "url": "https://www.glassdoor.com/Reviews/Coachmen-Reviews-E159.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.26666666666666666
+  },
+  "alliance bancorp of pa": {
+    "url": "https://www.glassdoor.com/Reviews/Women-s-Health-Alliance-PA-pka-Centre-Ob-Gyn-Reviews-E1323854.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.45454545454545453
+  },
+  "alon usa partners lp": {
+    "url": "https://www.glassdoor.com/Reviews/McDonald-s-Reviews-E432.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.26666666666666666
+  },
+  "alterra capital holdings ltd": {
+    "url": "https://www.glassdoor.com/Reviews/Max-Capital-Group-Reviews-E13397.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.4888888888888889
+  },
+  "altimmune inc": {
+    "url": "https://www.glassdoor.com/Reviews/Vaxin-Reviews-E262076.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.3333333333333333
+  },
+  "amb property corp": {
+    "url": "https://www.glassdoor.com/Reviews/Prologis-Reviews-E2631.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.32
+  },
+  "american airlines group inc": {
+    "url": "https://www.glassdoor.com/Reviews/Air-Canada-Reviews-E42672.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.32432432432432434
+  },
+  "american bancorp nj inc": {
+    "url": "https://www.glassdoor.com/Reviews/Columbia-Bank-NJ--Reviews-E388612.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.45
+  },
+  "american capital sr fltg ltd": {
+    "url": "https://www.glassdoor.com/Reviews/Finger-Lakes-Technologies-Group-Reviews-E862070.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.1694915254237288
+  },
+  "american commercial lines": {
+    "url": "https://www.glassdoor.com/Reviews/Polar-Bear-Services-Heating-Air-Conditioning-Commercial-Refrigeration-Reviews-E7528637.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.44680851063829785
+  },
+  "american eagle energy corp": {
+    "url": "https://www.glassdoor.com/Reviews/Eagle-Corporation--Reviews-E1292137.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.45454545454545453
+  },
+  "american financial realty tr": {
+    "url": "https://www.glassdoor.com/Reviews/TR-Lawing-Realty-Reviews-E548308.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.45454545454545453
+  },
+  "american software  cl a": {
+    "url": "https://www.glassdoor.com/Reviews/GIFT-CL-Reviews-E514038.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.4
+  },
+  "american virtual cl tech inc": {
+    "url": "https://www.glassdoor.com/Reviews/OneSource-Virtual-Reviews-E429129.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.4888888888888889
+  },
+  "amira nature foods ltd": {
+    "url": "https://www.glassdoor.com/Reviews/Amira-Reviews-E701996.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.37037037037037035
+  },
+  "ampliphi biosciences corp": {
+    "url": "https://www.glassdoor.com/Reviews/Targeted-Genetics-Reviews-E3602.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.2857142857142857
+  },
+  "amylin pharmaceuticals inc": {
+    "url": "https://www.glassdoor.com/Reviews/AstraZeneca-Reviews-E9214.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.2702702702702703
+  },
+  "apartment income reit corp": {
+    "url": "https://www.glassdoor.com/Reviews/AIR-Communities-Reviews-E4361413.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.3902439024390244
+  },
+  "applied micro circuits corp": {
+    "url": "https://www.glassdoor.com/Reviews/MACOM-Reviews-E19802.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.1875
+  },
+  "apricus biosciences inc": {
+    "url": "https://www.glassdoor.com/Reviews/NexMed-Reviews-E13414.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.13793103448275862
+  },
+  "art technology group inc": {
+    "url": "https://www.glassdoor.com/Reviews/Academy-of-Art-University-Reviews-E115340.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.24489795918367346
+  },
+  "arthrocare corp": {
+    "url": "https://www.glassdoor.com/Reviews/Smith-Nephew-Reviews-E10233.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.2962962962962963
+  },
+  "asia pacific fund": {
+    "url": "https://www.glassdoor.com/Reviews/The-Fund-Reviews-E24819.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.4
+  },
+  "astrotech corp": {
+    "url": "https://www.glassdoor.com/Reviews/ASTC-Reviews-E5343.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.4444444444444444
+  },
+  "atmel corp": {
+    "url": "https://www.glassdoor.com/Reviews/Microchip-Technology-Reviews-E2298.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.26666666666666666
+  },
+  "attunity ltd": {
+    "url": "https://www.glassdoor.com/Reviews/Qlik-Reviews-E354111.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.125
+  },
+  "augusta resource corp": {
+    "url": "https://www.glassdoor.com/Reviews/US-Department-of-Veterans-Affairs-Reviews-E41429.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.25925925925925924
+  },
+  "australia acquisition corp": {
+    "url": "https://www.glassdoor.com/Reviews/Accenture-Reviews-E4138.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.22857142857142856
+  },
+  "authid inc": {
+    "url": "https://www.glassdoor.com/Reviews/Ipsidy-Reviews-E3196802.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.25
+  },
+  "avexis inc": {
+    "url": "https://www.glassdoor.com/Reviews/Novartis-Gene-Therapies-Reviews-E1742434.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.30303030303030304
+  },
+  "avocent corp": {
+    "url": "https://www.glassdoor.com/Reviews/Vertiv-Reviews-E1495357.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.3333333333333333
+  },
+  "baldor electric co": {
+    "url": "https://www.glassdoor.com/Reviews/ABB-Motors-and-Mechanical-Inc--Reviews-E73.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.2916666666666667
+  },
+  "bancorp of new jersey inc": {
+    "url": "https://www.glassdoor.com/Reviews/TD-Bank-Reviews-E5288086.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.1875
+  },
+  "bancroft fund ltd": {
+    "url": "https://www.glassdoor.com/Reviews/University-of-California-Berkeley-Reviews-E32512.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.36
+  },
+  "bank ky financial corp": {
+    "url": "https://www.glassdoor.com/Reviews/Advanced-ENT-and-Allergy-KY--Reviews-E1966404.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.24
+  },
+  "bank of the james financial": {
+    "url": "https://www.glassdoor.com/Reviews/Tom-James-Company-Reviews-E32356.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.45454545454545453
+  },
+  "barzel industries inc": {
+    "url": "https://www.glassdoor.com/Reviews/Novamerican-Steel-Reviews-E7405.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.21052631578947367
+  },
+  "baxalta inc": {
+    "url": "https://www.glassdoor.com/Reviews/Takeda-Pharmaceuticals-Reviews-E7774.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.18181818181818182
+  },
+  "bcsb bancorp inc": {
+    "url": "https://www.glassdoor.com/Reviews/F-N-B-Corporation-Reviews-E4832.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.48484848484848486
+  },
+  "bentley pharmaceuticals": {
+    "url": "https://www.glassdoor.com/Reviews/Bentley-Reviews-E4727161.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.4666666666666667
+  },
+  "bicycle therapeutics plc": {
+    "url": "https://www.glassdoor.com/Reviews/IDEAYA-Biosciences-Reviews-E2346961.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.2857142857142857
+  },
+  "biglari holdings inc": {
+    "url": "https://www.glassdoor.com/Reviews/Steak-n-Shake-Reviews-E1296.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.18181818181818182
+  },
+  "blackrock income trust inc": {
+    "url": "https://www.glassdoor.com/Reviews/TRUST-HOLDINGS-Reviews-E7232041.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.4
+  },
+  "blue holdings inc": {
+    "url": "https://www.glassdoor.com/Reviews/Village-Inn-Restaurants-Reviews-E499965.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.25
+  },
+  "blue ridge mountain resource": {
+    "url": "https://www.glassdoor.com/Reviews/YMCA-Reviews-E3046.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.125
+  },
+  "bmp sunstone corp": {
+    "url": "https://www.glassdoor.com/Reviews/Sanofi-Reviews-E9347.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.2608695652173913
+  },
+  "borders group inc": {
+    "url": "https://www.glassdoor.com/Reviews/HP-Inc--Reviews-E1093161.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.4166666666666667
+  },
+  "boston omaha corp": {
+    "url": "https://www.glassdoor.com/Reviews/NBC-Sports-Group-Reviews-E1906507.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.30303030303030304
+  },
+  "braemar hotels  resorts inc": {
+    "url": "https://www.glassdoor.com/Reviews/Ashford-Inc--Reviews-E16208.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.41025641025641024
+  },
+  "breitburn energy partners lp": {
+    "url": "https://www.glassdoor.com/Reviews/Maverick-Natural-Resources-Reviews-E41220.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.2222222222222222
+  },
+  "bridge bancorp inc": {
+    "url": "https://www.glassdoor.com/Reviews/BNB-Bank-Reviews-E25746.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.38461538461538464
+  },
+  "brigus gold corp": {
+    "url": "https://www.glassdoor.com/Reviews/Apollo-Gold-Reviews-E23091.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.37037037037037035
+  },
+  "bt brands inc": {
+    "url": "https://www.glassdoor.com/Reviews/Burger-Time-Reviews-E38406.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.25
+  },
+  "burgundy tech acq corp": {
+    "url": "https://www.glassdoor.com/Reviews/Easy-Cash-ASAP-Reviews-E1868855.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.3888888888888889
+  },
+  "capital city bk group inc": {
+    "url": "https://www.glassdoor.com/Reviews/BK-Consultoria-e-Servi-os-Reviews-E1161385.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.2
+  },
+  "cardinal financial corp": {
+    "url": "https://www.glassdoor.com/Reviews/Intel-Corporation-Reviews-E1519.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.4
+  },
+  "carefusion corp": {
+    "url": "https://www.glassdoor.com/Reviews/Rowa-Automatisierungssysteme-Reviews-E1119923.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.23255813953488372
+  },
+  "carmike cinemas inc": {
+    "url": "https://www.glassdoor.com/Reviews/AMC-Entertainment-Reviews-E758.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.3333333333333333
+  },
+  "carolina financial corp": {
+    "url": "https://www.glassdoor.com/Reviews/North-Carolina-State-University-Reviews-E23944.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.4074074074074074
+  },
+  "cascade microtech inc": {
+    "url": "https://www.glassdoor.com/Reviews/FormFactor-Reviews-E14978.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.12903225806451613
+  },
+  "catalyst bancorp inc": {
+    "url": "https://www.glassdoor.com/Reviews/St-Landry-Homestead-Federal-Savings-Bank-Reviews-E6165727.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.3
+  },
+  "cazador acquisition corp ltd": {
+    "url": "https://www.glassdoor.com/Reviews/Deepak-Fertilisers-And-Petrochemicals-Corporation-Limited-Reviews-E518988.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.3058823529411765
+  },
+  "ceb inc": {
+    "url": "https://www.glassdoor.com/Reviews/CEB-DISTRIBUICAO-S-A--Reviews-E140824.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.42857142857142855
+  },
+  "central energy partners lp": {
+    "url": "https://www.glassdoor.com/Reviews/Rio-Vista-Reviews-E37740.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.11428571428571428
+  },
+  "centrue financial corp": {
+    "url": "https://www.glassdoor.com/Reviews/Midland-States-Bank-Reviews-E326071.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.24390243902439024
+  },
+  "checkfree corp": {
+    "url": "https://www.glassdoor.com/Reviews/Fiserv-Reviews-E1384.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.2
+  },
+  "china auto logistics inc": {
+    "url": "https://www.glassdoor.com/Reviews/Bank-of-China-Reviews-E6335.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.2702702702702703
+  },
+  "china customer relatns  ctrs": {
+    "url": "https://www.glassdoor.com/Reviews/Beiersdorf-Reviews-E10433.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.21052631578947367
+  },
+  "china fund inc": {
+    "url": "https://www.glassdoor.com/Reviews/IFCE-Reviews-E677534.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.1111111111111111
+  },
+  "china healthcare acquisition": {
+    "url": "https://www.glassdoor.com/Reviews/China-Mobile-Reviews-E7310.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.35
+  },
+  "china insonline corp": {
+    "url": "https://www.glassdoor.com/Reviews/Dexterity-Surgical-Reviews-E2238.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.15789473684210525
+  },
+  "china mass media corp": {
+    "url": "https://www.glassdoor.com/Reviews/Mmia-Reviews-E134530.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.32
+  },
+  "china petroleum  chemical": {
+    "url": "https://www.glassdoor.com/Reviews/Sinopec-Reviews-E12770.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.3125
+  },
+  "china security  surv tech": {
+    "url": "https://www.glassdoor.com/Reviews/e-surv-Reviews-E805207.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.3870967741935484
+  },
+  "china valves technology inc": {
+    "url": "https://www.glassdoor.com/Reviews/Mac-Valves-Reviews-E140611.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.43243243243243246
+  },
+  "china yida holding co": {
+    "url": "https://www.glassdoor.com/Reviews/Shanxi-YIDA-Special-Steel-Group-Reviews-E872746.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.34615384615384615
+  },
+  "cifc llc": {
+    "url": "https://www.glassdoor.com/Reviews/Deerfield-Capital-Reviews-E38106.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.24
+  },
+  "cocacola co": {
+    "url": "https://www.glassdoor.com/Reviews/HCCBPL-Reviews-E613336.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.35294117647058826
+  },
+  "codex dna inc": {
+    "url": "https://www.glassdoor.com/Reviews/Telesis-Bio-Reviews-E3931112.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.08333333333333333
+  },
+  "codorus valley bancorp": {
+    "url": "https://www.glassdoor.com/Reviews/PeoplesBank-PA--Reviews-E1061940.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.3783783783783784
+  },
+  "cogdell spencer inc": {
+    "url": "https://www.glassdoor.com/Reviews/Ventas-Inc--Reviews-E8222.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.4
+  },
+  "colonial properties trust": {
+    "url": "https://www.glassdoor.com/Reviews/MAA-Reviews-E2504.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.07142857142857142
+  },
+  "columbia pipeline group inc": {
+    "url": "https://www.glassdoor.com/Reviews/TC-Energy-Reviews-E5910.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.3333333333333333
+  },
+  "comm bancorp inc": {
+    "url": "https://www.glassdoor.com/Reviews/commit-Reviews-E1496523.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.45454545454545453
+  },
+  "community central bk corp": {
+    "url": "https://www.glassdoor.com/Reviews/Central-Piedmont-Community-College-Reviews-E128861.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.4067796610169492
+  },
+  "computer programs  systems": {
+    "url": "https://www.glassdoor.com/Reviews/Cpsi-Reviews-E14935.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.2
+  },
+  "construction prtnr inc": {
+    "url": "https://www.glassdoor.com/Reviews/PRTNR-Recruiting-Reviews-E6350769.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.42105263157894735
+  },
+  "contextlogic inc": {
+    "url": "https://www.glassdoor.com/Reviews/Wish-Reviews-E686514.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.1
+  },
+  "convio inc": {
+    "url": "https://www.glassdoor.com/Reviews/Blackbaud-Reviews-E15863.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.10526315789473684
+  },
+  "cooper industries plc": {
+    "url": "https://www.glassdoor.com/Reviews/Gideon-Cooper-Essary-Reviews-E1719740.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.43902439024390244
+  },
+  "corel corp": {
+    "url": "https://www.glassdoor.com/Reviews/Mindjet-Reviews-E39504.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.11764705882352941
+  },
+  "corenergy infrastructure tr": {
+    "url": "https://www.glassdoor.com/Reviews/TR-Reviews-E683715.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.13793103448275862
+  },
+  "corporate capital tr inc": {
+    "url": "https://www.glassdoor.com/Reviews/Amazon-Reviews-E6036.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.13333333333333333
+  },
+  "costa inc   cl a": {
+    "url": "https://www.glassdoor.com/Reviews/Costa-Reviews-E300420.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.47619047619047616
+  },
+  "covance inc": {
+    "url": "https://www.glassdoor.com/Reviews/Sciformix-Reviews-E3311473.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.3
+  },
+  "creative media  com tr corp": {
+    "url": "https://www.glassdoor.com/Reviews/T-R-Properties-Reviews-E701108.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.24390243902439024
+  },
+  "cuentas inc": {
+    "url": "https://www.glassdoor.com/Reviews/HP-Inc--Reviews-E1093161.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.4444444444444444
+  },
+  "cv holdings inc": {
+    "url": "https://www.glassdoor.com/Reviews/HSBC-Reviews-E3482.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.10526315789473684
+  },
+  "cvb financial corp": {
+    "url": "https://www.glassdoor.com/Reviews/Citizens-Business-Bank-Reviews-E634580.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.3
+  },
+  "dakota plains holdings inc": {
+    "url": "https://www.glassdoor.com/Reviews/North-Dakota-State-University-Reviews-E29177.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.4
+  },
+  "demandware inc": {
+    "url": "https://www.glassdoor.com/Reviews/Salesforce-Reviews-E11159.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.25
+  },
+  "desarrolladora homex sa": {
+    "url": "https://www.glassdoor.com/Reviews/Homex-Reviews-E35306.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.35714285714285715
+  },
+  "digital media solutions inc": {
+    "url": "https://www.glassdoor.com/Reviews/HP-Inc--Reviews-E1093161.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.23529411764705882
+  },
+  "digitalglobe inc": {
+    "url": "https://www.glassdoor.com/Reviews/Maxar-Technologies-Reviews-E1969055.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.17647058823529413
+  },
+  "direct markets holdings corp": {
+    "url": "https://www.glassdoor.com/Reviews/Bajaj-Markets-Reviews-E5124203.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.3902439024390244
+  },
+  "djsp enterprises inc": {
+    "url": "https://www.glassdoor.com/Reviews/David-Stern-PA-Reviews-E402427.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.35294117647058826
+  },
+  "doral financial corp": {
+    "url": "https://www.glassdoor.com/Reviews/City-of-Doral-Reviews-E758600.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.30303030303030304
+  },
+  "dt midstream inc": {
+    "url": "https://www.glassdoor.com/Reviews/HP-Inc--Reviews-E1093161.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.34782608695652173
+  },
+  "dunkin brands group inc": {
+    "url": "https://www.glassdoor.com/Reviews/Inspire-Brands-Reviews-E2091686.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.4864864864864865
+  },
+  "dupont fabros technology inc": {
+    "url": "https://www.glassdoor.com/Reviews/Digital-Realty-Reviews-E36929.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.2857142857142857
+  },
+  "dynamex inc": {
+    "url": "https://www.glassdoor.com/Reviews/TForce-Final-Mile-Reviews-E5997.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.2857142857142857
+  },
+  "eagle financial bancorp": {
+    "url": "https://www.glassdoor.com/Reviews/American-Eagle-Outfitters-Reviews-E2642.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.375
+  },
+  "eastern light capital inc": {
+    "url": "https://www.glassdoor.com/Reviews/Capital-Alliance-Income-Trust-Reviews-E8877.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.4074074074074074
+  },
+  "education realty trust inc": {
+    "url": "https://www.glassdoor.com/Reviews/Americold-Logistics-Reviews-E33145.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.2222222222222222
+  },
+  "electronic arts inc": {
+    "url": "https://www.glassdoor.com/Reviews/Amazon-Reviews-E6036.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.16
+  },
+  "ellie mae inc": {
+    "url": "https://www.glassdoor.com/Reviews/ICE-Mortgage-Technology-Reviews-E260441.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.4444444444444444
+  },
+  "emergency medical svcs corp": {
+    "url": "https://www.glassdoor.com/Reviews/Indiana-University-Health-Reviews-E390286.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.2692307692307692
+  },
+  "energy east corp": {
+    "url": "https://www.glassdoor.com/Reviews/Oriental-Energy-Reviews-E3656143.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.3870967741935484
+  },
+  "energy services of amer corp": {
+    "url": "https://www.glassdoor.com/Reviews/Amer-Sports-Reviews-E10378.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.358974358974359
+  },
+  "enernoc inc": {
+    "url": "https://www.glassdoor.com/Reviews/Enel-Reviews-E10910.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.4
+  },
+  "epcos ag": {
+    "url": "https://www.glassdoor.com/Reviews/TDK-Electronics-Reviews-E2857634.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.34782608695652173
+  },
+  "equity bancshares inc": {
+    "url": "https://www.glassdoor.com/Reviews/BBVA-Reviews-E1237.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.16
+  },
+  "eresearchtechnology inc": {
+    "url": "https://www.glassdoor.com/Reviews/Clario-Reviews-E6279306.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.20689655172413793
+  },
+  "esterline technologies corp": {
+    "url": "https://www.glassdoor.com/Reviews/Esterline-Landscape-Reviews-E2604105.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.4782608695652174
+  },
+  "exacttarget inc": {
+    "url": "https://www.glassdoor.com/Reviews/Salesforce-Reviews-E11159.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.24
+  },
+  "ezchip semiconductor ltd": {
+    "url": "https://www.glassdoor.com/Reviews/LanOptics-Reviews-E7342.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.18181818181818182
+  },
+  "ezfill holdings inc": {
+    "url": "https://www.glassdoor.com/Reviews/Amazon-Reviews-E6036.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.24
+  },
+  "fairmount santrol holdings": {
+    "url": "https://www.glassdoor.com/Reviews/Covia-Corporation-Reviews-E2224351.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.18604651162790697
+  },
+  "fcstone group inc": {
+    "url": "https://www.glassdoor.com/Reviews/StoneX-Reviews-E3798545.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.43478260869565216
+  },
+  "felcor lodging trust inc": {
+    "url": "https://www.glassdoor.com/Reviews/TRUST-HOLDINGS-Reviews-E7232041.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.42105263157894735
+  },
+  "fiat chrysler automobiles nv": {
+    "url": "https://www.glassdoor.com/Reviews/Stellantis-Reviews-E4463465.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.10526315789473684
+  },
+  "fibria celulose sa": {
+    "url": "https://www.glassdoor.com/Reviews/Suzano-Reviews-E245580.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.16666666666666666
+  },
+  "financial engines inc": {
+    "url": "https://www.glassdoor.com/Reviews/Jasper-Engines-Transmissions-Reviews-E16244.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.4897959183673469
+  },
+  "financial federal corp": {
+    "url": "https://www.glassdoor.com/Reviews/PF-Plumbing-Corporation-Reviews-E912595.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.35555555555555557
+  },
+  "financial institutions inc": {
+    "url": "https://www.glassdoor.com/Reviews/HP-Inc--Reviews-E1093161.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.24242424242424243
+  },
+  "first american financial cp": {
+    "url": "https://www.glassdoor.com/Reviews/C-P-FOOD-PRODUCTS-Reviews-E435780.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.18181818181818182
+  },
+  "first financial service corp": {
+    "url": "https://www.glassdoor.com/Reviews/Intel-Corporation-Reviews-E1519.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.35555555555555557
+  },
+  "first savings financial gp": {
+    "url": "https://www.glassdoor.com/Reviews/Alterna-Savings-Reviews-E226785.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.43902439024390244
+  },
+  "first trust strategic high": {
+    "url": "https://www.glassdoor.com/Reviews/NHS-Reviews-E12873.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.06896551724137931
+  },
+  "first us bancshares inc": {
+    "url": "https://www.glassdoor.com/Reviews/Huntington-National-Bank-Reviews-E1496.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.2978723404255319
+  },
+  "fleetmatics group plc": {
+    "url": "https://www.glassdoor.com/Reviews/Verizon-Connect-Reviews-E1985773.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.16666666666666666
+  },
+  "flex ltd": {
+    "url": "https://www.glassdoor.com/Reviews/Amazon-Flex-Reviews-E1324363.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.42105263157894735
+  },
+  "flj group ltd": {
+    "url": "https://www.glassdoor.com/Reviews/Flj-Empreendimentos-Imobili-rios-Reviews-E2845500.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.35555555555555557
+  },
+  "forest city realty trust inc": {
+    "url": "https://www.glassdoor.com/Reviews/Brookfield-Properties-Reviews-E8707.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.20408163265306123
+  },
+  "forest oil corp old": {
+    "url": "https://www.glassdoor.com/Reviews/YMCA-Reviews-E3046.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.08695652173913043
+  },
+  "foundation coal holdings inc": {
+    "url": "https://www.glassdoor.com/Reviews/Coal-India-Reviews-E41927.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.3684210526315789
+  },
+  "foundation healthcare inc": {
+    "url": "https://www.glassdoor.com/Reviews/Williams-Sonoma-Inc--Reviews-E2043.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.35555555555555557
+  },
+  "foundry networks inc": {
+    "url": "https://www.glassdoor.com/Reviews/Brocade-Reviews-E9183.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.2222222222222222
+  },
+  "franklin financial svcs corp": {
+    "url": "https://www.glassdoor.com/Reviews/State-Farm-Reviews-E2990.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.2631578947368421
+  },
+  "freight technologies inc": {
+    "url": "https://www.glassdoor.com/Reviews/YRC-Freight-Reviews-E14541.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.4
+  },
+  "fronteer gold inc": {
+    "url": "https://www.glassdoor.com/Reviews/Newmont-Reviews-E479.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.25
+  },
+  "fsb bancorp inc": {
+    "url": "https://www.glassdoor.com/Reviews/Dollar-Bank-Reviews-E17239.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.3076923076923077
+  },
+  "gaming partners intl corp": {
+    "url": "https://www.glassdoor.com/Reviews/Intel-Corporation-Reviews-E1519.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.42857142857142855
+  },
+  "gener8 maritime inc": {
+    "url": "https://www.glassdoor.com/Reviews/Euronav-N-V--Reviews-E40930.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.25806451612903225
+  },
+  "general motors co": {
+    "url": "https://www.glassdoor.com/Reviews/Cook-Chevrolet-Subaru-Ford-Reviews-E6567227.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.27906976744186046
+  },
+  "gentiva health services inc": {
+    "url": "https://www.glassdoor.com/Reviews/CenterWell-Home-Health-Reviews-E1807617.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.40816326530612246
+  },
+  "glen rose petroleum corp": {
+    "url": "https://www.glassdoor.com/Reviews/United-Heritage-Reviews-E5069.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.10256410256410256
+  },
+  "global brokerage inc": {
+    "url": "https://www.glassdoor.com/Reviews/HomeLife-Landmark-Realty-Inc-Brokerage-Reviews-E562693.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.4482758620689655
+  },
+  "global business travl gp inc": {
+    "url": "https://www.glassdoor.com/Reviews/G-P-Reviews-E431546.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.1935483870967742
+  },
+  "global energy holdings grp": {
+    "url": "https://www.glassdoor.com/Reviews/GRP-Reviews-E2330999.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.20689655172413793
+  },
+  "gms inc": {
+    "url": "https://www.glassdoor.com/Reviews/Amazon-Reviews-E6036.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.3076923076923077
+  },
+  "golden minerals co": {
+    "url": "https://www.glassdoor.com/Reviews/Apex-Silver-Mines-Reviews-E7175.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.45714285714285713
+  },
+  "green st energy inc": {
+    "url": "https://www.glassdoor.com/Reviews/M-Wave-Reviews-E649.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.08
+  },
+  "greenfield online inc": {
+    "url": "https://www.glassdoor.com/Reviews/Toluna-Reviews-E230112.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.07407407407407407
+  },
+  "greenvision acquisition corp": {
+    "url": "https://www.glassdoor.com/Reviews/Intel-Corporation-Reviews-E1519.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.26666666666666666
+  },
+  "gse holding inc": {
+    "url": "https://www.glassdoor.com/Reviews/Air-Business-Consultants-Reviews-E5115116.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.2564102564102564
+  },
+  "gsi commerce inc": {
+    "url": "https://www.glassdoor.com/Reviews/Radial-Reviews-E1284014.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.09090909090909091
+  },
+  "gtsi corp": {
+    "url": "https://www.glassdoor.com/Reviews/UNICOM-Government-Reviews-E1770.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.3076923076923077
+  },
+  "happiness development grp lt": {
+    "url": "https://www.glassdoor.com/Reviews/GRP-Reviews-E2330999.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.1935483870967742
+  },
+  "hcc insurance holdings inc": {
+    "url": "https://www.glassdoor.com/Reviews/Tokio-Marine-HCC-Reviews-E1335614.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.14285714285714285
+  },
+  "head nv": {
+    "url": "https://www.glassdoor.com/Reviews/ENGIE-Reviews-E1052655.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.3333333333333333
+  },
+  "health management assoc": {
+    "url": "https://www.glassdoor.com/Reviews/ALS-Assoc--Reviews-E433640.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.48484848484848486
+  },
+  "healthcare tr of america inc": {
+    "url": "https://www.glassdoor.com/Reviews/Thomson-Reuters-Reviews-E100303.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.32558139534883723
+  },
+  "hf financial corp": {
+    "url": "https://www.glassdoor.com/Reviews/Bakkavor-Reviews-E38021.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.32
+  },
+  "hilb rogal  hobbs co": {
+    "url": "https://www.glassdoor.com/Reviews/WTW-Reviews-E1122768.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.0
+  },
+  "home properties inc": {
+    "url": "https://www.glassdoor.com/Reviews/HP-Inc--Reviews-E1093161.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.46153846153846156
+  },
+  "horsehead holding corp": {
+    "url": "https://www.glassdoor.com/Reviews/American-Zinc-Recycling-Reviews-E9836.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.26666666666666666
+  },
+  "houghton mifflin harcourt co": {
+    "url": "https://www.glassdoor.com/Reviews/Channel-One-News-Reviews-E7738627.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.22727272727272727
+  },
+  "hydra industries acquisition": {
+    "url": "https://www.glassdoor.com/Reviews/Inspired-Entertainment-Reviews-E35900.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.32
+  },
+  "immune pharmaceuticals inc": {
+    "url": "https://www.glassdoor.com/Reviews/AstraZeneca-Reviews-E9214.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.21621621621621623
+  },
+  "immuneering corp": {
+    "url": "https://www.glassdoor.com/Reviews/Amazon-Reviews-E6036.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.18181818181818182
+  },
+  "implant sciences corp old": {
+    "url": "https://www.glassdoor.com/Reviews/The-University-of-Massachusetts-Amherst-Reviews-E563550.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.21875
+  },
+  "incontact inc": {
+    "url": "https://www.glassdoor.com/Reviews/NICE-CXone-Reviews-E22935.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.34782608695652173
+  },
+  "independent bk grp inc": {
+    "url": "https://www.glassdoor.com/Reviews/Emerson-Reviews-E225.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.06896551724137931
+  },
+  "india fund inc": {
+    "url": "https://www.glassdoor.com/Reviews/U-S-Public-Interest-Research-Group-Education-Fund-Inc-Reviews-E198944.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.3880597014925373
+  },
+  "indus realty trust": {
+    "url": "https://www.glassdoor.com/Reviews/Trust-IT-Reviews-E2621884.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.38461538461538464
+  },
+  "innovaro inc": {
+    "url": "https://www.glassdoor.com/Reviews/UTEK-Reviews-E12771.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.0
+  },
+  "installed bldg products inc": {
+    "url": "https://www.glassdoor.com/Reviews/HP-Inc--Reviews-E1093161.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.29411764705882354
+  },
+  "insurance acq corp": {
+    "url": "https://www.glassdoor.com/Reviews/Easy-Cash-ASAP-Reviews-E1868855.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.3125
+  },
+  "international gen ins hl ltd": {
+    "url": "https://www.glassdoor.com/Reviews/Deutsches-Rotes-Kreuz-Reviews-E932927.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.16326530612244897
+  },
+  "international seaways inc": {
+    "url": "https://www.glassdoor.com/Reviews/Seaways-Group-Reviews-E632766.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.42105263157894735
+  },
+  "intersections inc": {
+    "url": "https://www.glassdoor.com/Reviews/CommonWorks-Reviews-E2097351.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.2857142857142857
+  },
+  "interwoven inc": {
+    "url": "https://www.glassdoor.com/Reviews/Chicago-School-of-Professional-Psychology-Reviews-E128254.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.10909090909090909
+  },
+  "intl business machines corp": {
+    "url": "https://www.glassdoor.com/Reviews/BISMAC-Reviews-E1378091.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.30303030303030304
+  },
+  "inventergy global inc": {
+    "url": "https://www.glassdoor.com/Reviews/eOn-Reviews-E9273.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.08333333333333333
+  },
+  "inventure foods inc": {
+    "url": "https://www.glassdoor.com/Reviews/Utz-Quality-Foods-Reviews-E17922.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.4444444444444444
+  },
+  "invuity inc": {
+    "url": "https://www.glassdoor.com/Reviews/Stryker-Reviews-E1918.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.2222222222222222
+  },
+  "johnson controls intl plc": {
+    "url": "https://www.glassdoor.com/Reviews/Jamilia-Company-Security-Services-Reviews-E2157159.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.27586206896551724
+  },
+  "journal communications inc": {
+    "url": "https://www.glassdoor.com/Reviews/HP-Inc--Reviews-E1093161.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.24242424242424243
+  },
+  "journal register co": {
+    "url": "https://www.glassdoor.com/Reviews/COS-Reviews-E846354.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.18181818181818182
+  },
+  "kaixin auto holdings": {
+    "url": "https://www.glassdoor.com/Reviews/Beijing-Information-Technology-Reviews-E774287.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.16
+  },
+  "kandi technologies group": {
+    "url": "https://www.glassdoor.com/Reviews/Eye-Kandi-Models-Reviews-E2418915.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.45
+  },
+  "kanzhun limited": {
+    "url": "https://www.glassdoor.com/Reviews/Boss-Beijing--Reviews-E4574811.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.14285714285714285
+  },
+  "kapstone paper  packaging": {
+    "url": "https://www.glassdoor.com/Reviews/WestRock-Reviews-E1033056.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.30303030303030304
+  },
+  "kb financial group": {
+    "url": "https://www.glassdoor.com/Reviews/Kookmin-Bank-Reviews-E8621.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.3333333333333333
+  },
+  "kepcokorea elec power corp": {
+    "url": "https://www.glassdoor.com/Reviews/D-Power-Corporation-Reviews-E7706789.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.4888888888888889
+  },
+  "kintera inc": {
+    "url": "https://www.glassdoor.com/Reviews/Blackbaud-Reviews-E15863.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.2
+  },
+  "korea fund": {
+    "url": "https://www.glassdoor.com/Reviews/KODIT-Reviews-E5448990.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.4
+  },
+  "lands end inc": {
+    "url": "https://www.glassdoor.com/Reviews/HP-Inc--Reviews-E1093161.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.4
+  },
+  "law enforcement assocs corp": {
+    "url": "https://www.glassdoor.com/Reviews/VICKIE-L-SIMPSON-SPEECH-PATHOLOGY-ASSOCIATES-Reviews-E1165638.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.28169014084507044
+  },
+  "lca vision inc": {
+    "url": "https://www.glassdoor.com/Reviews/LasikPlus-Reviews-E5692.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.34782608695652173
+  },
+  "legacy acquisition": {
+    "url": "https://www.glassdoor.com/Reviews/PARTS-iD-Inc--Reviews-E4296483.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.1935483870967742
+  },
+  "lodgenet interactive corp": {
+    "url": "https://www.glassdoor.com/Reviews/SONIFI-Solutions-Reviews-E767538.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.1951219512195122
+  },
+  "logmein inc": {
+    "url": "https://www.glassdoor.com/Reviews/GoTo-Reviews-E43330.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.13333333333333333
+  },
+  "lumos networks corp": {
+    "url": "https://www.glassdoor.com/Reviews/Segra-Reviews-E2424555.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.25
+  },
+  "luxoft holding inc": {
+    "url": "https://www.glassdoor.com/Reviews/Deutsche-Bank-Reviews-E3150.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.25806451612903225
+  },
+  "lydall inc": {
+    "url": "https://www.glassdoor.com/Reviews/Gutsche-Textile-Engineering-Reviews-E4080024.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.21621621621621623
+  },
+  "m  f worldwide corp": {
+    "url": "https://www.glassdoor.com/Reviews/Intel-Corporation-Reviews-E1519.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.3333333333333333
+  },
+  "macgray corp": {
+    "url": "https://www.glassdoor.com/Reviews/CSC-ServiceWorks-Reviews-E1142130.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.35714285714285715
+  },
+  "mag silver corp": {
+    "url": "https://www.glassdoor.com/Reviews/Jaguar-Land-Rover-Reviews-E374962.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.4375
+  },
+  "majestic capital ltd": {
+    "url": "https://www.glassdoor.com/Reviews/CRM-Holdings-Reviews-E40043.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.125
+  },
+  "malaysia fund": {
+    "url": "https://www.glassdoor.com/Reviews/The-Fund-Reviews-E24819.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.47619047619047616
+  },
+  "marshall  ilsley corp": {
+    "url": "https://www.glassdoor.com/Reviews/BMO-Financial-Group-Reviews-E3765.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.35
+  },
+  "maxpoint interactive inc": {
+    "url": "https://www.glassdoor.com/Reviews/Vericast-Reviews-E3345772.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.25
+  },
+  "mcclatchy co  cl a": {
+    "url": "https://www.glassdoor.com/Reviews/Creative-Lab-DC--Reviews-E4792164.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.29411764705882354
+  },
+  "meadwestvaco corp": {
+    "url": "https://www.glassdoor.com/Reviews/Calmar-Reviews-E14909.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.2608695652173913
+  },
+  "mecklermedia corp": {
+    "url": "https://www.glassdoor.com/Reviews/Mediabistro-Reviews-E348228.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.42857142857142855
+  },
+  "medassets inc": {
+    "url": "https://www.glassdoor.com/Reviews/Vizient-Reviews-E1180322.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.2
+  },
+  "media general inc  old": {
+    "url": "https://www.glassdoor.com/Reviews/Old-Mutual-Reviews-E9382.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.1875
+  },
+  "mediware information systems": {
+    "url": "https://www.glassdoor.com/Reviews/WellSky-Reviews-E4942.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.17142857142857143
+  },
+  "medovex corp": {
+    "url": "https://www.glassdoor.com/Reviews/H-CYTE-Reviews-E3302515.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.2222222222222222
+  },
+  "mellanox technologies ltd": {
+    "url": "https://www.glassdoor.com/Reviews/NVIDIA-Reviews-E7633.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.06451612903225806
+  },
+  "membership colectve grp": {
+    "url": "https://www.glassdoor.com/Reviews/GRP-Reviews-E2330999.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.23076923076923078
+  },
+  "meridian bancorp inc md": {
+    "url": "https://www.glassdoor.com/Reviews/Chin-Se-Kim-M-D--Reviews-E4259470.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.41025641025641024
+  },
+  "merriman holdings inc": {
+    "url": "https://www.glassdoor.com/Reviews/MCF-Corporation-Reviews-E11679.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.2777777777777778
+  },
+  "metavante technologies inc": {
+    "url": "https://www.glassdoor.com/Reviews/FIS-Reviews-E313114.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.13793103448275862
+  },
+  "miller energy resources inc": {
+    "url": "https://www.glassdoor.com/Reviews/University-of-Miami-Reviews-E33297.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.13043478260869565
+  },
+  "mirna therapeutics inc": {
+    "url": "https://www.glassdoor.com/Reviews/Synlogic-Reviews-E1713651.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.2
+  },
+  "mnc media investment ltd": {
+    "url": "https://www.glassdoor.com/Reviews/The-Limited-Reviews-E4317611.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.17142857142857143
+  },
+  "moldflow corp": {
+    "url": "https://www.glassdoor.com/Reviews/Autodesk-Reviews-E1155.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.19047619047619047
+  },
+  "mtech acquisition corp": {
+    "url": "https://www.glassdoor.com/Reviews/Akerna-Reviews-E3449239.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.14285714285714285
+  },
+  "nalco holding co": {
+    "url": "https://www.glassdoor.com/Reviews/Ecolab-Reviews-E222.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.2727272727272727
+  },
+  "nanosphere inc": {
+    "url": "https://www.glassdoor.com/Reviews/Luminex-Reviews-E11502.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.19047619047619047
+  },
+  "national bank hldgs corp": {
+    "url": "https://www.glassdoor.com/Reviews/Shenzhen-Cereals-Holdings-Reviews-E7289618.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.40816326530612246
+  },
+  "national bankshares inc va": {
+    "url": "https://www.glassdoor.com/Reviews/New-Peoples-Bank-VA--Reviews-E1030531.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.4782608695652174
+  },
+  "national sec group inc": {
+    "url": "https://www.glassdoor.com/Reviews/SEC-Life-Sciences-Reviews-E353829.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.41025641025641024
+  },
+  "navigator holdings ltd": {
+    "url": "https://www.glassdoor.com/Reviews/The-Limited-Reviews-E4317611.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.36363636363636365
+  },
+  "navteq corp": {
+    "url": "https://www.glassdoor.com/Reviews/HERE-Technologies-Reviews-E753677.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.2857142857142857
+  },
+  "nbty inc": {
+    "url": "https://www.glassdoor.com/Reviews/The-Bountiful-Company-Reviews-E1686.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.20689655172413793
+  },
+  "new concept energy inc": {
+    "url": "https://www.glassdoor.com/Reviews/CabelTel-Reviews-E2536.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.13333333333333333
+  },
+  "new energy systems group": {
+    "url": "https://www.glassdoor.com/Reviews/China-Digital-Communication-Group-Reviews-E24721.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.3508771929824561
+  },
+  "new germany fund inc": {
+    "url": "https://www.glassdoor.com/Reviews/World-Wildlife-Fund-Reviews-E16152.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.3076923076923077
+  },
+  "new home co inc": {
+    "url": "https://www.glassdoor.com/Reviews/HP-Inc--Reviews-E1093161.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.45454545454545453
+  },
+  "new ireland fund inc": {
+    "url": "https://www.glassdoor.com/Reviews/National-Treasury-Management-Agency-Reviews-E1082672.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.32727272727272727
+  },
+  "new senior investment group": {
+    "url": "https://www.glassdoor.com/Reviews/New-New-New-Reviews-E3769950.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.3684210526315789
+  },
+  "new york city reit inc": {
+    "url": "https://www.glassdoor.com/Reviews/Chartwell-Retirement-Residences-Reviews-E43309.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.37735849056603776
+  },
+  "new york cmnty bancorp inc": {
+    "url": "https://www.glassdoor.com/Reviews/The-Bancorp-Bank-N-A--Reviews-E34951.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.46808510638297873
+  },
+  "newlead holdings ltd": {
+    "url": "https://www.glassdoor.com/Reviews/Aries-Maritime-Transport-Reviews-E38303.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.18181818181818182
+  },
+  "nexvet biopharma plc": {
+    "url": "https://www.glassdoor.com/Reviews/Zoetis-Reviews-E680848.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.23076923076923078
+  },
+  "nike inc  cl b": {
+    "url": "https://www.glassdoor.com/Reviews/Aramark-Reviews-E2716.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.09523809523809523
+  },
+  "nippon telegraph  telephone": {
+    "url": "https://www.glassdoor.com/Reviews/NTT-Corporation-Reviews-E3476.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.38095238095238093
+  },
+  "niu technologies adr": {
+    "url": "https://www.glassdoor.com/Reviews/ADR-Network-Reviews-E974677.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.1935483870967742
+  },
+  "nivalis therapeutics inc": {
+    "url": "https://www.glassdoor.com/Reviews/Alpine-Immune-Sciences-Reviews-E1421215.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.34782608695652173
+  },
+  "norbord inc": {
+    "url": "https://www.glassdoor.com/Reviews/West-Fraser-Timber-Reviews-E7424.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.20689655172413793
+  },
+  "north amer galv  coatings": {
+    "url": "https://www.glassdoor.com/Reviews/Polynorm-Automotive-North-Amer-Reviews-E6323848.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.36363636363636365
+  },
+  "north american insurance lds": {
+    "url": "https://www.glassdoor.com/Reviews/LDS-Infotech-Reviews-E539189.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.2
+  },
+  "north asia investment corp": {
+    "url": "https://www.glassdoor.com/Reviews/PIMCO-Reviews-E3585.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.25806451612903225
+  },
+  "nuvelo inc": {
+    "url": "https://www.glassdoor.com/Reviews/ARCA-Colorado--Reviews-E229858.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.25
+  },
+  "odp corp": {
+    "url": "https://www.glassdoor.com/Reviews/Intel-Corporation-Reviews-E1519.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.4
+  },
+  "old copper co inc": {
+    "url": "https://www.glassdoor.com/Reviews/Life-Care-Centers-of-America-Reviews-E2875.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.3111111111111111
+  },
+  "onyx pharmaceuticals inc": {
+    "url": "https://www.glassdoor.com/Reviews/Amgen-Reviews-E1130.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.06896551724137931
+  },
+  "oplink communications inc": {
+    "url": "https://www.glassdoor.com/Reviews/Molex-Reviews-E1666.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.13333333333333333
+  },
+  "orthovita inc": {
+    "url": "https://www.glassdoor.com/Reviews/Stryker-Reviews-E1918.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.1
+  },
+  "otix global inc": {
+    "url": "https://www.glassdoor.com/Reviews/Sonic-Innovations-Reviews-E11539.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.3125
+  },
+  "outerwall inc": {
+    "url": "https://www.glassdoor.com/Reviews/Coinstar-Reviews-E6883.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.2857142857142857
+  },
+  "oxford lane capital corp": {
+    "url": "https://www.glassdoor.com/Reviews/IHG-Hotels-and-Resorts-Reviews-E4232.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.17391304347826086
+  },
+  "oxford square capital corp": {
+    "url": "https://www.glassdoor.com/Reviews/Round-Table-on-the-Square-Reviews-E1944093.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.35294117647058826
+  },
+  "p  f industries  cl a": {
+    "url": "https://www.glassdoor.com/Reviews/AT-T-Reviews-E613.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.16
+  },
+  "parkvale financial corp": {
+    "url": "https://www.glassdoor.com/Reviews/F-N-B-Corporation-Reviews-E4832.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.35
+  },
+  "pc group inc": {
+    "url": "https://www.glassdoor.com/Reviews/Langer-Reviews-E4921.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.2222222222222222
+  },
+  "pendrell corp": {
+    "url": "https://www.glassdoor.com/Reviews/ICO-Global-Communications-Reviews-E7540.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.2631578947368421
+  },
+  "pepperball technologies inc": {
+    "url": "https://www.glassdoor.com/Reviews/Security-With-Advanced-Technology-Reviews-E38144.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.4
+  },
+  "pharmanet development group": {
+    "url": "https://www.glassdoor.com/Reviews/KForce-Pharmanet-i3-Reviews-E598392.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.43478260869565216
+  },
+  "phoenix technologies ltd": {
+    "url": "https://www.glassdoor.com/Reviews/Phoenix-Gray-Recruitment-Limited-Reviews-E5452119.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.39285714285714285
+  },
+  "physicians realty tr": {
+    "url": "https://www.glassdoor.com/Reviews/TR-Reviews-E683715.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.18181818181818182
+  },
+  "planetout inc": {
+    "url": "https://www.glassdoor.com/Reviews/Here-Media-Reviews-E354191.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.08695652173913043
+  },
+  "plantronics inc": {
+    "url": "https://www.glassdoor.com/Reviews/Poly-Reviews-E2545789.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.21052631578947367
+  },
+  "plum creek timber co inc": {
+    "url": "https://www.glassdoor.com/Reviews/Weyerhaeuser-Reviews-E730.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.16666666666666666
+  },
+  "post properties inc": {
+    "url": "https://www.glassdoor.com/Reviews/MAA-Reviews-E2504.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.0
+  },
+  "pra health sciences inc": {
+    "url": "https://www.glassdoor.com/Reviews/ICON-Reviews-E8344.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.14814814814814814
+  },
+  "preferred bank los angeles": {
+    "url": "https://www.glassdoor.com/Reviews/Keller-Williams-Reviews-E114145.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.2926829268292683
+  },
+  "prevu inc": {
+    "url": "https://www.glassdoor.com/Reviews/Wilsons-The-Leather-Experts-Reviews-E6503.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.1111111111111111
+  },
+  "primewest energy trust": {
+    "url": "https://www.glassdoor.com/Reviews/HTLF-Reviews-E16292.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.07692307692307693
+  },
+  "procera networks inc": {
+    "url": "https://www.glassdoor.com/Reviews/Sandvine-Reviews-E32683.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.21428571428571427
+  },
+  "prophotonix ltd": {
+    "url": "https://www.glassdoor.com/Reviews/StockerYale-Reviews-E5696.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.23076923076923078
+  },
+  "prosight global inc": {
+    "url": "https://www.glassdoor.com/Reviews/Coaction-Reviews-E1695.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.2962962962962963
+  },
+  "public service entrp grp inc": {
+    "url": "https://www.glassdoor.com/Reviews/GRP-Reviews-E2330999.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.1935483870967742
+  },
+  "pvr partners lp": {
+    "url": "https://www.glassdoor.com/Reviews/Energy-Transfer-Reviews-E6125.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.26666666666666666
+  },
+  "qlogic corp": {
+    "url": "https://www.glassdoor.com/Reviews/Marvell-Technology-Reviews-E11761.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.20689655172413793
+  },
+  "qts realty trust inc": {
+    "url": "https://www.glassdoor.com/Reviews/QTS-Reviews-E293688.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.2608695652173913
+  },
+  "quinpario acquisition corp 2": {
+    "url": "https://www.glassdoor.com/Reviews/2Do--Reviews-E5037372.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.125
+  },
+  "qwest communication intl inc": {
+    "url": "https://www.glassdoor.com/Reviews/CenturyLink-Reviews-E4468992.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.2564102564102564
+  },
+  "ra pharmaceuticals inc": {
+    "url": "https://www.glassdoor.com/Reviews/UCB-Reviews-E10908.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.08
+  },
+  "radient pharmaceuticals corp": {
+    "url": "https://www.glassdoor.com/Reviews/AMDL-Reviews-E22572.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.1875
+  },
+  "ramaco resources inc": {
+    "url": "https://www.glassdoor.com/Reviews/HP-Inc--Reviews-E1093161.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.2962962962962963
+  },
+  "reading intl inc  cl a": {
+    "url": "https://www.glassdoor.com/Reviews/University-of-Reading-Reviews-E37187.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.32558139534883723
+  },
+  "recon technology ltd": {
+    "url": "https://www.glassdoor.com/Reviews/goTRG-Reviews-E699773.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.16
+  },
+  "rentrak corp": {
+    "url": "https://www.glassdoor.com/Reviews/Comscore-Reviews-E20698.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.3
+  },
+  "replidyne inc": {
+    "url": "https://www.glassdoor.com/Reviews/Cardiovascular-Systems-Inc-CSI--Reviews-E40856.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.2727272727272727
+  },
+  "research solutions inc": {
+    "url": "https://www.glassdoor.com/Reviews/HP-Inc--Reviews-E1093161.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.3448275862068966
+  },
+  "responsys inc": {
+    "url": "https://www.glassdoor.com/Reviews/Oracle-Reviews-E1737.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.21052631578947367
+  },
+  "restoration robotic inc": {
+    "url": "https://www.glassdoor.com/Reviews/Bernstein-Medical-Reviews-E3487770.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.4
+  },
+  "rex american resources corp": {
+    "url": "https://www.glassdoor.com/Reviews/REX-Stores-Reviews-E2657.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.3783783783783784
+  },
+  "richmond mutual banco inc": {
+    "url": "https://www.glassdoor.com/Reviews/MassMutual-Reviews-E2890.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.4
+  },
+  "rio alto mining": {
+    "url": "https://www.glassdoor.com/Reviews/Universidade-Alto-Vale-do-Rio-do-Peixe-Uniarp--Reviews-E2666470.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.36065573770491804
+  },
+  "rmr hospitality real estate": {
+    "url": "https://www.glassdoor.com/Reviews/Coldwell-Banker-Reviews-E13952.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.2857142857142857
+  },
+  "rosetta resources inc": {
+    "url": "https://www.glassdoor.com/Reviews/Noble-Energy-Reviews-E482.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.06060606060606061
+  },
+  "rti intl metals inc": {
+    "url": "https://www.glassdoor.com/Reviews/Alcoa-Reviews-E29.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.25
+  },
+  "rvl pharmaceuticals plc": {
+    "url": "https://www.glassdoor.com/Reviews/Metro-Bank-PLC-Reviews-E1098641.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.3783783783783784
+  },
+  "sajan inc": {
+    "url": "https://www.glassdoor.com/Reviews/MathStar-Reviews-E16805.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.23529411764705882
+  },
+  "sc health corp": {
+    "url": "https://www.glassdoor.com/Reviews/Amazon-Reviews-E6036.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.2
+  },
+  "scheringplough": {
+    "url": "https://www.glassdoor.com/Reviews/Merck-Reviews-E438.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.21052631578947367
+  },
+  "sciele pharma inc": {
+    "url": "https://www.glassdoor.com/Reviews/Shionogi-Inc--Reviews-E11549.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.4
+  },
+  "sciquest inc": {
+    "url": "https://www.glassdoor.com/Reviews/Upside-Software-Reviews-E21561.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.37037037037037035
+  },
+  "semiconductor mfg intl corp": {
+    "url": "https://www.glassdoor.com/Reviews/Intel-Corporation-Reviews-E1519.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.4090909090909091
+  },
+  "sepracor inc": {
+    "url": "https://www.glassdoor.com/Reviews/Sunovion-Reviews-E681725.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.4
+  },
+  "service properties trust": {
+    "url": "https://www.glassdoor.com/Reviews/Trust-Will-Reviews-E2425940.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.29411764705882354
+  },
+  "sfx entertainment inc": {
+    "url": "https://www.glassdoor.com/Reviews/LiveStyle-Reviews-E320459.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.13333333333333333
+  },
+  "sharing econmy intl inc old": {
+    "url": "https://www.glassdoor.com/Reviews/Old-Navy-Reviews-E18861.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.17142857142857143
+  },
+  "sigmaaldrich": {
+    "url": "https://www.glassdoor.com/Reviews/MilliporeSigma-Reviews-E1345912.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.38461538461538464
+  },
+  "silver spring networks inc": {
+    "url": "https://www.glassdoor.com/Reviews/Itron-Reviews-E2370.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.1935483870967742
+  },
+  "sitio royalties corp": {
+    "url": "https://www.glassdoor.com/Reviews/Falcon-Minerals-Reviews-E4416802.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.2857142857142857
+  },
+  "skymobi ltd  adr": {
+    "url": "https://www.glassdoor.com/Reviews/Discovery-Reviews-E1524608.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.16
+  },
+  "smith international inc": {
+    "url": "https://www.glassdoor.com/Reviews/Wharton-Smith-Inc--Reviews-E152473.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.43902439024390244
+  },
+  "soapstone networks inc": {
+    "url": "https://www.glassdoor.com/Reviews/Avici-Systems-Reviews-E9477.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.2857142857142857
+  },
+  "sonde resources corp": {
+    "url": "https://www.glassdoor.com/Reviews/Canadian-Superior-Reviews-E24978.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.2702702702702703
+  },
+  "sos ltd adr": {
+    "url": "https://www.glassdoor.com/Reviews/ADR-Network-Reviews-E974677.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.2727272727272727
+  },
+  "sp acquisition holdings inc": {
+    "url": "https://www.glassdoor.com/Reviews/Siemens-Energy-Reviews-E4393689.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.2926829268292683
+  },
+  "sports properties acq corp": {
+    "url": "https://www.glassdoor.com/Reviews/Acq-Reviews-E7531857.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.20689655172413793
+  },
+  "stanley inc": {
+    "url": "https://www.glassdoor.com/Reviews/HP-Inc--Reviews-E1093161.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.4444444444444444
+  },
+  "state auto financial corp": {
+    "url": "https://www.glassdoor.com/Reviews/State-Grid-Corporation-of-China-Reviews-E249933.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.42857142857142855
+  },
+  "steel connect inc": {
+    "url": "https://www.glassdoor.com/Reviews/ModusLink-Reviews-E2507.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.3076923076923077
+  },
+  "stride inc": {
+    "url": "https://www.glassdoor.com/Reviews/K12-Reviews-E42734.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.0
+  },
+  "successfactors inc": {
+    "url": "https://www.glassdoor.com/Reviews/SAP-Reviews-E10471.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.19047619047619047
+  },
+  "sutron corp": {
+    "url": "https://www.glassdoor.com/Reviews/OTT-Hydromet-Reviews-E1774931.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.2608695652173913
+  },
+  "sys": {
+    "url": "https://www.glassdoor.com/Reviews/Verizon-Reviews-E89.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.0
+  },
+  "system1 inc": {
+    "url": "https://www.glassdoor.com/Reviews/Amazon-Reviews-E6036.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.23529411764705882
+  },
+  "taiwan semiconductor mfg": {
+    "url": "https://www.glassdoor.com/Reviews/Mfg-com-Reviews-E231536.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.1935483870967742
+  },
+  "talon therapeutics inc": {
+    "url": "https://www.glassdoor.com/Reviews/Hana-Biosciences-Reviews-E40051.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.2631578947368421
+  },
+  "taminco corp": {
+    "url": "https://www.glassdoor.com/Reviews/Eastman-Kodak-Reviews-E220.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.32
+  },
+  "technology solutions co": {
+    "url": "https://www.glassdoor.com/Reviews/COS-Reviews-E846354.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.15384615384615385
+  },
+  "tekelec": {
+    "url": "https://www.glassdoor.com/Reviews/Oracle-Reviews-E1737.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.3076923076923077
+  },
+  "telecommunication sys inc": {
+    "url": "https://www.glassdoor.com/Reviews/i-sys-Corporation-Reviews-E426999.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.3333333333333333
+  },
+  "telephone  data systems inc": {
+    "url": "https://www.glassdoor.com/Reviews/HP-Inc--Reviews-E1093161.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.29411764705882354
+  },
+  "terra nitrogen co  lp": {
+    "url": "https://www.glassdoor.com/Reviews/CF-Industries-Reviews-E2744.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.29411764705882354
+  },
+  "terremark worldwide inc": {
+    "url": "https://www.glassdoor.com/Reviews/Verizon-Reviews-E89.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.26666666666666666
+  },
+  "tesaro inc": {
+    "url": "https://www.glassdoor.com/Reviews/GSK-Reviews-E3477.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.15384615384615385
+  },
+  "thai capital fund inc": {
+    "url": "https://www.glassdoor.com/Reviews/U-S-Public-Interest-Research-Group-Education-Fund-Inc-Reviews-E198944.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.40540540540540543
+  },
+  "thomson reuters plc": {
+    "url": "https://www.glassdoor.com/Reviews/LSEG-London-Stock-Exchange-Group--Reviews-E11860.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.2692307692307692
+  },
+  "tmc the metals co inc": {
+    "url": "https://www.glassdoor.com/Reviews/AMETEK-Reviews-E7.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.2222222222222222
+  },
+  "todd shipyards corp": {
+    "url": "https://www.glassdoor.com/Reviews/Vigor-Reviews-E685302.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.25
+  },
+  "tornier nv": {
+    "url": "https://www.glassdoor.com/Reviews/Wright-Medical-Reviews-E13363.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.16666666666666666
+  },
+  "toronto dominion bank": {
+    "url": "https://www.glassdoor.com/Reviews/TD-Reviews-E3767.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.17391304347826086
+  },
+  "tower group intl ltd": {
+    "url": "https://www.glassdoor.com/Reviews/American-Tower-Reviews-E8043.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.29411764705882354
+  },
+  "towers watson  co": {
+    "url": "https://www.glassdoor.com/Reviews/WTW-Reviews-E1122768.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.2
+  },
+  "town sports intl holdings": {
+    "url": "https://www.glassdoor.com/Reviews/New-York-Sports-Club-and-Our-Family-of-Brands-Reviews-E8690.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.37142857142857144
+  },
+  "transatlantic holdings inc": {
+    "url": "https://www.glassdoor.com/Reviews/TransRe-Reviews-E7220.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.30303030303030304
+  },
+  "transportadora de gas sur": {
+    "url": "https://www.glassdoor.com/Reviews/Camuzzi-Gas-del-Sur-Reviews-E2691568.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.4090909090909091
+  },
+  "trian acquisition i corp": {
+    "url": "https://www.glassdoor.com/Reviews/K-S-I-Trading-Corp-Reviews-E281144.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.42857142857142855
+  },
+  "triples management corp": {
+    "url": "https://www.glassdoor.com/Reviews/Soluciones-Triples-Reviews-E2709527.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.34146341463414637
+  },
+  "triquint semiconductor inc": {
+    "url": "https://www.glassdoor.com/Reviews/Qorvo-Reviews-E942369.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.1935483870967742
+  },
+  "trius therapeutics inc": {
+    "url": "https://www.glassdoor.com/Reviews/Merck-Reviews-E438.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.2222222222222222
+  },
+  "tti team telecom intl ltd": {
+    "url": "https://www.glassdoor.com/Reviews/TEOCO-Reviews-E12167.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.26666666666666666
+  },
+  "u s physical therapy inc": {
+    "url": "https://www.glassdoor.com/Reviews/Samsung-Semiconductor-Inc-US--Reviews-E19069.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.41509433962264153
+  },
+  "uap holding corp": {
+    "url": "https://www.glassdoor.com/Reviews/Nutrien-Reviews-E2017225.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.2608695652173913
+  },
+  "uhaul holding co": {
+    "url": "https://www.glassdoor.com/Reviews/Pinky-s-RV-Boat-Storage-and-Uhaul-Reviews-E4335106.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.20408163265306123
+  },
+  "uil holdings corp": {
+    "url": "https://www.glassdoor.com/Reviews/Instituut-de-Uil-Reviews-E2456151.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.18181818181818182
+  },
+  "ultimate software group inc": {
+    "url": "https://www.glassdoor.com/Reviews/Ultimate-Medical-Academy-Reviews-E370934.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.43137254901960786
+  },
+  "united fire group inc": {
+    "url": "https://www.glassdoor.com/Reviews/HP-Inc--Reviews-E1093161.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.35714285714285715
+  },
+  "uns energy corp": {
+    "url": "https://www.glassdoor.com/Reviews/UNS-Idiomas-Reviews-E2486250.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.38461538461538464
+  },
+  "us gold corp": {
+    "url": "https://www.glassdoor.com/Reviews/Gold-s-Gym-Reviews-E9619.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.45454545454545453
+  },
+  "us shipping partners lp": {
+    "url": "https://www.glassdoor.com/Reviews/Koch-Industries-Reviews-E2864.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.15789473684210525
+  },
+  "usd partners lp": {
+    "url": "https://www.glassdoor.com/Reviews/Los-Angeles-USD-Reviews-E111599.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.2
+  },
+  "uti worldwide inc": {
+    "url": "https://www.glassdoor.com/Reviews/DSV-Reviews-E1043909.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.1
+  },
+  "vasogen inc": {
+    "url": "https://www.glassdoor.com/Reviews/IntelliPharmaCeutics-International-Reviews-E354359.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.2222222222222222
+  },
+  "ventas inc": {
+    "url": "https://www.glassdoor.com/Reviews/HP-Inc--Reviews-E1093161.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.47058823529411764
+  },
+  "verona pharma plc": {
+    "url": "https://www.glassdoor.com/Reviews/GSK-Reviews-E3477.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.0
+  },
+  "versum materials inc": {
+    "url": "https://www.glassdoor.com/Reviews/Merck-KGaA-Reviews-E8715.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.3333333333333333
+  },
+  "viasystems group inc": {
+    "url": "https://www.glassdoor.com/Reviews/TTM-Technologies-Reviews-E12135.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.16666666666666666
+  },
+  "vicinity motor corp": {
+    "url": "https://www.glassdoor.com/Reviews/Grande-West-Transportation-Reviews-E4724465.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.3111111111111111
+  },
+  "vidler water resources inc": {
+    "url": "https://www.glassdoor.com/Reviews/HP-Inc--Reviews-E1093161.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.24242424242424243
+  },
+  "virtualscopics inc": {
+    "url": "https://www.glassdoor.com/Reviews/BioTelemetry-Reviews-E42820.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.13333333333333333
+  },
+  "vital images inc": {
+    "url": "https://www.glassdoor.com/Reviews/Canon-Medical-Informatics-Reviews-E13217.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.3902439024390244
+  },
+  "vivint solar inc": {
+    "url": "https://www.glassdoor.com/Reviews/Sunrun-Reviews-E384876.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.2727272727272727
+  },
+  "warner chilcott plc": {
+    "url": "https://www.glassdoor.com/Reviews/Allergan-Reviews-E27.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.2222222222222222
+  },
+  "washington tr bancorp inc": {
+    "url": "https://www.glassdoor.com/Reviews/Washington-Aerospace-Training-Research-Center-Reviews-E1395236.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.4857142857142857
+  },
+  "wausau paper corp": {
+    "url": "https://www.glassdoor.com/Reviews/SCA-Reviews-E5732.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.1
+  },
+  "wesco aircraft holdings inc": {
+    "url": "https://www.glassdoor.com/Reviews/Incora-Reviews-E3746920.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.18181818181818182
+  },
+  "western liberty bancorp old": {
+    "url": "https://www.glassdoor.com/Reviews/YMCA-Reviews-E3046.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.12903225806451613
+  },
+  "wh energy services inc": {
+    "url": "https://www.glassdoor.com/Reviews/Braum-s-Reviews-E18445.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.20689655172413793
+  },
+  "xura inc": {
+    "url": "https://www.glassdoor.com/Reviews/Mavenir-Reviews-E269651.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.13333333333333333
+  },
+  "zalicus inc": {
+    "url": "https://www.glassdoor.com/Reviews/CombinatoRx-Reviews-E24109.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.2727272727272727
+  },
+  "zaza energy corp": {
+    "url": "https://www.glassdoor.com/Reviews/Toreador-Resources-Reviews-E1960.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.11764705882352941
+  },
+  "zhone technologies inc": {
+    "url": "https://www.glassdoor.com/Reviews/DZS-Inc--Reviews-E1803608.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
+    "val": 0.4
+  }
+}

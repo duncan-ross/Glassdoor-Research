@@ -107,7 +107,7 @@ def get_batched_requests(reviewsUrl, responses):
     pages, new_responses = [], {}
     done = True
     for i, r in responses.items():
-        if not check_response(r):
+        if not r:
             pages.append(i)
         if len(pages) == DEFAULT_BATCH_SIZE:
             rs = generate_url_map(reviewsUrl, pages)
@@ -121,12 +121,11 @@ def get_batched_requests(reviewsUrl, responses):
         new_responses = Merge(new_responses, dict(zip(pages, grequests.map(rs))))
         print("Progress: {}/{}".format(len(new_responses),len(responses)))
 
-    for i, r in responses.items():
+    for i, r in new_responses.items():
+        responses[i] = new_responses[i]
         if not check_response(r):
-            if i in new_responses and check_response(new_responses[i]):
-                responses[i] = new_responses[i]
-            else:
-                done = False
+            responses[i] = None
+            done = False
     
     return responses, done
 

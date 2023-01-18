@@ -1,12 +1,4 @@
 {
-  "advent software inc": {
-    "url": "https://www.glassdoor.com/Reviews/SS-C-Advent-Reviews-E5447.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
-    "val": 0.4
-  },
-  "aeroflex holding corp": {
-    "url": "https://www.glassdoor.com/Reviews/Aeroflex-Ind-stria-de-Aerosol-Reviews-E2492432.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
-    "val": 0.44
-  },
   "ag mortgage investment trust": {
     "url": "https://www.glassdoor.com/Reviews/Baillie-Gifford-Reviews-E36741.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR",
     "val": 0.18604651162790697

@@ -64,7 +64,6 @@ def main(fetchAllCompanies=True):
         print("Num pages : %s" % num_pages)
 
         responses = get_review_pages(reviewsUrl, num_pages)
-
         # Iterate responses and parse data
         companyReviews = []
         for index, response in responses.items():
@@ -93,6 +92,7 @@ def get_review_pages(reviewsUrl, num_pages):
             break
         print("Attempting pass #{} of batches".format(j+1))
         responses, done = get_batched_requests(reviewsUrl, responses)
+        time.sleep(uniform(10,15))
     
     if not done:
         for i, r in responses.items():
@@ -115,6 +115,7 @@ def get_batched_requests(reviewsUrl, responses):
             print("Progress: {}/{}".format(len(new_responses),len(responses)))
             pages = []
             time.sleep(uniform(10,12))
+        
 
     if len(pages) > 0:
         rs = generate_url_map(reviewsUrl, pages)

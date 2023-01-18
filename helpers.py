@@ -41,3 +41,11 @@ def json_data(filename):
 
     with open(file_path) as f:
         return json.load(f)
+
+def setall(d, keys, value):
+    for k in keys:
+        d[k] = value
+
+def Merge(dict1, dict2):
+    res = {**dict1, **dict2}
+    return res

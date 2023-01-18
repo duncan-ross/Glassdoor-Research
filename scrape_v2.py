@@ -1,5 +1,5 @@
 from random import *
-from definitions import DATA_DIR, DEFAULT_HEADERS, USER_AGENT_LIST, PROXY_LIST
+from definitions import DATA_DIR, DEFAULT_HEADERS, DEFAULT_BATCH_SIZE, USER_AGENT_LIST
 from bs4 import BeautifulSoup
 import grequests
 import requests
@@ -8,20 +8,21 @@ import re
 import sys
 import time
 import math
-from helpers import json_data
+from helpers import json_data, setall, Merge
 from get_review_urls import updateCompaniesMap
 from dateutil.parser import parse
 from legacy_scrape import scrape_review_info_legacy
 from concurrent import futures
 
 # Check if there are any new companies in the companies map to be scraped
-def main(fetchAllCompanies=False):
+def main(fetchAllCompanies=True):
 
     # Update the companies map with any new companies that the reviews are to be fetched for, and retrieve the companies_map
     #updateCompaniesMap()
     companies_map = json_data("companies_map")
     existing_company_reviews = json_data("company_reviews")
-    problems = json_data("problems")
+    problems = json_data("problematic")
+    progress = json_data("progress")
     numReviewsFetched = 0
 
     # Either force all reviews to be refetched, or find which companies' reviews haven't been retrieved yet
@@ -41,7 +42,7 @@ def main(fetchAllCompanies=False):
     reviewsData = existing_company_reviews
     # Fetch all reviews
     for i, (name, info) in enumerate(new_companies_map.items()):
-        if(name in existing_company_reviews or name in problems):
+        if(name in existing_company_reviews or name in problems or name in progress):
             #if (len(existing_company_reviews[name])>0 or existing_company_reviews[name]):
                 #if(len(existing_company_reviews[name])==10):
                 #    print("redoing a 10er")
@@ -62,11 +63,11 @@ def main(fetchAllCompanies=False):
         num_pages = get_num_pages(reviewsUrl)
         print("Num pages : %s" % num_pages)
 
-        responses = get_batched_requests(reviewsUrl, num_pages)
+        responses = get_review_pages(reviewsUrl, num_pages)
 
         # Iterate responses and parse data
         companyReviews = []
-        for index, response in enumerate(responses):
+        for index, response in responses.items():
             page_data = fetch_review_page_data(index, response)
             if page_data:
                 companyReviews += page_data
@@ -82,28 +83,104 @@ def main(fetchAllCompanies=False):
 
     print("TOTAL REVIEWS FETCHED: {}".format(numReviewsFetched))
 
+def get_review_pages(reviewsUrl, num_pages):
+    responses = {}
+    setall(responses, range(1, num_pages+1), None)
+    done = False
 
-def get_batched_requests(reviewsUrl, num_pages):
+    for j in range(5):
+        if (done): 
+            break
+        print("Attempting pass #{} of batches".format(j+1))
+        responses, done = get_batched_requests(reviewsUrl, responses)
+    
+    if not done:
+        for i, r in responses.items():
+            if not check_response(r):
+                r = get_single_request(reviewsUrl, i)
+
+    return responses
+
+
+
+def get_batched_requests(reviewsUrl, responses):
+    pages, new_responses = [], {}
+    done = True
+    for i, r in responses.items():
+        if not check_response(r):
+            pages.append(i)
+        if len(pages) == DEFAULT_BATCH_SIZE:
+            rs = generate_url_map(reviewsUrl, pages)
+            new_responses = Merge(new_responses, dict(zip(pages, grequests.map(rs))))
+            print("Progress: {}/{}".format(len(new_responses),len(responses)))
+            pages = []
+            time.sleep(uniform(10,12))
+
+    if len(pages) > 0:
+        rs = generate_url_map(reviewsUrl, pages)
+        new_responses = Merge(new_responses, dict(zip(pages, grequests.map(rs))))
+        print("Progress: {}/{}".format(len(new_responses),len(responses)))
+
+    for i, r in responses.items():
+        if not check_response(r):
+            if i in new_responses and check_response(new_responses[i]):
+                responses[i] = new_responses[i]
+            else:
+                done = False
+    
+    return responses, done
+
+
+
+def generate_url_map(reviewsUrl, pages):
+    rs = (
+        grequests.get(
+            reviewsUrl.replace(".htm", "_P" + str(p) + ".htm"),
+            headers={"User-Agent": choice(USER_AGENT_LIST)}
+        )
+        for p in pages
+        )
+    return rs
+
+
+
+def get_batched_requests_old(reviewsUrl, num_pages):
     # Send the requests for every page simultaneously
     batch = 100
     responses = []
     for j in range(math.ceil(num_pages/batch)):
         print("Batching requests: {}/{}".format(min(num_pages, (j+1)*batch),num_pages))
-        proxy = choice(PROXY_LIST)
         rs = (
             grequests.get(
                 reviewsUrl.replace(".htm", "_P" + str(k + 1) + ".htm"),
-                headers={"User-Agent": choice(USER_AGENT_LIST)},
-                proxies={"http": proxy, "https": proxy}
+                headers={"User-Agent": choice(USER_AGENT_LIST)}
             )
             for k in range(min(num_pages, (j)*batch), min(num_pages, (j+1)*batch))
         )
         responses += grequests.map(rs)
-        #time.sleep(uniform(1,2))
+        time.sleep(uniform(5,7))
     
+    retry_batch = {}
+
     for i, response in enumerate(responses):
         if not response or not response.content:
-            response = retry_failed_request(reviewsUrl, i)
+            retry_batch[i] = 'True'
+
+    if len(retry_batch):
+        print(retry_batch)
+    retries = retry_batches(reviewsUrl, retry_batch)
+
+    print(retries)
+    for i, response in enumerate(responses):
+        if not response or not response.content:
+            if i in retry_batch and retries[i].content:
+                soup = BeautifulSoup(retries[i].content, "html.parser")
+                if not soup or not soup.find_all(attrs={"class": "emp-reviews-feed"}):
+                    response = retry_failed_request(reviewsUrl, i)
+                else:
+                    response = retries[i]
+            else:
+                response = retry_failed_request(reviewsUrl, i)
         else:
             soup = BeautifulSoup(response.content, "html.parser")
             if not soup or not soup.find_all(attrs={"class": "emp-reviews-feed"}):
@@ -112,18 +189,55 @@ def get_batched_requests(reviewsUrl, num_pages):
     return responses
 
 
+def retry_batches(reviewsUrl, retry_batch):
+    print("Retrying {} requests.".format(len(retry_batch)))
+    batch = 100
+    responses = []
+    for j in range(math.ceil(len(retry_batch)/batch)):
+        time.sleep(uniform(5,7))
+        print("Retrying-- Batching requests: {}/{}".format(min(len(retry_batch), (j+1)*batch),len(retry_batch)))
+        rs = (
+            grequests.get(
+                reviewsUrl.replace(".htm", "_P" + str(list(retry_batch.keys())[k] + 1) + ".htm"),
+                headers={"User-Agent": choice(USER_AGENT_LIST)}
+            )
+            for k in range(min(len(retry_batch), (j)*batch), min(len(retry_batch), (j+1)*batch))
+        )
+        responses += grequests.map(rs)
+    
+    x = {}
+    for i in range(len(retry_batch)):
+        x[list(retry_batch.keys())[i]] = responses[i]
+    return x
+
+
+# Checks if a given GET response has the information we need.
+def check_response(response):
+    if not response or not response.content:
+        return False
+    else:
+        soup = BeautifulSoup(response.content, "html.parser")
+        if not soup or not soup.find_all(attrs={"class": "emp-reviews-feed"}):
+            return False
+    
+    return True
+
+
 # Retry getting the page data for failed responses
-def retry_failed_request(reviewsUrl, page_num):
+def get_single_request(reviewsUrl, page_num):
     print("Retrying page {}".format(page_num))
     for _ in range(5):
-        response = requests.get(
-                    reviewsUrl.replace(".htm", "_P" + str(page_num + 1) + ".htm"),
-                    headers=DEFAULT_HEADERS,
-                )
-        if(response and response.content):
-            print("Success")
-            return response
         time.sleep(uniform(1,3))
+        try:
+            response = requests.get(
+                        reviewsUrl.replace(".htm", "_P" + str(page_num + 1) + ".htm"),
+                        headers=DEFAULT_HEADERS,
+                    )
+            if(response and response.content):
+                print("Success")
+                return response
+        except Exception as e:
+            print("exception")
     print("Failed")
     return None
     

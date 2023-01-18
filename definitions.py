@@ -1,5 +1,7 @@
 import os
 
+DEFAULT_BATCH_SIZE = 100
+
 DEFAULT_HEADERS = {"User-Agent": "Mozilla/5.0"}
 
 USER_AGENT_LIST = [
@@ -22,24 +24,6 @@ USER_AGENT_LIST = [
         "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.24 (KHTML, like Gecko) Chrome/19.0.1055.1 Safari/535.24",
         "Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/535.24 (KHTML, like Gecko) Chrome/19.0.1055.1 Safari/535.24"
     ]
-
-PROXY_LIST = [
-            '163.116.158.213',
-            '163.116.177.39',
-            '134.238.252.143',
-            '163.116.177.50',
-            '65.108.230.239',
-            '190.61.88.147',
-            '61.220.170.133',
-            '163.116.248.39',
-            '163.116.158.212',
-            '163.116.177.46',
-            '5.9.139.204',
-            '163.116.158.182',
-            '104.223.135.178',
-            '194.87.188.114',
-            '163.116.248.56'
-]
 
 GLASSDOOR_API_HOST_URL = "http://api.glassdoor.com/api/api.htm"
 

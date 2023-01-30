@@ -93,10 +93,23 @@ def main4():
     with open("data/missingggggg.json", "x") as f:
         f.write(json.dumps(missing, sort_keys=True, indent=2))
     
+def mergeLarge():
+    r1 = load("data/company_reviews_amazoncom_1.json")
+    tot = len(r1["amazoncom"])
+    for i in range(2,81):
+        r2 = load("data/company_reviews_amazoncom_{}.json".format(i))
+        r1["amazoncom"] += r2["amazoncom"]
+        tot += len(r2["amazoncom"])
+
+    print(tot)
+    with open("last_missing_reviews_AMAZON.json", "x") as f:
+        f.write(json.dumps(r1, sort_keys=True, indent=2))
 
     
-main3()
-main4()
+#main3()
+#main4()
+mergeLarge()
+
 
 
 

@@ -12,6 +12,7 @@ from helpers import json_data, setall, Merge
 from get_review_urls import updateCompaniesMap
 from dateutil.parser import parse
 from legacy_scrape import scrape_review_info_legacy
+ITER = 2
 
 # Check if there are any new companies in the companies map to be scraped
 def main(fetchAllCompanies=True):
@@ -96,7 +97,7 @@ def mainForCompany(name, URL):
     # Fetch all reviews
     start = time.time()
 
-    responses = get_review_pages(reviewsUrl, 891)
+    responses = get_review_pages(reviewsUrl, 1000)
     # Iterate responses and parse data
     companyReviews = []
     for index, response in responses.items():
@@ -105,7 +106,7 @@ def mainForCompany(name, URL):
             companyReviews += page_data
 
     reviewsData[name] = companyReviews
-    write_reviews_to_file_company(name, reviewsData,2)
+    write_reviews_to_file_company(name, reviewsData,ITER)
     print(
         "Found {} review(s) for {} in {:.3f} seconds".format(
             len(companyReviews), name, time.time() - start
@@ -166,7 +167,7 @@ def get_batched_requests(reviewsUrl, responses):
 def generate_url_map(reviewsUrl, pages):
     rs = (
         grequests.get(
-            reviewsUrl.replace(".htm", "_P" + str(p+500) + ".htm"),
+            reviewsUrl.replace(".htm", "_P" + str(p+(ITER-1)*1000) + ".htm"),
             headers={"User-Agent": choice(USER_AGENT_LIST)}
         )
         for p in pages
@@ -454,6 +455,7 @@ def write_reviews_to_file_company(name, reviewsData,iter):
 if __name__ == "__main__":
     force = "--force" in sys.argv
     # main(fetchAllCompanies=force)
-    main()
+    #main()
     #mainForCompany("unitedhealth group inc", "https://www.glassdoor.com/Reviews/UnitedHealth-Group-Reviews-E1991.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR")
     #mainForCompany("us bancorp", "https://www.glassdoor.com/Reviews/U-S-Bank-Reviews-E8937.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR")
+    mainForCompany("amazoncom","https://www.glassdoor.com/Reviews/Amazon-Reviews-E6036.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR")

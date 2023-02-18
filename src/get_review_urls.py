@@ -2,7 +2,7 @@ from random import uniform
 import time
 from definitions import GLASSDOOR_REVIEWS_BASE_URL, DATA_DIR, EMPLOYEE_STATUS_FILTER
 from helpers import slugify, json_data
-from api import get_company
+from src.api import get_company
 import json
 from time import sleep
 

@@ -43,7 +43,7 @@ def tokenize_rev(rev_part, porter_stemmer):
     tok_stemmed.append(' '.join(porter_stemmer.stem(w) for w in words))
 
   if len(tok_stemmed) != len(tok_lower):
-    print "[pca]_sent and [pca]_sent_stem of different lengths. Debugging..."
+    print("[pca]_sent and [pca]_sent_stem of different lengths. Debugging...")
     code.interact(local = locals())
 
   return tok_lower, tok_stemmed
@@ -208,7 +208,7 @@ def process_sents(control, rev_limit):
     print("ERROR: INVALID ENTRY FOR CONTROL PARAMETER. Exiting...")
     exit()
 
-  print "Number of sentences:", len(sents_processed)
+  print("Number of sentences:"+ len(sents_processed))
   return sents_processed, results_filename
 
 
@@ -276,57 +276,57 @@ def pre_post_sentiment(topic_sentiment):
     ttest_results = np.stack((pros_list, cons_list, pros_cons_list))
     results[key] = ttest_results
 
-    print "\n\n", key.upper()
+    print("\n\n"+ key.upper())
     
     # Print numbers of mentions for each topic
-    print "Pre-IPO mentions:", len(pre)
-    print "Post-IPO mentions:", len(post)
+    print ("Pre-IPO mentions:"+ len(pre))
+    print ("Post-IPO mentions:"+ len(post))
 
     # Pros analysis
-    print "Pros comparison:", pros_ttest
+    print ("Pros comparison:"+ pros_ttest)
     
     # Cons analysis
-    print "Cons comparison:", cons_ttest
+    print ("Cons comparison:"+ cons_ttest)
 
     # Adv analysis
-    print "Adv comparison:", adv_ttest 
+    print ("Adv comparison:"+ adv_ttest )
 
     # Pros + Cons analysis
-    print "Pros+Cons comparison:", pros_cons_ttest
+    print ("Pros+Cons comparison:"+ pros_cons_ttest)
 
     # All categories analysis
-    print "All comparison:", all_ttest, "\n"
+    print ("All comparison:"+ all_ttest, "\n")
 
     # Print out means if the p-value < 0.05
     if np.mean(pre_pros) > np.mean(post_pros) and pros_ttest.pvalue < .05:
-      print "Pre-IPO pros mean ("+str(np.mean(pre_pros))+") greater than post-IPO pros mean ("+str(np.mean(post_pros))+")"
+      print ("Pre-IPO pros mean ("+str(np.mean(pre_pros))+") greater than post-IPO pros mean ("+str(np.mean(post_pros))+")")
     elif pros_ttest.pvalue < .05:
-      print "Post-IPO pros mean ("+str(np.mean(post_pros))+") greater than pre-IPO pros mean ("+str(np.mean(pre_pros))+")"
+      print ("Post-IPO pros mean ("+str(np.mean(post_pros))+") greater than pre-IPO pros mean ("+str(np.mean(pre_pros))+")")
     else:
       pass
 
     if np.mean(pre_cons) > np.mean(post_cons) and cons_ttest.pvalue < .05:
-      print "Post-IPO cons mean ("+str(np.mean(post_cons))+") more negative than pre-IPO cons mean ("+str(np.mean(pre_cons))+")"
+      print ("Post-IPO cons mean ("+str(np.mean(post_cons))+") more negative than pre-IPO cons mean ("+str(np.mean(pre_cons))+")")
     elif cons_ttest.pvalue < .05:
-      print "Pre-IPO cons mean ("+str(np.mean(pre_pros))+") less negative than post-IPO cons mean ("+str(np.mean(post_pros))+")"
+      print ("Pre-IPO cons mean ("+str(np.mean(pre_pros))+") less negative than post-IPO cons mean ("+str(np.mean(post_pros))+")")
     else:
       pass
 
     if np.mean(pre_adv) > np.mean(post_adv) and adv_ttest.pvalue < .05:
-      print "Pre-IPO adv mean ("+str(np.mean(pre_adv))+") greater than post-IPO adv mean ("+str(np.mean(post_adv))+")"
+      print ("Pre-IPO adv mean ("+str(np.mean(pre_adv))+") greater than post-IPO adv mean ("+str(np.mean(post_adv))+")")
     elif  adv_ttest.pvalue < .05:
-      print "Post-IPO adv mean ("+str(np.mean(post_adv))+") greater than pre-IPO pros mean ("+str(np.mean(pre_adv))+")"
+      print ("Post-IPO adv mean ("+str(np.mean(post_adv))+") greater than pre-IPO pros mean ("+str(np.mean(pre_adv))+")")
     else:
       pass
 
     if np.mean(pre_pros + pre_cons) > np.mean(post_pros + post_cons) and pros_cons_ttest.pvalue < .05:
-      print "Pre-IPO pros+cons mean ("+str(np.mean(pre_pros + pre_cons))+") greater than post-IPO pros+cons mean ("+str(np.mean(post_pros + post_cons))+")"
+      print ("Pre-IPO pros+cons mean ("+str(np.mean(pre_pros + pre_cons))+") greater than post-IPO pros+cons mean ("+str(np.mean(post_pros + post_cons))+")")
     elif pros_cons_ttest.pvalue < .05:
-      print "Post-IPO pros+cons mean ("+str(np.mean(post_pros+ post_cons))+") greater than pre-IPO pros+cons mean ("+str(np.mean(pre_pros + pre_cons))+")"
+      print ("Post-IPO pros+cons mean ("+str(np.mean(post_pros+ post_cons))+") greater than pre-IPO pros+cons mean ("+str(np.mean(pre_pros + pre_cons))+")")
     else:
       pass
 
-    print "\n"
+    print ("\n")
 
   return results
 
@@ -358,7 +358,7 @@ def create_r_df(sents, topics):
         compound_score = analyzer.polarity_scores(row['sent'])['compound']
         df.set_value(index, key, compound_score)
     t1 = time.time()
-    print "time:", (t1 - t0)
+    print ("time:"+ (t1 - t0))
   return df
 
 
@@ -383,7 +383,7 @@ def write_results_to_psql(table_name, results):
   
   results.to_sql(table_name, engine, if_exists = 'replace')
   t1 = time.time()
-  print "time:", (t1 - t0)
+  print ("time:"+ (t1 - t0))
 
 
 

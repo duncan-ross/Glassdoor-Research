@@ -12,7 +12,7 @@ from helpers import json_data, setall, Merge
 from get_review_urls import updateCompaniesMap
 from dateutil.parser import parse
 from legacy_scrape import scrape_review_info_legacy
-globaliter = 2
+globaliter = 81
 ITERSIZE = 100
 
 # Check if there are any new companies in the companies map to be scraped
@@ -86,7 +86,7 @@ def main(fetchAllCompanies=True):
     print("TOTAL REVIEWS FETCHED: {}".format(numReviewsFetched))
 
 def mainForCompany(name, URL):
-
+    time.sleep(uniform(10,15))
     # Update the companies map with any new companies that the reviews are to be fetched for, and retrieve the companies_map
     #updateCompaniesMap()
 

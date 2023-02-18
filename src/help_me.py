@@ -105,10 +105,16 @@ def mergeLarge():
     with open("last_missing_reviews_AMAZON.json", "x") as f:
         f.write(json.dumps(r1, sort_keys=True, indent=2))
 
+def main5():
+    r1 = load("combined_reviews_master.json")
+    r2 = load("/Users/duncanross/Desktop/Glassdoor-Research/data/LAST_MISSING_LETS GO.json")
+    combined = Merge(r1,r2)
+    with open("glassdoor_reviews_final.json", "x") as f:
+        f.write(json.dumps(combined, sort_keys=True, indent=2))
     
 #main3()
 #main4()
-mergeLarge()
+main5()
 
 
 

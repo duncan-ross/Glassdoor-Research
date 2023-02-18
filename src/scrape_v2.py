@@ -11,7 +11,7 @@ import math
 from helpers import json_data, setall, Merge
 from get_review_urls import updateCompaniesMap
 from dateutil.parser import parse
-from legacy_scrape import scrape_review_info_legacy
+from src.legacy_scrape import scrape_review_info_legacy
 globaliter = 81
 ITERSIZE = 100
 

@@ -4,16 +4,16 @@ Python utility for fetching company reviews using the Glassdoor API and Beautifu
 
 ## Requirements:
 
-1. Python 2.7.X
+1. Python 3.7.X
 2. beautifulsoup4
-3. requests
+3. grequests
 
 ## Getting started
 
 1. Clone this repo:
 
     ```
-    $ git clone https://github.com/whittlbc/glassdoor-py
+    $ git clone https://github.com/duncan-ross/Glassdoor-Research
     ```
 
 2. Make sure virtualenv is installed:

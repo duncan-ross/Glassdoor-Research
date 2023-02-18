@@ -12,17 +12,18 @@ from helpers import json_data, setall, Merge
 from get_review_urls import updateCompaniesMap
 from dateutil.parser import parse
 from legacy_scrape import scrape_review_info_legacy
-from concurrent import futures
+globaliter = 81
+ITERSIZE = 100
 
 # Check if there are any new companies in the companies map to be scraped
 def main(fetchAllCompanies=True):
 
     # Update the companies map with any new companies that the reviews are to be fetched for, and retrieve the companies_map
     #updateCompaniesMap()
-    companies_map = json_data("companies_map")
+    companies_map = json_data("last_missing")
     existing_company_reviews = json_data("company_reviews")
-    problems = json_data("problematic")
-    progress = json_data("progress")
+    problems = json_data("problematic1")
+    progress = json_data("progress1")
     numReviewsFetched = 0
 
     # Either force all reviews to be refetched, or find which companies' reviews haven't been retrieved yet
@@ -62,6 +63,8 @@ def main(fetchAllCompanies=True):
 
         num_pages = get_num_pages(reviewsUrl)
         print("Num pages : %s" % num_pages)
+        if num_pages > 1000:
+            continue
 
         responses = get_review_pages(reviewsUrl, num_pages)
         # Iterate responses and parse data
@@ -82,12 +85,42 @@ def main(fetchAllCompanies=True):
 
     print("TOTAL REVIEWS FETCHED: {}".format(numReviewsFetched))
 
+def mainForCompany(name, URL):
+    time.sleep(uniform(10,15))
+    # Update the companies map with any new companies that the reviews are to be fetched for, and retrieve the companies_map
+    #updateCompaniesMap()
+
+    # Either force all reviews to be refetched, or find which companies' reviews haven't been retrieved yet
+    reviewsUrl = URL
+    num_pages = get_num_pages(reviewsUrl)
+    print("Num pages : %s" % num_pages)
+    reviewsData = {}
+    # Fetch all reviews
+    start = time.time()
+
+    responses = get_review_pages(reviewsUrl, ITERSIZE)
+    # Iterate responses and parse data
+    companyReviews = []
+    for index, response in responses.items():
+        page_data = fetch_review_page_data(index, response)
+        if page_data:
+            companyReviews += page_data
+
+    reviewsData[name] = companyReviews
+    write_reviews_to_file_company(name, reviewsData,globaliter)
+    print(
+        "Found {} review(s) for {} in {:.3f} seconds".format(
+            len(companyReviews), name, time.time() - start
+        )
+    )
+
+
 def get_review_pages(reviewsUrl, num_pages):
     responses = {}
     setall(responses, range(1, num_pages+1), None)
     done = False
 
-    for j in range(5):
+    for j in range(max(math.floor(num_pages/250), 5)):
         if (done): 
             break
         print("Attempting pass #{} of batches".format(j+1))
@@ -135,58 +168,13 @@ def get_batched_requests(reviewsUrl, responses):
 def generate_url_map(reviewsUrl, pages):
     rs = (
         grequests.get(
-            reviewsUrl.replace(".htm", "_P" + str(p) + ".htm"),
+            reviewsUrl.replace(".htm", "_P" + str(p+(globaliter-1)*ITERSIZE) + ".htm"),
             headers={"User-Agent": choice(USER_AGENT_LIST)}
         )
         for p in pages
         )
     return rs
 
-
-
-def get_batched_requests_old(reviewsUrl, num_pages):
-    # Send the requests for every page simultaneously
-    batch = 100
-    responses = []
-    for j in range(math.ceil(num_pages/batch)):
-        print("Batching requests: {}/{}".format(min(num_pages, (j+1)*batch),num_pages))
-        rs = (
-            grequests.get(
-                reviewsUrl.replace(".htm", "_P" + str(k + 1) + ".htm"),
-                headers={"User-Agent": choice(USER_AGENT_LIST)}
-            )
-            for k in range(min(num_pages, (j)*batch), min(num_pages, (j+1)*batch))
-        )
-        responses += grequests.map(rs)
-        time.sleep(uniform(5,7))
-    
-    retry_batch = {}
-
-    for i, response in enumerate(responses):
-        if not response or not response.content:
-            retry_batch[i] = 'True'
-
-    if len(retry_batch):
-        print(retry_batch)
-    retries = retry_batches(reviewsUrl, retry_batch)
-
-    print(retries)
-    for i, response in enumerate(responses):
-        if not response or not response.content:
-            if i in retry_batch and retries[i].content:
-                soup = BeautifulSoup(retries[i].content, "html.parser")
-                if not soup or not soup.find_all(attrs={"class": "emp-reviews-feed"}):
-                    response = retry_failed_request(reviewsUrl, i)
-                else:
-                    response = retries[i]
-            else:
-                response = retry_failed_request(reviewsUrl, i)
-        else:
-            soup = BeautifulSoup(response.content, "html.parser")
-            if not soup or not soup.find_all(attrs={"class": "emp-reviews-feed"}):
-                response = retry_failed_request(reviewsUrl, i)
-    
-    return responses
 
 
 def retry_batches(reviewsUrl, retry_batch):
@@ -213,7 +201,7 @@ def retry_batches(reviewsUrl, retry_batch):
 
 # Checks if a given GET response has the information we need.
 def check_response(response):
-    if not response or not response.content:
+    if not response or not response.content or response.status_code != 200:
         return False
     else:
         soup = BeautifulSoup(response.content, "html.parser")
@@ -270,11 +258,11 @@ def fetch_review_page_data(page_num, response):
 
     reviews_soup = reviews_feed[0].find_all("li", attrs={"class": "empReview"})
 
-    reviews_data = re.search(r'"reviews":(\[.*?}\])}', response.text, flags=re.S).group(
-        1
-    )
+    reviews_data = re.search(r'"reviews":(\[.*?}\])}', response.text, flags=re.S)
+
     data = []
     if reviews_data:
+        reviews_data = reviews_data.group(1)
         try:
             reviews_data = json.loads(reviews_data)
         except(json.decoder.JSONDecodeError):
@@ -286,9 +274,15 @@ def fetch_review_page_data(page_num, response):
                     data.append(review_info)
 
             return data
+    else:
+        return data
     
     for review_soup, review_data in zip(reviews_soup, reviews_data):
-        review_info = scrape_review_info(review_soup, review_data)
+        try:
+            review_info = scrape_review_info(review_soup, review_data)
+        except Exception:
+            review_info = None
+
         if review_info:
             data.append(review_info)
 
@@ -298,6 +292,8 @@ def fetch_review_page_data(page_num, response):
 # Scrape the review info from the html from a single review
 def scrape_review_info(soup, data):
     review = {}
+    if not data:
+        return None
 
     # Get the text information
     parse_text_information(data, review)
@@ -316,9 +312,20 @@ def scrape_review_info(soup, data):
 
 # Find the main text information such as pros, cons, advice to management
 def parse_text_information(data, review):
-    review["pros"] = data["pros"]
-    review["cons"] = data["cons"]
-    review["advice"] = data["advice"]
+    if "pros" in data:
+        review["pros"] = data["pros"]
+    else:
+        review["pros"] = None
+
+    if "cons" in data:
+        review["cons"] = data["cons"]
+    else:
+        review["cons"] = None
+
+    if "advice" in data:
+        review["advice"] = data["advice"]
+    else:
+        review["advice"] = None
     return
 
 
@@ -397,8 +404,17 @@ def write_reviews_to_file(reviewsData):
     with open("{}/company_reviews.json".format(DATA_DIR), "w+") as f:
         f.write(json.dumps(reviewsData, sort_keys=True, indent=2))
 
+# Writes the reviews to company_reviews.json in real time
+def write_reviews_to_file_company(name, reviewsData, iter):
+    with open("{}/company_reviews_{}_{}.json".format(DATA_DIR,name,iter), "w+") as f:
+        f.write(json.dumps(reviewsData, sort_keys=True, indent=2))
+
 
 if __name__ == "__main__":
     force = "--force" in sys.argv
     # main(fetchAllCompanies=force)
-    main()
+    #main()
+
+    while globaliter < 148:
+        mainForCompany("amazoncom","https://www.glassdoor.com/Reviews/Amazon-Reviews-E6036.htm?filter.defaultEmploymentStatuses=false&filter.defaultLocation=false&filter.employmentStatus=FREELANCE&filter.employmentStatus=PART_TIME&filter.employmentStatus=CONTRACT&filter.employmentStatus=INTERN&filter.employmentStatus=REGULAR")
+        globaliter +=1

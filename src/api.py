@@ -1,8 +1,6 @@
 import requests
-from helpers import local_ip, config
 from definitions import GLASSDOOR_API_HOST_URL, DEFAULT_HEADERS
 
-# LOCAL_IP = local_ip()
 LOCAL_IP = "192.168.0.50"
 
 # Finds and returns the associated Glassdoor URL for the name provided

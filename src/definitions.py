@@ -31,7 +31,7 @@ GLASSDOOR_REVIEWS_BASE_URL = "https://www.glassdoor.com/Reviews"
 
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 
-DATA_DIR = BASE_DIR + "/data"
+DATA_DIR = "../data"
 
 # SMJ_DIR = '/Users/twhittle/Google_Drive/Documents/glassdoor_analysis/smj_submission'
 CEM_DIR = DATA_DIR + "/cem_data"
@@ -110,3 +110,6 @@ EXTRANEOUS_WORDS = [
     "ltd",
     "hldng",
 ]
+
+WRITTEN_REVIEW_TOKENS = [ "advice","cons", "pros"]
+

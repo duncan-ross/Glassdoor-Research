@@ -112,8 +112,6 @@ def main5():
     with open("glassdoor_reviews_final.json", "x") as f:
         f.write(json.dumps(combined, sort_keys=True, indent=2))
     
-#main3()
-#main4()
 main5()
 
 

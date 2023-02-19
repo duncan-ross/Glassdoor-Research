@@ -4,7 +4,6 @@ from definitions import GLASSDOOR_REVIEWS_BASE_URL, DATA_DIR, EMPLOYEE_STATUS_FI
 from helpers import slugify, json_data
 from src.api import get_company
 import json
-from time import sleep
 
 # This function updates companies_map.json using data from company_names.json and companies_not_found.json. It uses the Glassdoor API to retrieve the url of any companies that are in company_names.json, but have not yet been added to companies_map.json or companies_not_found.json.
 def updateCompaniesMap():

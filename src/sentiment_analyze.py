@@ -390,37 +390,37 @@ def write_results_to_psql(table_name, results):
 # Perform aggregate statics on the companies' sentiment list
 
 topics = {
-  # 'compensation+benefits': "compens|pay|paid|salari|benefit|perk|401k|retir",
+  'compensation+benefits': "compens|pay|paid|salari|benefit|perk|401k|retir",
   'compensation': "compens|pay|paid|salari",
   'benefits': "benefit|perk|401k|retir|lunch",
-  # 'product': "product|technolog|softwar",
+  'product': "product|technolog|softwar",
   'career_dev': "promot|opportun|career",
   'culture': "cultur",
-  # 'wl_bal': "worklife|work life|work environ|atmospher",
-  # 'politics': "politic|nepostism|honest|ethic",
-  # 'boys_club': "boy|frat|sex",
+  'wl_bal': "worklife|work life|work environ|atmospher",
+  'politics': "politic|nepostism|honest|ethic",
+  'boys_club': "boy|frat|sex",
   'manager': "manag|supervisor|boss",
-  # 'manager_v2': "manag|supervisor|",
-  # 'startup': "startup",
+  'manager_v2': "manag|supervisor|",
+  'startup': "startup",
   'leader': "leader|exec|execut|ceo|cto|coo",
-  # 'leader_v2': "leader|exec|execut|ceo|cto|coo|director",
-  # 'strategy': "strategi|vision|mission",
-  # 'mission': 'mission|purpos',
-  # 'communication+transparency': "commun|transpar",
+  'leader_v2': "leader|exec|execut|ceo|cto|coo|director",
+  'strategy': "strategi|vision|mission",
+  'mission': 'mission|purpos',
+  'communication+transparency': "commun|transpar",
   'communication': "commun",
   'transparency': "transpar",
-  # 'integrity': "integr|trust|honest|moral|fair",
-  # 'benevolence': "benevol|valu|integr|trust|respect|welfar|care",
-  # 'benevolence_new': "benevol|valu|respect|welfar|care",
-  # 'benevolence_and_integrity': "valu|integr|trust|respect|welfar|care|honest|moral|fair",
-  # 'finance': "cost|financ|wall st|audit|stock|wall street|price",
+  'integrity': "integr|trust|honest|moral|fair",
+  'benevolence': "benevol|valu|integr|trust|respect|welfar|care",
+  'benevolence_new': "benevol|valu|respect|welfar|care",
+  'benevolence_and_integrity': "valu|integr|trust|respect|welfar|care|honest|moral|fair",
+  'finance': "cost|financ|wall st|audit|stock|wall street|price",
   'policies': 'polici|procedur|rule|process|bureaucraci|bureaucrat|admin|administr|heirarchi',
-  'respect': 'benevol|respect|disrespect|care|uncar|dignit|kind|unkind|appreci|unappreci|condescend', # TW: Consider adding appreciate, disrespect, condescend (08/12/19)
+  'respect': 'benevol|respect|disrespect|care|uncar|dignit|kind|unkind|appreci|unappreci|condescend',
   'DJ': 'compens|pay|paid|salari|benefit|perk|401k|retir|lunch|promot|opportun|career',
   'PJ': 'polici|procedur|rule|process|bureaucraci|bureaucrat|admin|administr|heirarchi|transpar|commun|leader|exec|execut|ceo|cto|coo',
-  'IJ': 'manag|supervisor|boss|cultur|benevol|respect|disrespect|care|uncar|dignit|kind|unkind|appreci|unappreci|condescend'
-  # 'trust': 'trust|distrust',
-  # 'fairness': 'fair|unfair'
+  'IJ': 'manag|supervisor|boss|cultur|benevol|respect|disrespect|care|uncar|dignit|kind|unkind|appreci|unappreci|condescend',
+  'trust': 'trust|distrust',
+  'fairness': 'fair|unfair'
   }
 
 

@@ -69,34 +69,9 @@ def remove_extraneous(str):
     return ' '.join(final_list)
 
 
-def add_ipo_dates():
-    # from ipos excel file
-    iposexcel_data_df = pandas.read_excel("data/ipo-2000s.xlsx", sheet_name="Sheet1", index_col = None)
-    iposexcel_data_df = iposexcel_data_df[['Issuer', 'Date']].drop_duplicates(subset='Issuer', keep="first")
-    iposexcel_data_df['Issuer'] = fix_company_names(iposexcel_data_df['Issuer'].tolist())
-    
-    # from compustat excel file
-    compustat_data_df = pandas.read_excel('data/compustat_data.xlsx', sheet_name='companies', index_col = None)
-    compustat_data_df = compustat_data_df[['conm', 'ipodate']].drop_duplicates(subset='conm', keep="first")
-    compustat_data_df['conm'] = fix_company_names(compustat_data_df['conm'].tolist())
-
-    companies_map = helpers.json_data('companies_map')
-    
-    for company in companies_map:
-        c = remove_extraneous(remove_punctuation(company).lower().strip())
-        if c in iposexcel_data_df['Issuer'].values:
-            date = iposexcel_data_df[iposexcel_data_df['Issuer'] == c]['Date'].values[0]
-        elif c in compustat_data_df['conm'].values:
-            date = compustat_data_df[compustat_data_df['conm'] == c]['ipodate'].values[0]
-        else:
-            date = None
-        companies_map[company]['date'] = date
-
-    with open("data/companies_map_new.json", "w") as outfile:
-        print("Rewriting companies_map.json")
-        json.dump(companies_map, outfile, indent=2, sort_keys=True, default=str)
 
 #fetch_company_list('data/compustat_data.xlsx','companies')
 #fix_scraped_files(DATA_DIR)
 
-add_ipo_dates()
+
+

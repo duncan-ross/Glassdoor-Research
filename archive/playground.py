@@ -6,7 +6,7 @@ import bs4 as bs
 import re
 
 from helpers import json_data
-
+"""
 LOCAL_IP = "192.168.0.50"
 GLASSDOOR_API_HOST_URL = "http://api.glassdoor.com/api/api.htm"
 GLASSDOOR_PARTNER_ID = "157426"
@@ -75,3 +75,8 @@ json_object = json.dumps(res)
 # Writing to sample.json
 with open("data/sample.json", "w") as outfile:
     outfile.write(json_object)
+
+"""
+import time
+date = time("2016-09-23 00:00:00")
+print(date)

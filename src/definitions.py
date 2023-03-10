@@ -31,7 +31,7 @@ GLASSDOOR_REVIEWS_BASE_URL = "https://www.glassdoor.com/Reviews"
 
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 
-DATA_DIR = BASE_DIR + "/data"
+DATA_DIR = "/Users/duncanross/Desktop/Glassdoor-Research/data"
 
 # SMJ_DIR = '/Users/twhittle/Google_Drive/Documents/glassdoor_analysis/smj_submission'
 CEM_DIR = DATA_DIR + "/cem_data"
@@ -110,3 +110,38 @@ EXTRANEOUS_WORDS = [
     "ltd",
     "hldng",
 ]
+
+WRITTEN_REVIEW_TOKENS = [ "advice","cons", "pros"]
+
+TOPICS = {
+  'compensation+benefits': "compens|pay|paid|salari|benefit|perk|401k|retir",
+  'compensation': "compens|pay|paid|salari",
+  'benefits': "benefit|perk|401k|retir|lunch",
+  'product': "product|technolog|softwar",
+  'career_dev': "promot|opportun|career",
+  'culture': "cultur",
+  'wl_bal': "worklife|work life|work environ|atmospher",
+  'politics': "politic|nepostism|honest|ethic",
+  'boys_club': "boy|frat|sex",
+  'manager': "manag|supervisor|boss",
+  'manager_v2': "manag|supervisor|",
+  'startup': "startup",
+  'leader': "leader|exec|execut|ceo|cto|coo|director",
+  'strategy': "strategi|vision|mission",
+  'mission': 'mission|purpos',
+  'communication+transparency': "commun|transpar",
+  'communication': "commun",
+  'transparency': "transpar",
+  'integrity': "integr|trust|honest|moral|fair",
+  'benevolence': "benevol|valu|integr|trust|respect|welfar|care",
+  'benevolence_new': "benevol|valu|respect|welfar|care",
+  'benevolence_and_integrity': "valu|integr|trust|respect|welfar|care|honest|moral|fair",
+  'finance': "cost|financ|wall st|audit|stock|wall street|price",
+  'policies': 'polici|procedur|rule|process|bureaucraci|bureaucrat|admin|administr|heirarchi',
+  'respect': 'benevol|respect|disrespect|care|uncar|dignit|kind|unkind|appreci|unappreci|condescend',
+  'DJ': 'compens|pay|paid|salari|benefit|perk|401k|retir|lunch|promot|opportun|career',
+  'PJ': 'polici|procedur|rule|process|bureaucraci|bureaucrat|admin|administr|heirarchi|transpar|commun|leader|exec|execut|ceo|cto|coo',
+  'IJ': 'manag|supervisor|boss|cultur|benevol|respect|disrespect|care|uncar|dignit|kind|unkind|appreci|unappreci|condescend',
+  'trust': 'trust|distrust',
+  'fairness': 'fair|unfair'
+  }

@@ -11,7 +11,7 @@ import math
 from helpers import json_data, setall, Merge
 from get_review_urls import updateCompaniesMap
 from dateutil.parser import parse
-from src.legacy_scrape import scrape_review_info_legacy
+from archive.legacy_scrape import scrape_review_info_legacy
 globaliter = 81
 ITERSIZE = 100
 
@@ -20,7 +20,7 @@ def main(fetchAllCompanies=True):
 
     # Update the companies map with any new companies that the reviews are to be fetched for, and retrieve the companies_map
     #updateCompaniesMap()
-    companies_map = json_data("last_missing")
+    companies_map = json_data("companies_map")
     existing_company_reviews = json_data("company_reviews")
     problems = json_data("problematic1")
     progress = json_data("progress1")

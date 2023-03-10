@@ -3,6 +3,7 @@ from definitions import DATA_DIR, EXTRANEOUS_WORDS
 import string
 import json
 import pandas
+import helpers as helpers
 
 def fetch_company_list(filename,sheet):
     excel_data_df = pandas.read_excel(filename, sheet_name=sheet, index_col = None)
@@ -26,17 +27,20 @@ def fix_scraped_files(wd):
     #    file = wd + "/company_reviews.json"
     #    fix_companies_map(file)
 
+def fix_company_names(old_company_names):
+    new_company_names = [
+        remove_extraneous(remove_punctuation(n).lower().strip()) for n in old_company_names
+    ]
+    return new_company_names
 
-def fix_company_names(file_name):
+def fix_company_names_in_map(file_name):
 
     # Open the old file
     with open(file_name) as f:
         old_company_names = json.load(f)
 
     # Iterate over the company names and apply the transformation
-    new_company_names = [
-        remove_extraneous(remove_punctuation(n).lower().strip()) for n in old_company_names
-    ]
+    new_company_names = fix_company_names(old_company_names)
 
     # Rewrite the company names
     with open(file_name, "w") as outfile:
@@ -64,5 +68,10 @@ def remove_extraneous(str):
     final_list = [word for word in edit_string_as_list if word not in EXTRANEOUS_WORDS]
     return ' '.join(final_list)
 
+
+
 #fetch_company_list('data/compustat_data.xlsx','companies')
-fix_scraped_files(DATA_DIR)
+#fix_scraped_files(DATA_DIR)
+
+
+

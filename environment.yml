@@ -1,0 +1,22 @@
+name: glassdoor
+channels:
+  - pytorch
+  - defaults
+dependencies:
+  - python=3.8
+  - pandas
+  - pytorch
+  - numpy
+  - scipy
+  - scikit-learn
+  - tqdm
+  - docopt
+  - nltk
+  - torchvision
+  - pip
+  - transformers
+  - pip:
+    - tensorboard
+    - datasets
+    - ijson
+    - h5py

@@ -7,6 +7,8 @@ from sklearn.decomposition import PCA
 from transformers import AutoTokenizer, AutoModel
 import argparse
 
+from helpers import extract_reviews
+
 argp = argparse.ArgumentParser()
 argp.add_argument("--num", type=int, default=0)
 args = argp.parse_args()

@@ -6,11 +6,14 @@ from sklearn.cluster import KMeans
 from sklearn.decomposition import PCA
 from transformers import AutoTokenizer, AutoModel
 import argparse
+import datetime
+import os
+import re
 
 from helpers import extract_reviews
 
 argp = argparse.ArgumentParser()
-argp.add_argument("--num", type=int, default=0)
+argp.add_argument("--num", type=str, default=0)
 args = argp.parse_args()
 
 # Load BERT model
@@ -25,7 +28,7 @@ else:
     device = torch.device("cpu")
 
 # Load the data from the JSON file
-with open(f"./data/company_reviews_{args.num}.json", "r") as f:
+with open(f"./data/company_reviews.json", "r") as f:
     data = json.load(f)
 
 # Extract the reviews
@@ -35,17 +38,31 @@ for company in tqdm(data.values(), desc="Extracting reviews"):
         if review == "PAGE_FAILURE":
             continue
         if review["pros"] is not None:
-            reviews.append(review["pros"].split(".|!|?|\n"))
+            pros = review["pros"]
+            pros = re.split('[\n.!?]+', pros)
+            for p in pros:
+                if p.strip():
+                    reviews.append(p.strip())
         if review["cons"] is not None:
-            reviews.append(review["cons"].split(".|!|?|\n"))
+            cons = review["cons"]
+            cons = re.split('[\n.!?]+', cons)
+            for c in cons:
+                if c.strip():
+                    reviews.append(c.strip())
         if review["advice"] is not None:
-            reviews.append(review["advice"].split(".|!|?|\n"))
+            advice = review["advice"]
+            advice = re.split('[\n.!?]+', advice)
+            for a in advice:
+                if a.strip():
+                    reviews.append(a.strip())
 
 # Filter out empty or None reviews
 reviews = [review for review in reviews if review]
 
 # Initialize an empty array for the embeddings
 all_embeddings = []
+
+print(f"We have {len(reviews)} reviews.")
 
 # Process reviews in smaller batches
 batch_size = 128
@@ -63,7 +80,7 @@ all_embeddings = np.array(all_embeddings)
 
 # Dimensionality reduction
 pca = PCA(n_components=2)
-reduced_embeddings = pca.fit_transform(embeddings)
+reduced_embeddings = pca.fit_transform(all_embeddings)
 
 # Clustering
 kmeans = KMeans(n_clusters=6, random_state=0)
@@ -77,9 +94,20 @@ clustered_reviews = {i: [] for i in range(6)}
 for review, label in zip(reviews, labels):
     clustered_reviews[label].append(review)
 
+# Get the current date and time
+now = datetime.datetime.now()
+date_time = now.strftime("%m-%d-%H-%M")
+
+# Define the directory path
+directory = f"./data/reviews_{date_time}/"
+
+# Create the directory if it doesn't exist
+if not os.path.exists(directory):
+    os.makedirs(directory)
+
 # Save the clustered reviews to separate files
 for cluster_id, cluster_reviews in clustered_reviews.items():
-    with open(f"./data/reviews_{args.num}/cluster_{cluster_id}.txt", "w", encoding="utf-8") as f:
+    with open(f"{directory}/cluster_{cluster_id}.txt", "w", encoding="utf-8") as f:
         for review in cluster_reviews:
             f.write(review + "\n\n")
 
@@ -98,6 +126,11 @@ closest_indices = [np.argmin(np.linalg.norm(reduced_embeddings - centroid, axis=
 
 # Retrieve the most representative review for each cluster
 representative_reviews = [reviews[idx] for idx in closest_indices]
+
+# Save the representative reviews to a file
+with open(f"{directory}/cluster_centroids.txt", "w", encoding="utf-8") as f:
+    for i, review in enumerate(representative_reviews):
+        f.write(f"Cluster {i}: {review}\n\n")
 
 # Print the representative reviews
 for i, review in enumerate(representative_reviews):

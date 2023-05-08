@@ -19,7 +19,6 @@ if args.sentence_level:
 else:
     args.label = "review_level_kmeans"
 
-print(args)
 # Load the data from the JSON file
 with open(f"./data/{args.data}", "r") as f:
     if args.sentence_level:

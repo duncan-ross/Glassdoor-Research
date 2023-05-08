@@ -4,7 +4,7 @@ import json
 import os
 from definitions import DATA_DIR
 import difflib
-import tqdm
+from tqdm import tqdm
 
 
 def local_ip():
@@ -83,4 +83,46 @@ def extract_reviews(data):
 
     # Filter out empty or None reviews
     reviews = [review for review in reviews if review]
+    return reviews
+
+
+def extract_sentence_level_reviews(data, company_info = False):
+    reviews = []
+    for company, review_list in tqdm(data.items(), desc="Extracting reviews"):
+        for review in review_list:
+            if review == "PAGE_FAILURE":
+                continue
+            if review["pros"] is not None:
+                pros = review["pros"]
+                pros = re.split('[\n.!?]+', pros)
+                for p in pros:
+                    if p.strip():
+                        if company_info:
+                            reviews.append((company, review["date"], p.strip()))
+                        else:
+                            reviews.append(p.strip())
+            if review["cons"] is not None:
+                cons = review["cons"]
+                cons = re.split('[\n.!?]+', cons)
+                for c in cons:
+                    if c.strip():
+                        if company_info:
+                            reviews.append((company, review["date"], c.strip()))
+                        else:
+                            reviews.append(c.strip())
+            if review["advice"] is not None:
+                advice = review["advice"]
+                advice = re.split('[\n.!?]+', advice)
+                for a in advice:
+                    if a.strip():
+                        if company_info:
+                            reviews.append((company, review["date"], a.strip()))
+                        else:
+                            reviews.append(a.strip())
+    # Filter out empty or None reviews
+    if company_info:
+        reviews = [review for review in reviews if review[1]]
+    else:
+        reviews = [review for review in reviews if review]
+
     return reviews

@@ -126,3 +126,35 @@ def extract_sentence_level_reviews(data, company_info = False):
         reviews = [review for review in reviews if review]
 
     return reviews
+
+def extract_review_level_reviews(data, company_info = False):
+    reviews = []
+    for company, review_list in tqdm(data.items(), desc="Extracting reviews"):
+        for review in review_list:
+            text = ""
+            if review == "PAGE_FAILURE":
+                continue
+            if review["pros"] is not None:
+                pros = review["pros"]
+                text += pros.strip() + " "
+
+            if review["cons"] is not None:
+                cons = review["cons"]
+                text += cons.strip() + " "
+
+            if review["advice"] is not None:
+                advice = review["advice"]
+                text += advice.strip()
+            
+            if text.strip():
+                if company_info:
+                    reviews.append((company, review["date"], text.strip()))
+                else:
+                    reviews.append(text.strip())
+    # Filter out empty or None reviews
+    if company_info:
+        reviews = [review for review in reviews if review[1]]
+    else:
+        reviews = [review for review in reviews if review]
+
+    return reviews

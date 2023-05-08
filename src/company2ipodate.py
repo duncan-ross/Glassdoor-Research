@@ -20,55 +20,6 @@ def check_fuzzy_matches(name, company_list):
     
     return max_similarity_name, max_similarity
 
-    
-"""
-Rewrites the companies_map.json file with the ipo dates added and p-values for a company to ipodate match.
-"""
-def add_ipo_dates_old():
-    
-    # from ipos excel file
-    iposexcel_data_df = pandas.read_excel("data/IPO-age_ufl.xlsx", sheet_name="Sheet1", index_col = None)
-    iposexcel_data_df = iposexcel_data_df[["IPO_name","Offer_date","Ticker"]].drop_duplicates(subset='Issuer', keep="first")
-    iposexcel_data_df['IPO_name'] = fix_company_names(iposexcel_data_df['IPO_name'].tolist())
-    iposexcel_data_df = iposexcel_data_df[iposexcel_data_df['Offer_date'].notna()]
-    
-    # from compustat excel file
-    compustat_data_df = pandas.read_excel('data/compustat_data.xlsx', sheet_name='companies', index_col = None)
-    compustat_data_df = compustat_data_df[['conm', 'ipodate', 'tic']].drop_duplicates(subset='conm', keep="first")
-    compustat_data_df['conm'] = fix_company_names(compustat_data_df['conm'].tolist())
-    compustat_data_df = compustat_data_df[compustat_data_df['ipodate'].notna()]
-
-    companies_map = helpers.json_data('companies_map')
-    
-
-    for company in companies_map:
-        c = remove_extraneous(remove_punctuation(company).lower().strip())
-
-        # Perfect matches
-        if c in iposexcel_data_df['Issuer'].values and not pandas.isnull(iposexcel_data_df[iposexcel_data_df['Issuer'] == c]['Date'].values[0]):
-            date , pval , match = iposexcel_data_df[iposexcel_data_df['Issuer'] == c]['Date'].values[0], 1, company
-        elif c in compustat_data_df['conm'].values and not pandas.isnull(compustat_data_df[compustat_data_df['conm'] == c]['ipodate'].values[0]):
-            date , pval , match = compustat_data_df[compustat_data_df['conm'] == c]['ipodate'].values[0], 1, company
-        else:
-            # Partial matches
-            max_similarity_name_iposecel, max_similarity_iposecel = check_fuzzy_matches(c, iposexcel_data_df['Issuer'].values)
-            max_similarity_name_compustat, max_similarity_compustat = check_fuzzy_matches(c, compustat_data_df['conm'].values)
-            if max_similarity_iposecel > max_similarity_compustat:
-                date, pval, match = iposexcel_data_df[iposexcel_data_df['Issuer'] == max_similarity_name_iposecel]['Date'].values[0], max_similarity_iposecel, max_similarity_name_iposecel
-            else:
-                date, pval, match = compustat_data_df[compustat_data_df['conm'] == max_similarity_name_compustat]['ipodate'].values[0], max_similarity_compustat, max_similarity_name_compustat
-            
-            if pval < 0.7:
-                date, pval, match = None, 0, None
-
-        companies_map[company]['date'] = date
-        companies_map[company]['pval'] = pval
-        companies_map[company]['match'] = match
-
-    with open("data/companies_map_new.json", "w") as outfile:
-        print("Rewriting companies_map.json")
-        json.dump(companies_map, outfile, indent=2, sort_keys=True, default=str)
-
 """Given a compustat df and company name, this function returns the ipodate, ticker and cusip of the company."""
 def retrieve_compustat_info(df, company):
     row = df[df['conm1'] == company]
@@ -143,5 +94,28 @@ def add_ipo_dates():
         print("Rewriting companies_map.json")
         json.dump(companies_map, outfile, indent=2, sort_keys=True, default=str)
 
+"""
+Turns the companies_map_new.json file into a csv file.
+The json is of format:
+{
+    "company_name": {
+        "date": "ipo date",
+        "ticker": "ticker",
+        "cusip": "cusip",
+        "reviews_url": "url to reviews"
+    }
+}
+
+The csv is of format:
+index, company_name, date, ticker, cusip, reviews_url
+"""
+def json_to_csv():
+    companies_map = helpers.json_data('companies_map_new')
+    with open("data/companies_map_new.csv", "w") as outfile:
+        outfile.write("index,company_name,date,ticker,cusip,reviews_url\n")
+        for i, c in enumerate(companies_map):
+            outfile.write(f"{i},{c},{companies_map[c]['date']},{companies_map[c]['ticker']},{companies_map[c]['cusip']},{companies_map[c]['reviews_url']}\n")
+
 if __name__ == "__main__":
     add_ipo_dates()
+    json_to_csv()

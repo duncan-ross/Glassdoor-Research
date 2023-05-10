@@ -121,7 +121,7 @@ def extract_sentence_level_reviews(data, company_info = False):
                             reviews.append(a.strip())
     # Filter out empty or None reviews
     if company_info:
-        reviews = [review for review in reviews if review[1]]
+        reviews = [review for review in reviews if review[2]]
     else:
         reviews = [review for review in reviews if review]
 
@@ -153,7 +153,7 @@ def extract_review_level_reviews(data, company_info = False):
                     reviews.append(text.strip())
     # Filter out empty or None reviews
     if company_info:
-        reviews = [review for review in reviews if review[1]]
+        reviews = [review for review in reviews if review[2]]
     else:
         reviews = [review for review in reviews if review]
 

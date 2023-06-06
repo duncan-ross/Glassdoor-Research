@@ -9,8 +9,7 @@ import argparse
 import datetime
 import os
 import re
-
-from helpers import extract_reviews
+import helpers
 
 argp = argparse.ArgumentParser()
 argp.add_argument("--num", type=str, default=0)

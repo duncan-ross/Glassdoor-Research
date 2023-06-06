@@ -1,3 +1,7 @@
 __pycache__/
 data/
 archive/
+Research docs/
+glassdoor_research.pem
+output_data/
+**/.DS_Store

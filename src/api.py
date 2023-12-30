@@ -47,8 +47,8 @@ def base_payload():
     return {
         "v": "1",
         "format": "json",
-        "t.p": "157426",  # config('GLASSDOOR_PARTNER_ID'),
-        "t.k": "iDIHGVDrCcA",  # config('GLASSDOOR_PARTNER_KEY'),
+        "t.p": "GLASSDOOR_PARTNER_ID",  # config('GLASSDOOR_PARTNER_ID'),
+        "t.k": "GLASSDOOR_PARTNER_KEY",  # config('GLASSDOOR_PARTNER_KEY'),
         "userip": LOCAL_IP,
         "country": "us",
     }
